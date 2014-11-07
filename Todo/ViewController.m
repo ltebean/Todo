@@ -32,6 +32,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.loaded=NO;
     [self initInputSheet];
+    self.navigationController.view.backgroundColor = [UIColor whiteColor];
 }
 
 -(TodoAreaView*) generateAreaViewWithType:(Type) type
