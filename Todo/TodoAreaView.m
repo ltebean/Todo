@@ -246,14 +246,19 @@
 
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
+    if(![otherGestureRecognizer.view isDescendantOfView:self]){
+        return NO;
+    }
     return YES;
 }
 
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldBeRequiredToFailByGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
-    if([otherGestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]){
+    if([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]){
         return YES;
     }
+
+
     return NO;
 }
 

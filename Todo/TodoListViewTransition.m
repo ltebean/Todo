@@ -7,8 +7,8 @@
 //
 
 #import "TodoListViewTransition.h"
-#define zoomMin 0.6
-#define zoomMax 1.5
+#define zoomMin 0.8
+#define zoomMax 1.3
 
 @implementation TodoListViewTransition
 
@@ -32,7 +32,7 @@
     }
     
     [containerView addSubview:desticationView];
-    [UIView animateWithDuration:duration delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:0 options:0 animations:^{
+    [UIView animateWithDuration:duration delay:0 usingSpringWithDamping:0.75 initialSpringVelocity:0 options:0 animations:^{
         sourceView.alpha =0;
         desticationView.alpha=1;
         if(self.push){

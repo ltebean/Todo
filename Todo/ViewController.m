@@ -9,13 +9,15 @@
 #import "ViewController.h"
 #import "TodoAreaView.h"
 #import "LTPopButton.h"
+#import "LTBounceSheet.h"
 #import "TodoListViewTransition.h"
 #import "TodoListViewController.h"
+#import "Settings.h"
 
 @interface ViewController ()<UIGestureRecognizerDelegate,AreaViewDelegate,UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet LTPopButton *menuButton;
-
 @property (weak, nonatomic) IBOutlet UIView *containerView;
+@property(nonatomic,strong) LTBounceSheet* sheet;
 @property(nonatomic,strong) TodoAreaView* areaA;
 @property(nonatomic,strong) TodoAreaView* areaB;
 @property(nonatomic,strong) TodoAreaView* areaC;
@@ -36,12 +38,16 @@
     self.areaC = [self generateAreaViewWithType:typeC];
     self.areaD = [self generateAreaViewWithType:typeD];
 
+
     [self.containerView addSubview:self.areaA];
     [self.containerView addSubview:self.areaB];
     [self.containerView addSubview:self.areaC];
     [self.containerView addSubview:self.areaD];
     
     self.menuButton.lineColor=[UIColor whiteColor];
+    [self.menuButton animateToType:plusType];
+    self.sheet = [[LTBounceSheet alloc]initWithHeight:250 bgColor:[Settings themeColor]];
+
 
 }
 
@@ -119,6 +125,7 @@
 
 - (IBAction)showMenu:(id)sender {
     [self.menuButton animateToType:closeType];
+    [self.sheet toggle];
     //[self performSegueWithIdentifier:@"settings" sender:nil];
 }
 

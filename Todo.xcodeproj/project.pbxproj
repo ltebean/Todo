@@ -28,6 +28,7 @@
 		FA492C761A0CB1A50030FE27 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA492C661A0CB1A50030FE27 /* ViewController.m */; };
 		FA492C7D1A0CB5570030FE27 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA492C7B1A0CB5570030FE27 /* LaunchScreen.xib */; };
 		FA492C7E1A0CB5570030FE27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA492C7C1A0CB5570030FE27 /* Main.storyboard */; };
+		FAF652621A0CBF9C00CB0DCA /* LTBounceSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF652611A0CBF9C00CB0DCA /* LTBounceSheet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,8 @@
 		FA492C661A0CB1A50030FE27 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		FA492C7B1A0CB5570030FE27 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		FA492C7C1A0CB5570030FE27 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		FAF652601A0CBF9B00CB0DCA /* LTBounceSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTBounceSheet.h; sourceTree = "<group>"; };
+		FAF652611A0CBF9C00CB0DCA /* LTBounceSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTBounceSheet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,7 @@
 		FA492C211A0CB1890030FE27 /* Todo */ = {
 			isa = PBXGroup;
 			children = (
+				FAF652271A0CB97100CB0DCA /* model */,
 				FA492C771A0CB1C00030FE27 /* lib */,
 				FA492C781A0CB1C50030FE27 /* component */,
 				FA492C791A0CB1EB0030FE27 /* service */,
@@ -172,6 +176,8 @@
 		FA492C771A0CB1C00030FE27 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				FAF652601A0CBF9B00CB0DCA /* LTBounceSheet.h */,
+				FAF652611A0CBF9C00CB0DCA /* LTBounceSheet.m */,
 				FA492C4C1A0CB1A50030FE27 /* LTPopButton.h */,
 				FA492C4D1A0CB1A50030FE27 /* LTPopButton.m */,
 				FA492C4E1A0CB1A50030FE27 /* LTSlidingView.h */,
@@ -209,6 +215,13 @@
 				FA492C621A0CB1A50030FE27 /* TodoService.m */,
 			);
 			name = service;
+			sourceTree = "<group>";
+		};
+		FAF652271A0CB97100CB0DCA /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,6 +331,7 @@
 				FA492C251A0CB1890030FE27 /* main.m in Sources */,
 				FA492C6C1A0CB1A50030FE27 /* LTSlidingViewCoverflowTransition.m in Sources */,
 				FA492C6F1A0CB1A50030FE27 /* TodoAreaView.m in Sources */,
+				FAF652621A0CBF9C00CB0DCA /* LTBounceSheet.m in Sources */,
 				FA492C6B1A0CB1A50030FE27 /* LTSlidingViewController.m in Sources */,
 				FA492C6D1A0CB1A50030FE27 /* LTSlidingViewZoomTransition.m in Sources */,
 				FA492C721A0CB1A50030FE27 /* TodoListViewController.m in Sources */,
@@ -499,6 +513,7 @@
 				FA492C441A0CB1890030FE27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FA492C451A0CB1890030FE27 /* Build configuration list for PBXNativeTarget "TodoTests" */ = {
 			isa = XCConfigurationList;
@@ -507,6 +522,7 @@
 				FA492C471A0CB1890030FE27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
