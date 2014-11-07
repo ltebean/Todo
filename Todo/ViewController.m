@@ -31,24 +31,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.loaded=NO;
-    
-    
-    self.areaA = [self generateAreaViewWithType:typeA];
-    self.areaB = [self generateAreaViewWithType:typeB];
-    self.areaC = [self generateAreaViewWithType:typeC];
-    self.areaD = [self generateAreaViewWithType:typeD];
-
-
-    [self.containerView addSubview:self.areaA];
-    [self.containerView addSubview:self.areaB];
-    [self.containerView addSubview:self.areaC];
-    [self.containerView addSubview:self.areaD];
-    
-    self.menuButton.lineColor=[UIColor whiteColor];
-    [self.menuButton animateToType:plusType];
-    self.sheet = [[LTBounceSheet alloc]initWithHeight:250 bgColor:[Settings themeColor]];
-
-
+    [self initInputSheet];
 }
 
 -(TodoAreaView*) generateAreaViewWithType:(Type) type
@@ -81,11 +64,36 @@
     if(self.loaded){
         return;
     }
+    self.areaA = [self generateAreaViewWithType:typeA];
+    self.areaB = [self generateAreaViewWithType:typeB];
+    self.areaC = [self generateAreaViewWithType:typeC];
+    self.areaD = [self generateAreaViewWithType:typeD];
+    
+    
+    [self.containerView addSubview:self.areaA];
+    [self.containerView addSubview:self.areaB];
+    [self.containerView addSubview:self.areaC];
+    [self.containerView addSubview:self.areaD];
+    
+    self.menuButton.lineColor=[UIColor whiteColor];
+    [self.menuButton animateToType:plusType];
+    
+    
+    NSLog(@"%@",NSStringFromCGRect(self.containerView.frame));
+
     [self animateAreaViewIn:self.areaA delay:0];
     [self animateAreaViewIn:self.areaB delay:0.12];
     [self animateAreaViewIn:self.areaC delay:0.24];
     [self animateAreaViewIn:self.areaD delay:0.36];
+    
     self.loaded = YES;
+}
+
+-(void) initInputSheet
+{
+    self.sheet = [[LTBounceSheet alloc]initWithHeight:250 bgColor:[Settings themeColor]];
+
+    [self.sheet addSubview:self.inputView];
 }
 
 
@@ -124,9 +132,13 @@
 }
 
 - (IBAction)showMenu:(id)sender {
-    [self.menuButton animateToType:closeType];
+    if(self.sheet.shown){
+        [self.menuButton animateToType:plusType];
+    }else{
+        [self.menuButton animateToType:closeType];
+    }
     [self.sheet toggle];
-    //[self performSegueWithIdentifier:@"settings" sender:nil];
+
 }
 
 

@@ -87,7 +87,7 @@
 
     [super viewWillAppear:animated];
     if(!self.animated){
-        [self animateCellIn];
+        //[self animateCellIn];
         self.animated=YES;
     }
 }

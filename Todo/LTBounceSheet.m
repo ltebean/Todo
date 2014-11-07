@@ -10,7 +10,7 @@
 
 #define duration 0.55
 
-#define sideViewDamping 0.87
+#define sideViewDamping 0.9
 #define sideViewVelocity 10
 
 #define centerViewDamping 1.0
@@ -22,7 +22,6 @@
 @property(nonatomic,strong) CADisplayLink *displayLink;
 @property(nonatomic,strong) UIView *contentView;
 @property(nonatomic,strong) UIColor *bgColor;
-@property BOOL shown;
 @property int counter;
 @property CGFloat height;
 @end
@@ -47,12 +46,12 @@
         self.contentView.transform = CGAffineTransformMakeTranslation(0, self.height);
         [self addSubview:self.contentView];
         
-        self.sideHelperView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 5)];
+        self.sideHelperView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
         self.sideHelperView.backgroundColor=[UIColor blackColor];
         [self addSubview:self.sideHelperView];
         
         
-        self.centerHelperView = [[UIView alloc] initWithFrame:CGRectMake(screenWidth/2, 0, 5, 5)];
+        self.centerHelperView = [[UIView alloc] initWithFrame:CGRectMake(screenWidth/2, 0, 0, 0)];
         self.centerHelperView.backgroundColor=[UIColor blackColor];
         [self addSubview:self.centerHelperView];
         

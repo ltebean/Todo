@@ -7,8 +7,8 @@
 //
 
 #import "TodoListViewTransition.h"
-#define zoomMin 0.8
-#define zoomMax 1.3
+#define zoomMin 0.7
+#define zoomMax 1.5
 
 @implementation TodoListViewTransition
 

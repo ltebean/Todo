@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface LTBounceSheet : UIView
+@property BOOL shown;
+
 - (id) initWithHeight:(CGFloat) height bgColor:(UIColor*) color;
 -(void) addView:(UIView*) view;
 -(void) show;
