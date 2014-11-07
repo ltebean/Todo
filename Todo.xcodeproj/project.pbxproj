@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49CA93AF1A0CE9020069BABB /* TodoInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CA93AE1A0CE9020069BABB /* TodoInputView.m */; };
+		49CA93B11A0CE91D0069BABB /* TodoInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49CA93B01A0CE91D0069BABB /* TodoInputView.xib */; };
 		FA492C251A0CB1890030FE27 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA492C241A0CB1890030FE27 /* main.m */; };
 		FA492C301A0CB1890030FE27 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA492C2F1A0CB1890030FE27 /* Images.xcassets */; };
 		FA492C3F1A0CB1890030FE27 /* TodoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA492C3E1A0CB1890030FE27 /* TodoTests.m */; };
@@ -42,6 +44,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		49CA93AD1A0CE9020069BABB /* TodoInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoInputView.h; sourceTree = "<group>"; };
+		49CA93AE1A0CE9020069BABB /* TodoInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoInputView.m; sourceTree = "<group>"; };
+		49CA93B01A0CE91D0069BABB /* TodoInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodoInputView.xib; sourceTree = "<group>"; };
 		FA492C1F1A0CB1890030FE27 /* Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA492C231A0CB1890030FE27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA492C241A0CB1890030FE27 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -202,6 +207,9 @@
 				FA492C5C1A0CB1A50030FE27 /* TodoCell.m */,
 				FA492C631A0CB1A50030FE27 /* TodoTypeLabel.h */,
 				FA492C641A0CB1A50030FE27 /* TodoTypeLabel.m */,
+				49CA93AD1A0CE9020069BABB /* TodoInputView.h */,
+				49CA93AE1A0CE9020069BABB /* TodoInputView.m */,
+				49CA93B01A0CE91D0069BABB /* TodoInputView.xib */,
 			);
 			name = component;
 			sourceTree = "<group>";
@@ -273,6 +281,7 @@
 				TargetAttributes = {
 					FA492C1E1A0CB1890030FE27 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = LUAG5Z5ST3;
 					};
 					FA492C371A0CB1890030FE27 = {
 						CreatedOnToolsVersion = 6.1;
@@ -304,6 +313,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49CA93B11A0CE91D0069BABB /* TodoInputView.xib in Resources */,
 				FA492C301A0CB1890030FE27 /* Images.xcassets in Resources */,
 				FA492C7D1A0CB5570030FE27 /* LaunchScreen.xib in Resources */,
 				FA492C701A0CB1A50030FE27 /* TodoAreaView.xib in Resources */,
@@ -334,6 +344,7 @@
 				FAF652621A0CBF9C00CB0DCA /* LTBounceSheet.m in Sources */,
 				FA492C6B1A0CB1A50030FE27 /* LTSlidingViewController.m in Sources */,
 				FA492C6D1A0CB1A50030FE27 /* LTSlidingViewZoomTransition.m in Sources */,
+				49CA93AF1A0CE9020069BABB /* TodoInputView.m in Sources */,
 				FA492C721A0CB1A50030FE27 /* TodoListViewController.m in Sources */,
 				FA492C731A0CB1A50030FE27 /* TodoListViewTransition.m in Sources */,
 				FA492C761A0CB1A50030FE27 /* ViewController.m in Sources */,
@@ -444,9 +455,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Cong Yu (6T4Q98EJT3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Todo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -454,9 +468,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Cong Yu (6T4Q98EJT3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Todo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

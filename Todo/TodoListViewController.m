@@ -29,7 +29,7 @@
     self.tableView.dataSource=self;
     self.tableView.delegate=self;
     self.animated=NO;
-    self.todoList=[[NSArray arrayWithObjects:@"todo1", @"todo2", @"todo3", @"todo4", @"todo5",@"todo6", nil] mutableCopy];
+    self.todoList=[[NSArray arrayWithObjects:@"todo1 meet somebody", @"todo2 meet somebody", @"todo3 meet somebody", @"todo4 meet somebody", @"todo5 meet somebody",@"todo6 meet somebody", nil] mutableCopy];
     
     [self.editButton setLineColor:[UIColor whiteColor]];
     

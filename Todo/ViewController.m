@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "TodoAreaView.h"
 #import "LTPopButton.h"
-#import "LTBounceSheet.h"
+#import "TodoInputView.h"
 #import "TodoListViewTransition.h"
 #import "TodoListViewController.h"
 #import "Settings.h"
@@ -17,11 +17,11 @@
 @interface ViewController ()<UIGestureRecognizerDelegate,AreaViewDelegate,UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet LTPopButton *menuButton;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
-@property(nonatomic,strong) LTBounceSheet* sheet;
 @property(nonatomic,strong) TodoAreaView* areaA;
 @property(nonatomic,strong) TodoAreaView* areaB;
 @property(nonatomic,strong) TodoAreaView* areaC;
 @property(nonatomic,strong) TodoAreaView* areaD;
+@property(nonatomic,strong) TodoInputView* inputView;
 @property BOOL loaded;
 @end
 
@@ -31,8 +31,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.loaded=NO;
-    [self initInputSheet];
     self.navigationController.view.backgroundColor = [UIColor whiteColor];
+    self.inputView = [[TodoInputView alloc]initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), 240)];
+    [self.containerView addSubview:self.inputView];
 }
 
 -(TodoAreaView*) generateAreaViewWithType:(Type) type
@@ -90,12 +91,7 @@
     self.loaded = YES;
 }
 
--(void) initInputSheet
-{
-    self.sheet = [[LTBounceSheet alloc]initWithHeight:250 bgColor:[Settings themeColor]];
 
-    [self.sheet addSubview:self.inputView];
-}
 
 
 -(void) viewDidAppear:(BOOL)animated
@@ -117,7 +113,7 @@
 -(void) animateAreaViewIn:(UIView*) view delay:(NSTimeInterval) delay
 {
     view.alpha=0;
-    view.transform = CGAffineTransformMakeScale(5, 5);
+    view.transform = CGAffineTransformMakeScale(4, 4);
     [UIView animateWithDuration:1.0 delay:delay usingSpringWithDamping:0.8 initialSpringVelocity:0 options:0 animations:^{
         view.transform=CGAffineTransformIdentity;
         view.alpha=1;
@@ -133,12 +129,14 @@
 }
 
 - (IBAction)showMenu:(id)sender {
-    if(self.sheet.shown){
+    if(self.inputView.shown){
         [self.menuButton animateToType:plusType];
+        [self.inputView hide];
     }else{
         [self.menuButton animateToType:closeType];
+        [self.inputView show];
     }
-    [self.sheet toggle];
+
 
 }
 
