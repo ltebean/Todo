@@ -15,8 +15,8 @@
 @interface TodoAreaView()<UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet UILabel *emptyLabel;
 @property (nonatomic,strong) TodoService* todoService;
-@property (nonatomic,strong) NSMutableArray* todoList;
 @property (atomic) BOOL longPressed;
 @property (atomic) BOOL panning;
 @property (nonatomic) CGRect pullBackArea;
@@ -45,6 +45,7 @@
 {
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
     [self.containerView addGestureRecognizer:recognizer];
+    
     self.layer.borderWidth=0.5;
     self.layer.borderColor=[[UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1] CGColor];
     
@@ -69,6 +70,20 @@
     
     self.pullBackArea= CGRectMake(self.frame.size.width/4, self.frame.size.height/4, self.frame.size.width/2, self.frame.size.height/2);
     
+    [self hideEmptyLabel];
+    
+}
+
+-(void) showEmptyLabel
+{
+    self.emptyLabel.hidden=NO;
+    self.label.hidden=YES;
+}
+
+-(void) hideEmptyLabel
+{
+    self.emptyLabel.hidden=YES;
+    self.label.hidden=NO;
 }
 
 -(void)handleLongPress:(UILongPressGestureRecognizer *)recognizer{
@@ -124,12 +139,13 @@
 
 -(void) showNext
 {
+    [self.todoService deleteFirst];
     [UIView animateWithDuration:0.2 delay:0 options:0 animations:^{
         self.label.transform = CGAffineTransformMakeScale(0, 0);
     } completion:^(BOOL finished) {
         self.label.alpha=1;
         self.label.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
-        self.label.text=@"another todo woho, let's party";
+        [self refreshData];
         [UIView animateWithDuration:0.6 delay:0 usingSpringWithDamping:0.75 initialSpringVelocity:0 options:0 animations:^{
             self.label.transform = CGAffineTransformIdentity;
         } completion:^(BOOL finished) {
@@ -162,7 +178,13 @@
 
 -(void) refreshData
 {
-    self.todoList = [[self.todoService loadAll] mutableCopy];
+    NSDictionary* todo = [self.todoService loadFirst];
+    if(!todo){
+        [self showEmptyLabel];
+    }else {
+        [self hideEmptyLabel];
+        self.label.text = todo[@"content"];
+    }
 }
 
 

@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+@class TodoInputView;
+
+@protocol TodoInputViewDelegate <NSObject>
+-(void)todoInputView:(TodoInputView*)inputView didAddTodo:(NSDictionary*) todo withType:(NSString*) type;
+@end
 
 @interface TodoInputView : UIView
 @property (weak, nonatomic) IBOutlet UITextField *inputField;
 @property BOOL shown;
--(void) show;
+@property(nonatomic,weak) id<TodoInputViewDelegate> delegate;
+-(void) showInView:(UIView*) view;
 -(void) hide;
--(void) toggle;
 @end

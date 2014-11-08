@@ -14,7 +14,7 @@
 #import "TodoListViewController.h"
 #import "Settings.h"
 
-@interface ViewController ()<UIGestureRecognizerDelegate,AreaViewDelegate,UINavigationControllerDelegate>
+@interface ViewController ()<UIGestureRecognizerDelegate,AreaViewDelegate,UINavigationControllerDelegate,TodoInputViewDelegate>
 @property (weak, nonatomic) IBOutlet LTPopButton *menuButton;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property(nonatomic,strong) TodoAreaView* areaA;
@@ -22,6 +22,8 @@
 @property(nonatomic,strong) TodoAreaView* areaC;
 @property(nonatomic,strong) TodoAreaView* areaD;
 @property(nonatomic,strong) TodoInputView* inputView;
+@property(nonatomic,strong) NSDictionary* areas;
+
 @property BOOL loaded;
 @end
 
@@ -32,8 +34,9 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.loaded=NO;
     self.navigationController.view.backgroundColor = [UIColor whiteColor];
-    self.inputView = [[TodoInputView alloc]initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), 240)];
-    [self.containerView addSubview:self.inputView];
+    self.inputView = [[TodoInputView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 200)];
+    self.inputView.delegate=self;
+    
 }
 
 -(TodoAreaView*) generateAreaViewWithType:(Type) type
@@ -66,12 +69,14 @@
     if(self.loaded){
         return;
     }
+    
     self.areaA = [self generateAreaViewWithType:typeA];
     self.areaB = [self generateAreaViewWithType:typeB];
     self.areaC = [self generateAreaViewWithType:typeC];
     self.areaD = [self generateAreaViewWithType:typeD];
     
-    
+    self.areas=@{@"a":self.areaA,@"b":self.areaB,@"c":self.areaC,@"d":self.areaD};
+
     [self.containerView addSubview:self.areaA];
     [self.containerView addSubview:self.areaB];
     [self.containerView addSubview:self.areaC];
@@ -80,9 +85,6 @@
     self.menuButton.lineColor=[UIColor whiteColor];
     [self.menuButton animateToType:plusType];
     
-    
-    NSLog(@"%@",NSStringFromCGRect(self.containerView.frame));
-
     [self animateAreaViewIn:self.areaA delay:0];
     [self animateAreaViewIn:self.areaB delay:0.12];
     [self animateAreaViewIn:self.areaC delay:0.24];
@@ -122,10 +124,26 @@
     }];
 }
 
+-(void)todoInputView:(TodoInputView*)inputView didAddTodo:(NSDictionary*) todo withType:(NSString*) type;
+{
+    [self.menuButton animateToType:plusType];
+    TodoAreaView* area = self.areas[type];
+    [area refreshData];
+}
+
 
 -(void) didTappedAreaView:(TodoAreaView *)areaView
 {
-    [self performSegueWithIdentifier:@"detail" sender:areaView];
+    NSString* type;
+    switch (areaView.type) {
+        case typeA: type = @"a";break;
+        case typeB: type = @"b";break;
+        case typeC: type = @"c";break;
+        case typeD: type = @"d";break;
+        default:
+            break;
+    }
+    [self performSegueWithIdentifier:@"detail" sender:type];
 }
 
 - (IBAction)showMenu:(id)sender {
@@ -134,9 +152,9 @@
         [self.inputView hide];
     }else{
         [self.menuButton animateToType:closeType];
-        [self.inputView show];
+        [self.inputView showInView:self.view];
+        
     }
-
 
 }
 
@@ -155,7 +173,7 @@
 {
     if([segue.identifier isEqualToString:@"detail"]){
         TodoListViewController* vc = segue.destinationViewController;
-        vc.type=@"a";
+        vc.type=sender;
     }
 }
 

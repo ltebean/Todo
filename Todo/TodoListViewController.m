@@ -29,7 +29,6 @@
     self.tableView.dataSource=self;
     self.tableView.delegate=self;
     self.animated=NO;
-    self.todoList=[[NSArray arrayWithObjects:@"todo1 meet somebody", @"todo2 meet somebody", @"todo3 meet somebody", @"todo4 meet somebody", @"todo5 meet somebody",@"todo6 meet somebody", nil] mutableCopy];
     
     [self.editButton setLineColor:[UIColor whiteColor]];
     
@@ -82,7 +81,7 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
-    //self.todoList = [[self.todoService loadAll]mutableCopy];
+    self.todoList = [[self.todoService loadAll]mutableCopy];
     [self.tableView reloadData];
 
     [super viewWillAppear:animated];
@@ -154,7 +153,7 @@
 {
     static NSString *CellIdentifier = @"TodoCell";
     TodoCell *cell = (TodoCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    cell.textLabel.text = self.todoList[indexPath.row];
+    cell.textLabel.text = self.todoList[indexPath.row][@"content"];
     return cell;
     
 }

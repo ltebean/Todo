@@ -14,6 +14,11 @@
 
 +(TodoService*) serviceWithType:(NSString*) type;
 -(NSArray*) loadAll;
+-(NSDictionary*) loadFirst;
+-(void) add:(NSDictionary*) todo;
+-(void) deleteById:(NSString*)todoId;
+-(void) deleteFirst;
+
 -(void) saveAll:(NSArray*) todoList;
 
 @end

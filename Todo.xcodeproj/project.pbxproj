@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4926D17F1A0DD635008F68A9 /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4926D17E1A0DD635008F68A9 /* CommonUtils.m */; };
 		49CA93AF1A0CE9020069BABB /* TodoInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CA93AE1A0CE9020069BABB /* TodoInputView.m */; };
 		49CA93B11A0CE91D0069BABB /* TodoInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49CA93B01A0CE91D0069BABB /* TodoInputView.xib */; };
 		FA492C251A0CB1890030FE27 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA492C241A0CB1890030FE27 /* main.m */; };
@@ -44,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4926D17D1A0DD634008F68A9 /* CommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtils.h; sourceTree = "<group>"; };
+		4926D17E1A0DD635008F68A9 /* CommonUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtils.m; sourceTree = "<group>"; };
 		49CA93AD1A0CE9020069BABB /* TodoInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoInputView.h; sourceTree = "<group>"; };
 		49CA93AE1A0CE9020069BABB /* TodoInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoInputView.m; sourceTree = "<group>"; };
 		49CA93B01A0CE91D0069BABB /* TodoInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodoInputView.xib; sourceTree = "<group>"; };
@@ -109,6 +112,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4926D17C1A0DD61A008F68A9 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				4926D17D1A0DD634008F68A9 /* CommonUtils.h */,
+				4926D17E1A0DD635008F68A9 /* CommonUtils.m */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
 		FA492C161A0CB1890030FE27 = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +142,7 @@
 		FA492C211A0CB1890030FE27 /* Todo */ = {
 			isa = PBXGroup;
 			children = (
+				4926D17C1A0DD61A008F68A9 /* utils */,
 				FAF652271A0CB97100CB0DCA /* model */,
 				FA492C771A0CB1C00030FE27 /* lib */,
 				FA492C781A0CB1C50030FE27 /* component */,
@@ -340,6 +353,7 @@
 				FA492C6E1A0CB1A50030FE27 /* Settings.m in Sources */,
 				FA492C251A0CB1890030FE27 /* main.m in Sources */,
 				FA492C6C1A0CB1A50030FE27 /* LTSlidingViewCoverflowTransition.m in Sources */,
+				4926D17F1A0DD635008F68A9 /* CommonUtils.m in Sources */,
 				FA492C6F1A0CB1A50030FE27 /* TodoAreaView.m in Sources */,
 				FAF652621A0CBF9C00CB0DCA /* LTBounceSheet.m in Sources */,
 				FA492C6B1A0CB1A50030FE27 /* LTSlidingViewController.m in Sources */,
@@ -455,7 +469,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Cong Yu (6T4Q98EJT3)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Todo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -468,7 +482,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Cong Yu (6T4Q98EJT3)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Todo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
