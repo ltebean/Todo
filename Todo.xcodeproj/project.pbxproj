@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4926D17F1A0DD635008F68A9 /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4926D17E1A0DD635008F68A9 /* CommonUtils.m */; };
+		4926D1821A0E09EB008F68A9 /* BVReorderTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4926D1811A0E09EB008F68A9 /* BVReorderTableView.m */; };
 		49CA93AF1A0CE9020069BABB /* TodoInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CA93AE1A0CE9020069BABB /* TodoInputView.m */; };
 		49CA93B11A0CE91D0069BABB /* TodoInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49CA93B01A0CE91D0069BABB /* TodoInputView.xib */; };
 		FA492C251A0CB1890030FE27 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA492C241A0CB1890030FE27 /* main.m */; };
@@ -47,6 +48,8 @@
 /* Begin PBXFileReference section */
 		4926D17D1A0DD634008F68A9 /* CommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtils.h; sourceTree = "<group>"; };
 		4926D17E1A0DD635008F68A9 /* CommonUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtils.m; sourceTree = "<group>"; };
+		4926D1801A0E09EB008F68A9 /* BVReorderTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BVReorderTableView.h; sourceTree = "<group>"; };
+		4926D1811A0E09EB008F68A9 /* BVReorderTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BVReorderTableView.m; sourceTree = "<group>"; };
 		49CA93AD1A0CE9020069BABB /* TodoInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoInputView.h; sourceTree = "<group>"; };
 		49CA93AE1A0CE9020069BABB /* TodoInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoInputView.m; sourceTree = "<group>"; };
 		49CA93B01A0CE91D0069BABB /* TodoInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodoInputView.xib; sourceTree = "<group>"; };
@@ -194,6 +197,8 @@
 		FA492C771A0CB1C00030FE27 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				4926D1801A0E09EB008F68A9 /* BVReorderTableView.h */,
+				4926D1811A0E09EB008F68A9 /* BVReorderTableView.m */,
 				FAF652601A0CBF9B00CB0DCA /* LTBounceSheet.h */,
 				FAF652611A0CBF9C00CB0DCA /* LTBounceSheet.m */,
 				FA492C4C1A0CB1A50030FE27 /* LTPopButton.h */,
@@ -353,6 +358,7 @@
 				FA492C6E1A0CB1A50030FE27 /* Settings.m in Sources */,
 				FA492C251A0CB1890030FE27 /* main.m in Sources */,
 				FA492C6C1A0CB1A50030FE27 /* LTSlidingViewCoverflowTransition.m in Sources */,
+				4926D1821A0E09EB008F68A9 /* BVReorderTableView.m in Sources */,
 				4926D17F1A0DD635008F68A9 /* CommonUtils.m in Sources */,
 				FA492C6F1A0CB1A50030FE27 /* TodoAreaView.m in Sources */,
 				FAF652621A0CBF9C00CB0DCA /* LTBounceSheet.m in Sources */,

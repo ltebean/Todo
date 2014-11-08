@@ -17,17 +17,17 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="add a todo" minimumFontSize="18" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nlc-uP-MTj">
-                    <rect key="frame" x="18" y="14" width="284" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="add a todo" minimumFontSize="19" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nlc-uP-MTj">
+                    <rect key="frame" x="18" y="15" width="284" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="Jiy-o6-Vq2"/>
                     </constraints>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="18"/>
+                    <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="19"/>
                     <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                 </textField>
                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="important" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YP8-bF-fP1">
-                    <rect key="frame" x="10" y="110" width="145" height="60"/>
+                    <rect key="frame" x="12" y="108" width="142" height="60"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="exL-US-UUw"/>
@@ -37,7 +37,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="urgent" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnw-Qw-pXC">
-                    <rect key="frame" x="165" y="110" width="145" height="60"/>
+                    <rect key="frame" x="166" y="108" width="142" height="60"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="ybJ-Sm-jKi"/>
@@ -47,17 +47,18 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="nlc-uP-MTj" secondAttribute="trailing" constant="18" id="9Ye-Wa-zpB"/>
-                <constraint firstAttribute="trailing" secondItem="dnw-Qw-pXC" secondAttribute="trailing" constant="10" id="Agd-F3-Adi"/>
+                <constraint firstAttribute="trailing" secondItem="dnw-Qw-pXC" secondAttribute="trailing" constant="12" id="Agd-F3-Adi"/>
                 <constraint firstItem="YP8-bF-fP1" firstAttribute="width" secondItem="dnw-Qw-pXC" secondAttribute="width" id="Hjk-hk-GWR"/>
-                <constraint firstAttribute="bottom" secondItem="dnw-Qw-pXC" secondAttribute="bottom" constant="10" id="J8u-Y7-2FX"/>
-                <constraint firstItem="nlc-uP-MTj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="14" id="Sth-SW-FxU"/>
-                <constraint firstItem="dnw-Qw-pXC" firstAttribute="leading" secondItem="YP8-bF-fP1" secondAttribute="trailing" constant="10" id="YhB-9V-T2t"/>
-                <constraint firstItem="YP8-bF-fP1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="bYV-9x-EzI"/>
+                <constraint firstAttribute="bottom" secondItem="dnw-Qw-pXC" secondAttribute="bottom" constant="12" id="J8u-Y7-2FX"/>
+                <constraint firstItem="nlc-uP-MTj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="Sth-SW-FxU"/>
+                <constraint firstItem="dnw-Qw-pXC" firstAttribute="leading" secondItem="YP8-bF-fP1" secondAttribute="trailing" constant="12" id="YhB-9V-T2t"/>
+                <constraint firstItem="YP8-bF-fP1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="bYV-9x-EzI"/>
                 <constraint firstItem="nlc-uP-MTj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="18" id="fVB-TU-DwO"/>
                 <constraint firstItem="YP8-bF-fP1" firstAttribute="height" secondItem="dnw-Qw-pXC" secondAttribute="height" id="z1w-qu-3Ul"/>
-                <constraint firstAttribute="bottom" secondItem="YP8-bF-fP1" secondAttribute="bottom" constant="10" id="zFa-OY-nTb"/>
+                <constraint firstAttribute="bottom" secondItem="YP8-bF-fP1" secondAttribute="bottom" constant="12" id="zFa-OY-nTb"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="197" y="-196"/>

@@ -15,7 +15,6 @@
 @interface TodoListViewController ()<UITableViewDataSource,UITableViewDelegate,UINavigationControllerDelegate,UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property BOOL animated;
-@property (weak, nonatomic) IBOutlet LTPopButton *editButton;
 @property (nonatomic,strong) UIPercentDrivenInteractiveTransition* interactivePopTransition;
 @property (nonatomic,strong) NSMutableArray* todoList;
 @property (nonatomic,strong) TodoService* todoService;
@@ -29,8 +28,6 @@
     self.tableView.dataSource=self;
     self.tableView.delegate=self;
     self.animated=NO;
-    
-    [self.editButton setLineColor:[UIColor whiteColor]];
     
     UIScreenEdgePanGestureRecognizer *popRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePopRecognizer:)];
     popRecognizer.delegate=self;
@@ -86,7 +83,7 @@
 
     [super viewWillAppear:animated];
     if(!self.animated){
-        //[self animateCellIn];
+        [self animateCellIn];
         self.animated=YES;
     }
 }
@@ -105,15 +102,7 @@
     }
 }
 
-- (IBAction)edit:(id)sender {
-    if(self.tableView.editing){
-        [self.editButton animateToType:menuType];
-        [self.tableView setEditing:NO animated:YES];
-    }else{
-        [self.tableView setEditing:YES animated:YES];
-        [self.editButton animateToType:closeType];
-    }
-}
+
 
 #pragma mark UITableViewDatasource
 
@@ -132,28 +121,12 @@
     return YES;
 }
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    /*
-     typedef NS_ENUM(NSInteger, UITableViewCellEditingStyle) {
-     UITableViewCellEditingStyleNone,
-     UITableViewCellEditingStyleDelete,
-     UITableViewCellEditingStyleInsert
-     };
-     */
-    return UITableViewCellEditingStyleNone;
-}
-
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
-{
-    
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"TodoCell";
     TodoCell *cell = (TodoCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    cell.textLabel.text = self.todoList[indexPath.row][@"content"];
+    cell.todo = self.todoList[indexPath.row];
     return cell;
     
 }
@@ -167,7 +140,35 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 70;
+    
+    return [self requriedHeightForTodo:self.todoList[indexPath.row]];
+}
+
+-(CGFloat) requriedHeightForTodo:(NSDictionary*) todo;
+{
+    CGSize maximumLabelSize = CGSizeMake(CGRectGetWidth(self.view.bounds)-30,9999);
+    
+    CGSize expectedLabelSize = [todo[@"content"] sizeWithFont:[UIFont fontWithName:@"Hiragino Kaku Gothic ProN W3" size:17] constrainedToSize:maximumLabelSize lineBreakMode:NSLineBreakByWordWrapping];
+    
+    return expectedLabelSize.height+50;
+}
+
+- (id)saveObjectAndInsertBlankRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary* todo = self.todoList[indexPath.row];
+
+    [self.todoList replaceObjectAtIndex:indexPath.row withObject:@{@"content":@""}];
+    return todo;
+}
+
+- (void)moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+    NSDictionary* todo = self.todoList[fromIndexPath.row];
+    [self.todoList removeObjectAtIndex:fromIndexPath.row];
+    [self.todoList insertObject:todo atIndex:toIndexPath.row];
+}
+
+- (void)finishReorderingWithObject:(id)object atIndexPath:(NSIndexPath *)indexPath; {
+    [self.todoList replaceObjectAtIndex:indexPath.row withObject:object];
+    [self.todoService saveAll:self.todoList];
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController

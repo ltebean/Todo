@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface TodoCell : UITableViewCell
-
+@property(nonatomic,strong) NSDictionary* todo;
+-(CGFloat) requriedHeightForTodo:(NSDictionary*) todo;
 @end

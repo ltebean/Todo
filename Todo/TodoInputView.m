@@ -6,17 +6,17 @@
 //  Copyright (c) 2014年 ltebean. All rights reserved.
 //
 
-#define duration 0.55
+#define duration 0.5
 
-#define sideViewDamping 0.9
-#define sideViewVelocity 10
+#define sideViewDamping 0.75
+#define sideViewVelocity 0
 
-#define centerViewDamping 1.0
-#define centerViewVelocity 8
+#define centerViewDamping 0.75
+#define centerViewVelocity 0
 
 #define optionBorderColor [UIColor colorWithRed:160/255.0 green:160/255.0 blue:160/255.0 alpha:1]
 
-#define optionTextColor [UIColor colorWithRed:180/255.0 green:180/255.0 blue:180/255.0 alpha:1]
+#define optionTextColor [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1]
 
 #import "TodoInputView.h"
 #import "Settings.h"
@@ -90,6 +90,10 @@
     
     self.important=NO;
     self.urgent=NO;
+    
+    self.backgroundColor = [UIColor clearColor];
+    
+    [self hideOptions];
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{
@@ -154,6 +158,21 @@
     self.urgentLabel.textColor=optionTextColor;
 }
 
+-(void) animateOptionsIn
+{
+    [UIView animateWithDuration:duration delay:0.1 usingSpringWithDamping:0.75 initialSpringVelocity:0 options:0 animations:^{
+        self.importantLabel.transform = CGAffineTransformIdentity;
+        self.urgentLabel.transform = CGAffineTransformIdentity;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+-(void) hideOptions
+{
+    self.importantLabel.transform = CGAffineTransformMakeScale(0, 0);
+    self.urgentLabel.transform = CGAffineTransformMakeScale(0, 0);
+}
 
 -(void) hide
 {
@@ -161,6 +180,7 @@
         return;
     }
     [self.inputField resignFirstResponder];
+    [self hideOptions];
     self.shown=NO;
     [self start];
     [self animateSideHelperViewToPoint:CGPointMake(self.sideHelperView.center.x, 0)];
@@ -174,16 +194,18 @@
     if(self.counter!=0){
         return;
     }
-    [self.inputField becomeFirstResponder];
     self.shown=YES;
     [view addSubview:self];
     [self start];
+    [self animateOptionsIn];
+
     CGFloat height = CGRectGetHeight(self.bounds);
     
     [self animateSideHelperViewToPoint:CGPointMake(self.sideHelperView.center.x, height)];
     [self animateCenterHelperViewToPoint: CGPointMake(self.centerHelperView.center.x, height)];
     [self animateContentViewToHeight:0];
-    
+    [self.inputField becomeFirstResponder];
+
 }
 
 -(void) animateSideHelperViewToPoint:(CGPoint) point
@@ -274,7 +296,6 @@
     [path addLineToPoint:CGPointMake(screenWidth,0)];
     [path addLineToPoint:CGPointMake(0, 0)];
     [path closePath];
-    
     [path fill];
 }
 

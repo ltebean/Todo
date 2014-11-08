@@ -183,7 +183,14 @@
         [self showEmptyLabel];
     }else {
         [self hideEmptyLabel];
-        self.label.text = todo[@"content"];
+        
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        paragraphStyle.lineSpacing = 5;
+        paragraphStyle.alignment = self.label.textAlignment;
+        NSDictionary *attributes = @{NSParagraphStyleAttributeName: paragraphStyle};
+        NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:todo[@"content"]
+                                                                             attributes:attributes];
+        self.label.attributedText = attributedText;
     }
 }
 

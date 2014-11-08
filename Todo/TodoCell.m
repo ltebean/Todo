@@ -39,9 +39,38 @@
     
 }
 
+-(void) setTodo:(NSDictionary *)todo
+{
+    _todo = todo;
+    [self updateUI];
+}
+
 -(void) updateUI
 {
-//    self.todoTitleLabel.text=self.title;
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = 5;
+    paragraphStyle.alignment = self.textLabel.textAlignment;
+    NSDictionary *attributes = @{NSParagraphStyleAttributeName: paragraphStyle};
+    NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:self.todo[@"content"]
+                                                                         attributes:attributes];
+    self.textLabel.attributedText = attributedText;
+    
+    CGRect frame = self.textLabel.frame;
+    frame.size.height = [self requriedHeightForTodo:self.todo];
+    self.textLabel.frame=frame;
 }
+
+-(CGFloat) requriedHeightForTodo:(NSDictionary*) todo;
+{
+    CGSize maximumLabelSize = CGSizeMake(self.textLabel.bounds.size.width,9999);
+    
+    CGSize expectedLabelSize = [todo[@"content"] sizeWithFont:[self.textLabel font] constrainedToSize:maximumLabelSize lineBreakMode:NSLineBreakByWordWrapping];
+    
+    return expectedLabelSize.height+20;
+    
+
+}
+
+
 
 @end

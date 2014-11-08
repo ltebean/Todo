@@ -25,6 +25,7 @@
 @property(nonatomic,strong) NSDictionary* areas;
 
 @property BOOL loaded;
+@property(nonatomic,copy) NSString* currentEditingType;
 @end
 
 @implementation ViewController
@@ -66,7 +67,13 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
+    
+    
     if(self.loaded){
+        if(self.currentEditingType){
+            TodoAreaView* area = self.areas[self.currentEditingType];
+            [area refreshData];
+        }
         return;
     }
     
@@ -110,12 +117,10 @@
     }
 }
 
-
-
 -(void) animateAreaViewIn:(UIView*) view delay:(NSTimeInterval) delay
 {
     view.alpha=0;
-    view.transform = CGAffineTransformMakeScale(4, 4);
+    view.transform = CGAffineTransformMakeScale(5, 5);
     [UIView animateWithDuration:1.0 delay:delay usingSpringWithDamping:0.8 initialSpringVelocity:0 options:0 animations:^{
         view.transform=CGAffineTransformIdentity;
         view.alpha=1;
@@ -143,6 +148,7 @@
         default:
             break;
     }
+    self.currentEditingType = type;
     [self performSegueWithIdentifier:@"detail" sender:type];
 }
 
