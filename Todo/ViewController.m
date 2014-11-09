@@ -23,7 +23,7 @@
 @property(nonatomic,strong) TodoAreaView* areaD;
 @property(nonatomic,strong) TodoInputView* inputView;
 @property(nonatomic,strong) NSDictionary* areas;
-
+@property BOOL inputViewIsAnimating;
 @property BOOL loaded;
 @property(nonatomic,copy) NSString* currentEditingType;
 @end
@@ -38,6 +38,26 @@
     self.inputView = [[TodoInputView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 200)];
     self.inputView.delegate=self;
     
+    UISwipeGestureRecognizer* swipeDownGesture = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeDown:)];
+    swipeDownGesture.direction = UISwipeGestureRecognizerDirectionDown;
+    [self.view addGestureRecognizer:swipeDownGesture];
+    
+    UISwipeGestureRecognizer* swipeUpGesture = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeUp:)];
+    swipeUpGesture.direction = UISwipeGestureRecognizerDirectionUp;
+    [self.view addGestureRecognizer:swipeUpGesture];
+
+
+    
+}
+
+-(void)handleSwipeDown:(UISwipeGestureRecognizer*) recognizer
+{
+    [self showInputViewWithType:nil];
+}
+
+-(void)handleSwipeUp:(UISwipeGestureRecognizer*) recognizer
+{
+    [self hideInputView];
 }
 
 -(TodoAreaView*) generateAreaViewWithType:(Type) type
@@ -136,8 +156,18 @@
     [area refreshData];
 }
 
+-(void)todoInputViewDidShow
+{
+    self.inputViewIsAnimating = NO;
+}
 
--(void) didTappedAreaView:(TodoAreaView *)areaView
+-(void)todoInputViewDidHide
+{
+    self.inputViewIsAnimating = NO;
+}
+
+
+-(void) didTappedAreaView:(TodoAreaView *)areaView withTodo:(NSDictionary *)todo
 {
     NSString* type;
     switch (areaView.type) {
@@ -148,20 +178,45 @@
         default:
             break;
     }
-    self.currentEditingType = type;
-    [self performSegueWithIdentifier:@"detail" sender:type];
+    if(todo){
+        self.currentEditingType = type;
+        [self performSegueWithIdentifier:@"detail" sender:type];
+    }else{
+        [self showInputViewWithType:type];
+    }
+    
 }
 
 - (IBAction)showMenu:(id)sender {
     if(self.inputView.shown){
+        [self hideInputView];
+    }else{
+        [self showInputViewWithType:nil];
+    }
+}
+
+-(void) showInputViewWithType:(NSString*) type
+{
+    if(self.inputViewIsAnimating){
+        return;
+    }
+    if(!self.inputView.shown){
+        self.inputViewIsAnimating=YES;
+        [self.menuButton animateToType:closeType];
+        [self.inputView showInView:self.view withType:type];
+    }
+}
+
+-(void) hideInputView
+{
+    if(self.inputViewIsAnimating){
+        return;
+    }
+    if(self.inputView.shown){
+        self.inputViewIsAnimating=YES;
         [self.menuButton animateToType:plusType];
         [self.inputView hide];
-    }else{
-        [self.menuButton animateToType:closeType];
-        [self.inputView showInView:self.view];
-        
     }
-
 }
 
 
@@ -182,9 +237,6 @@
         vc.type=sender;
     }
 }
-
-
-
 
 
 @end

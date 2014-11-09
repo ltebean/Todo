@@ -11,6 +11,8 @@
 
 @protocol TodoInputViewDelegate <NSObject>
 -(void)todoInputView:(TodoInputView*)inputView didAddTodo:(NSDictionary*) todo withType:(NSString*) type;
+-(void)todoInputViewDidShow;
+-(void)todoInputViewDidHide;
 @end
 
 @interface TodoInputView : UIView
@@ -18,5 +20,7 @@
 @property BOOL shown;
 @property(nonatomic,weak) id<TodoInputViewDelegate> delegate;
 -(void) showInView:(UIView*) view;
+-(void) showInView:(UIView*) view withType:(NSString*) type;
+
 -(void) hide;
 @end

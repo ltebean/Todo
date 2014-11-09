@@ -19,9 +19,9 @@
 @property (nonatomic,strong) TodoService* todoService;
 @property (atomic) BOOL longPressed;
 @property (atomic) BOOL panning;
+@property CGPoint centerPoint;
 @property (nonatomic) CGRect pullBackArea;
-
-
+@property(nonatomic,strong) NSDictionary *todo;
 @end
 
 @implementation TodoAreaView
@@ -43,6 +43,8 @@
 
 -(void) setup
 {
+
+    self.centerPoint = self.label.center;
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
     [self.containerView addGestureRecognizer:recognizer];
     
@@ -118,7 +120,7 @@
     [recognizer setTranslation:CGPointMake(0, 0) inView:self];
     
     
-    CGPoint center = [self centerPoint];
+    CGPoint center = self.centerPoint;
     
     CGFloat offset = MAX(fabs(center.x-view.center.x), fabs(center.y-view.center.y));
     
@@ -144,7 +146,7 @@
         self.label.transform = CGAffineTransformMakeScale(0, 0);
     } completion:^(BOOL finished) {
         self.label.alpha=1;
-        self.label.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+        self.label.center = self.centerPoint;
         [self refreshData];
         [UIView animateWithDuration:0.6 delay:0 usingSpringWithDamping:0.75 initialSpringVelocity:0 options:0 animations:^{
             self.label.transform = CGAffineTransformIdentity;
@@ -178,8 +180,8 @@
 
 -(void) refreshData
 {
-    NSDictionary* todo = [self.todoService loadFirst];
-    if(!todo){
+    self.todo = [self.todoService loadFirst];
+    if(!self.todo){
         [self showEmptyLabel];
     }else {
         [self hideEmptyLabel];
@@ -188,8 +190,7 @@
         paragraphStyle.lineSpacing = 5;
         paragraphStyle.alignment = self.label.textAlignment;
         NSDictionary *attributes = @{NSParagraphStyleAttributeName: paragraphStyle};
-        NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:todo[@"content"]
-                                                                             attributes:attributes];
+        NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:self.todo[@"content"] attributes:attributes];
         self.label.attributedText = attributedText;
     }
 }
@@ -265,16 +266,15 @@
     if(self.longPressed){
         return;
     }
-    [self.delegate didTappedAreaView:self];
+    [self.delegate didTappedAreaView:self withTodo:self.todo];
 }
 
--(CGPoint) centerPoint
-{
-    return CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
-}
 
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
+    if(!self.panning && [otherGestureRecognizer isKindOfClass:[UISwipeGestureRecognizer class]]){
+        return YES;
+    }
     if(![otherGestureRecognizer.view isDescendantOfView:self]){
         return NO;
     }

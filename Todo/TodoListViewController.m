@@ -33,6 +33,7 @@
     popRecognizer.delegate=self;
     popRecognizer.edges = UIRectEdgeLeft;
     [self.view addGestureRecognizer:popRecognizer];
+    
 }
 
 -(TodoService*) todoService
@@ -69,7 +70,7 @@
     for (NSUInteger i = 0; i < [cells count]; i++) {
         UITableViewCell *cell = [cells objectAtIndex:i];
         
-        [UIView animateWithDuration:1.2 delay:diff*i usingSpringWithDamping:0.8
+        [UIView animateWithDuration:1.0 delay:diff*i usingSpringWithDamping:0.85
               initialSpringVelocity:0 options:0 animations:^{
                   cell.transform = CGAffineTransformIdentity;
               } completion:NULL];
@@ -83,7 +84,7 @@
 
     [super viewWillAppear:animated];
     if(!self.animated){
-        [self animateCellIn];
+        //[self animateCellIn];
         self.animated=YES;
     }
 }
@@ -148,9 +149,9 @@
 {
     CGSize maximumLabelSize = CGSizeMake(CGRectGetWidth(self.view.bounds)-30,9999);
     
-    CGSize expectedLabelSize = [todo[@"content"] sizeWithFont:[UIFont fontWithName:@"Hiragino Kaku Gothic ProN W3" size:17] constrainedToSize:maximumLabelSize lineBreakMode:NSLineBreakByWordWrapping];
+    CGSize expectedLabelSize = [todo[@"content"] sizeWithFont:[UIFont fontWithName:@"Hiragino Kaku Gothic ProN W3" size:16] constrainedToSize:maximumLabelSize lineBreakMode:NSLineBreakByWordWrapping];
     
-    return expectedLabelSize.height+50;
+    return expectedLabelSize.height+46;
 }
 
 - (id)saveObjectAndInsertBlankRowAtIndexPath:(NSIndexPath *)indexPath {

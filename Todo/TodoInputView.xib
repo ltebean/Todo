@@ -22,7 +22,6 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="Jiy-o6-Vq2"/>
                     </constraints>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="19"/>
                     <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                 </textField>

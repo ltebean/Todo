@@ -14,10 +14,6 @@
 #define centerViewDamping 0.75
 #define centerViewVelocity 0
 
-#define optionBorderColor [UIColor colorWithRed:160/255.0 green:160/255.0 blue:160/255.0 alpha:1]
-
-#define optionTextColor [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1]
-
 #import "TodoInputView.h"
 #import "Settings.h"
 #import "TodoService.h"
@@ -57,6 +53,10 @@
 
 -(void) setup
 {
+    self.containerView.layer.borderWidth=1;
+    self.containerView.layer.borderColor=[[UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1] CGColor];
+
+    
     self.counter = 0;
     self.height = CGRectGetHeight(self.bounds);
 
@@ -73,15 +73,17 @@
     
     self.backgroundColor=[UIColor clearColor];
     
-//    self.importantLabel.layer.borderWidth=0.5;
-//    self.importantLabel.layer.borderColor=[optionBorderColor CGColor];
-    
+    self.importantLabel.layer.borderWidth=1;
+    self.importantLabel.layer.borderColor=[[Settings themeColor]CGColor];
+
+
     UITapGestureRecognizer* gesture1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(importantLabelTapped:)];
     [self.importantLabel addGestureRecognizer:gesture1];
 
     
-//    self.urgentLabel.layer.borderWidth=0.5;
-//    self.urgentLabel.layer.borderColor=[optionBorderColor CGColor];
+    self.urgentLabel.layer.borderWidth=1;
+    self.urgentLabel.layer.borderColor=[[Settings themeColor]CGColor];
+    self.urgentLabel.textColor=[Settings themeColor];
 
     UITapGestureRecognizer* gesture2 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(urgentLabelTapped:)];
     [self.urgentLabel addGestureRecognizer:gesture2];
@@ -94,6 +96,9 @@
     self.backgroundColor = [UIColor clearColor];
     
     [self hideOptions];
+    [self setLabelUnSeleted:self.urgentLabel];
+    [self setLabelUnSeleted:self.importantLabel];
+
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{
@@ -128,21 +133,33 @@
 {
     if(self.important){
         self.important=NO;
-        self.importantLabel.textColor=optionTextColor;
+        [self setLabelUnSeleted:self.importantLabel];
     }else{
         self.important=YES;
-        self.importantLabel.textColor=[Settings themeColor];
+        [self setLabelSeleted:self.importantLabel];
     }
+}
+
+-(void) setLabelSeleted:(UILabel*) label
+{
+    label.textColor=[UIColor whiteColor];
+    label.backgroundColor=[Settings themeColor];
+}
+
+-(void) setLabelUnSeleted:(UILabel*) label
+{
+    label.textColor= [Settings themeColor];
+    label.backgroundColor=[UIColor whiteColor];
 }
 
 -(void) urgentLabelTapped:(UITapGestureRecognizer*) gesture
 {
     if(self.urgent){
         self.urgent = NO;
-        self.urgentLabel.textColor=optionTextColor;
+        [self setLabelUnSeleted:self.urgentLabel];
     }else{
         self.urgent = YES;
-        self.urgentLabel.textColor=[Settings themeColor];
+        [self setLabelSeleted:self.urgentLabel];
     }
 }
 
@@ -152,10 +169,11 @@
     self.inputField.text=nil;
     
     self.important = NO;
-    self.importantLabel.textColor=optionTextColor;
+    [self setLabelUnSeleted:self.importantLabel];
 
     self.urgent = NO;
-    self.urgentLabel.textColor=optionTextColor;
+    [self setLabelUnSeleted:self.urgentLabel];
+
 }
 
 -(void) animateOptionsIn
@@ -163,6 +181,16 @@
     [UIView animateWithDuration:duration delay:0.1 usingSpringWithDamping:0.75 initialSpringVelocity:0 options:0 animations:^{
         self.importantLabel.transform = CGAffineTransformIdentity;
         self.urgentLabel.transform = CGAffineTransformIdentity;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+-(void) animateOptionsOut
+{
+    [UIView animateWithDuration:duration delay:0 usingSpringWithDamping:0.75 initialSpringVelocity:0 options:0 animations:^{
+        self.importantLabel.transform = CGAffineTransformMakeScale(0, 0);
+        self.urgentLabel.transform = CGAffineTransformMakeScale(0, 0);
     } completion:^(BOOL finished) {
         
     }];
@@ -180,7 +208,7 @@
         return;
     }
     [self.inputField resignFirstResponder];
-    [self hideOptions];
+    [self animateOptionsOut];
     self.shown=NO;
     [self start];
     [self animateSideHelperViewToPoint:CGPointMake(self.sideHelperView.center.x, 0)];
@@ -204,8 +232,26 @@
     [self animateSideHelperViewToPoint:CGPointMake(self.sideHelperView.center.x, height)];
     [self animateCenterHelperViewToPoint: CGPointMake(self.centerHelperView.center.x, height)];
     [self animateContentViewToHeight:0];
-    [self.inputField becomeFirstResponder];
 
+}
+
+-(void) showInView:(UIView*) view withType:(NSString*) type;
+{
+    if([type isEqualToString:@"a"]){
+        self.important = YES;
+        self.urgent = YES;
+        [self setLabelSeleted:self.importantLabel];
+        [self setLabelSeleted:self.urgentLabel];
+    }else if([type isEqualToString:@"b"]){
+        self.important = YES;
+        [self setLabelSeleted:self.importantLabel];
+    }else if([type isEqualToString:@"c"]){
+        self.urgent = YES;
+        [self setLabelSeleted:self.urgentLabel];
+    }else if([type isEqualToString:@"d"]){
+        
+    }
+    [self showInView:view];
 }
 
 -(void) animateSideHelperViewToPoint:(CGPoint) point
@@ -268,8 +314,10 @@
         if(!self.shown){
             [self clearInput];
             [self removeFromSuperview];
+            [self.delegate todoInputViewDidHide];
         }else{
-
+            [self.delegate todoInputViewDidShow];
+            [self.inputField becomeFirstResponder];
         }
     }
 }
@@ -289,7 +337,7 @@
     
     UIBezierPath* path = [UIBezierPath bezierPath];
     
-    [[Settings themeColor] setFill];
+    [[UIColor whiteColor] setFill];
     
     [path moveToPoint:sidePoint];
     [path addQuadCurveToPoint:CGPointMake(screenWidth, sidePoint.y) controlPoint:centerPoint];

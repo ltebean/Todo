@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class TodoAreaView;
 @protocol AreaViewDelegate <NSObject>
-- (void)  didTappedAreaView:(TodoAreaView*) areaView;
+- (void)  didTappedAreaView:(TodoAreaView*) areaView withTodo:(NSDictionary*) todo;
 @end
 
 typedef NS_ENUM(NSInteger, Type) {
