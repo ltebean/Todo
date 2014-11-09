@@ -10,7 +10,7 @@
 #import "TodoTypeLabel.h"
 #import "TodoService.h"
 
-#define lableZoom 1.1
+#define lableZoom 1.15
 
 @interface TodoAreaView()<UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *containerView;
@@ -55,7 +55,7 @@
 
     
     UILongPressGestureRecognizer* longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    longPressGesture.minimumPressDuration = 0.2;
+    longPressGesture.minimumPressDuration = 0.3;
     longPressGesture.numberOfTouchesRequired=1;
     longPressGesture.allowableMovement=10;
     longPressGesture.delegate=self;

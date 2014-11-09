@@ -169,6 +169,9 @@
 
 -(void) didTappedAreaView:(TodoAreaView *)areaView withTodo:(NSDictionary *)todo
 {
+    if(self.inputView.shown){
+        return;
+    }
     NSString* type;
     switch (areaView.type) {
         case typeA: type = @"a";break;
