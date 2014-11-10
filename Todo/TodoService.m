@@ -92,7 +92,7 @@
     }
     NSString* fileName = [self.type stringByAppendingString:@".plist"];
     
-    NSLog(@"%@",[dbDirectory URLByAppendingPathComponent:fileName].path);
+    //NSLog(@"%@",[dbDirectory URLByAppendingPathComponent:fileName].path);
     return [dbDirectory URLByAppendingPathComponent:fileName].path;
   
 }

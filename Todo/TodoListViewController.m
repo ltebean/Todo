@@ -81,6 +81,16 @@
 {
     self.todoList = [[self.todoService loadAll]mutableCopy];
     [self.tableView reloadData];
+    
+    if([self.type isEqualToString:@"a"]){
+        self.title = @"important & urgent";
+    }else if([self.type isEqualToString:@"b"]){
+        self.title = @"important";
+    }else if([self.type isEqualToString:@"c"]){
+        self.title = @"urgent";
+    }else if([self.type isEqualToString:@"d"]){
+        self.title = @"neither";
+    }
 
     [super viewWillAppear:animated];
     if(!self.animated){

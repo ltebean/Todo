@@ -15,6 +15,7 @@
 #import "Settings.h"
 
 @interface ViewController ()<UIGestureRecognizerDelegate,AreaViewDelegate,UINavigationControllerDelegate,TodoInputViewDelegate>
+@property (weak, nonatomic) IBOutlet LTPopButton *settingsButton;
 @property (weak, nonatomic) IBOutlet LTPopButton *menuButton;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property(nonatomic,strong) TodoAreaView* areaA;
@@ -112,6 +113,8 @@
     self.menuButton.lineColor=[UIColor whiteColor];
     [self.menuButton animateToType:plusType];
     
+    self.settingsButton.lineColor=[UIColor whiteColor];
+
     [self animateAreaViewIn:self.areaA delay:0];
     [self animateAreaViewIn:self.areaB delay:0.12];
     [self animateAreaViewIn:self.areaC delay:0.24];
