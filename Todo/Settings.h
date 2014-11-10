@@ -11,4 +11,5 @@
 
 @interface Settings : NSObject
 +(UIColor*) themeColor;
++(void) initFirstUseData;
 @end

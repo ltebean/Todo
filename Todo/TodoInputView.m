@@ -232,6 +232,8 @@
     [self animateSideHelperViewToPoint:CGPointMake(self.sideHelperView.center.x, height)];
     [self animateCenterHelperViewToPoint: CGPointMake(self.centerHelperView.center.x, height)];
     [self animateContentViewToHeight:0];
+    [self.inputField becomeFirstResponder];
+
 
 }
 
@@ -317,7 +319,6 @@
             [self.delegate todoInputViewDidHide];
         }else{
             [self.delegate todoInputViewDidShow];
-            [self.inputField becomeFirstResponder];
         }
     }
 }

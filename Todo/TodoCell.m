@@ -104,10 +104,10 @@ typedef NS_ENUM(NSInteger, CellState) {
         [recognizer setTranslation:CGPointMake(0, 0) inView:self];
         
         if(offset < -originLableWidth -5){
-            self.rightLabel.text=@"release to remove";
+            self.rightLabel.text=@"release to finish";
             [self updateRightLabelPositionTo: originLableWidth + (offset+originLableWidth)+5];
         }else{
-            self.rightLabel.text=@"drag to remove";
+            self.rightLabel.text=@"drag to finish";
 
         }
     }
@@ -123,7 +123,7 @@ typedef NS_ENUM(NSInteger, CellState) {
             [self animateCenterXTo:centerX forView:self.contentView];
             self.state = normalState;
         }
-        self.rightLabel.text=@"drag to remove";
+        self.rightLabel.text=@"drag to finish";
         [self updateRightLabelPositionTo: originLableWidth ];
 
     }

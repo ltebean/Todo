@@ -25,6 +25,7 @@
                                                            [UIColor whiteColor], NSForegroundColorAttributeName,[UIFont systemFontOfSize:19], NSFontAttributeName, nil]];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
 
+    [Settings initFirstUseData];
     return YES;
 }
 
