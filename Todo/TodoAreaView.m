@@ -204,7 +204,7 @@
             TodoTypeLabel* urgentLabel=[self generateUrgentLabel];
             [self setOrigin:CGPointMake(10, 10) ForView:importantLabel];
             [self addSubview:importantLabel];
-            [self setOrigin:CGPointMake(90, 10) ForView:urgentLabel];
+            [self setOrigin:CGPointMake(92, 10) ForView:urgentLabel];
             [self addSubview:urgentLabel];
             self.todoService = [TodoService serviceWithType:@"a"];
             break;

@@ -34,7 +34,7 @@
     self.backgroundColor = [Settings themeColor];
     self.textAlignment = NSTextAlignmentCenter;
     self.textColor = [UIColor whiteColor];
-    self.font = [UIFont fontWithName:@"Hiragino Kaku Gothic ProN W3" size:12.0];
+    self.font = [UIFont fontWithName:@"Heiti SC" size:12.0];
 }
 
 -(void) setText:(NSString *)text
@@ -42,7 +42,7 @@
     [super setText:text];
     NSDictionary *userAttributes = @{NSFontAttributeName: self.font,
                                      NSForegroundColorAttributeName: [UIColor blackColor]};
-    self.bounds=CGRectMake(0, 0, [text sizeWithAttributes:userAttributes].width+16, CGRectGetHeight(self.bounds));
+    self.bounds=CGRectMake(0, 0, [text sizeWithAttributes:userAttributes].width+18, CGRectGetHeight(self.bounds));
 }
 
 @end

@@ -44,7 +44,6 @@ typedef NS_ENUM(NSInteger, CellState) {
     recognizer.delegate = self;
     [self.contentView addGestureRecognizer:recognizer];
     
-    
     UIView *rightButtonsView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, CGRectGetHeight(self.bounds))];
     [self addSubview:rightButtonsView];
     self.rightViewGroup=rightButtonsView;
@@ -114,7 +113,6 @@ typedef NS_ENUM(NSInteger, CellState) {
     if(self.state == normalState && translation.x >0){
         return false;
     }
-        
     return true;
 }
 
@@ -125,7 +123,6 @@ typedef NS_ENUM(NSInteger, CellState) {
           initialSpringVelocity:0 options:0 animations:^{
               view.center=CGPointMake(centerX, view.center.y);
           } completion:nil];
-
 }
 
 

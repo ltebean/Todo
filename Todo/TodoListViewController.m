@@ -12,7 +12,7 @@
 #import "TodoListViewTransition.h"
 #import "TodoService.h"
 
-@interface TodoListViewController ()<UITableViewDataSource,UITableViewDelegate,UINavigationControllerDelegate,UIGestureRecognizerDelegate>
+@interface TodoListViewController ()<UITableViewDataSource,UITableViewDelegate,UINavigationControllerDelegate,UIGestureRecognizerDelegate,TodoCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property BOOL animated;
 @property (nonatomic,strong) UIPercentDrivenInteractiveTransition* interactivePopTransition;
@@ -128,7 +128,17 @@
     static NSString *CellIdentifier = @"TodoCell";
     TodoCell *cell = (TodoCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.todo = self.todoList[indexPath.row];
+    cell.delegate = self;
     return cell;
+    
+}
+
+-(void) todoCell:(TodoCell *)cell didRemoveTodo:(NSDictionary *)todo
+{
+    [self.todoList removeObject:todo];
+    [self.todoService saveAll:self.todoList];
+    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
+    
     
 }
 
@@ -149,7 +159,7 @@
 {
     CGSize maximumLabelSize = CGSizeMake(CGRectGetWidth(self.view.bounds)-30,9999);
     
-    CGSize expectedLabelSize = [todo[@"content"] sizeWithFont:[UIFont fontWithName:@"Hiragino Kaku Gothic ProN W3" size:16] constrainedToSize:maximumLabelSize lineBreakMode:NSLineBreakByWordWrapping];
+    CGSize expectedLabelSize = [todo[@"content"] sizeWithFont:[UIFont fontWithName:@"Heiti SC" size:16] constrainedToSize:maximumLabelSize lineBreakMode:NSLineBreakByWordWrapping];
     
     return expectedLabelSize.height+46;
 }
