@@ -1,1 +1,1 @@
-# ![Todotrix](https://raw.githubusercontent.com/ltebean/Todo/master/demo.gif)
+# ![Todotrix](https://raw.githubusercontent.com/ltebean/Todo/img/master/demo.gif)
