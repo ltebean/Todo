@@ -1,1 +1,1 @@
-todo list app for practice
+# ![Todotrix](https://raw.githubusercontent.com/ltebean/Todo/master/demo.gif)
