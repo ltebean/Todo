@@ -41,6 +41,21 @@
     return self;
 }
 
+-(id) initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if(self){
+        // Initialization code
+        [[NSBundle mainBundle] loadNibNamed:@"TodoAreaView" owner:self options:nil];
+        self.autoresizingMask=UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+        self.containerView.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame));
+        [self addSubview: self.containerView];
+        [self setup];
+
+    }
+    return self;
+}
+
 -(void) setup
 {
 

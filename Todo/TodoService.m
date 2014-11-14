@@ -82,7 +82,7 @@
 
 -(NSString*) filePath
 {
-    NSURL *documentsDirectoryURL = [fm URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+    NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.todotrix"];
     
     NSURL * dbDirectory = [documentsDirectoryURL URLByAppendingPathComponent:@"db"];
     
@@ -92,7 +92,7 @@
     }
     NSString* fileName = [self.type stringByAppendingString:@".plist"];
     
-    //NSLog(@"%@",[dbDirectory URLByAppendingPathComponent:fileName].path);
+    // NSLog(@"%@",[dbDirectory URLByAppendingPathComponent:fileName].path);
     return [dbDirectory URLByAppendingPathComponent:fileName].path;
   
 }

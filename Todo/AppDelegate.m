@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Settings.h"
+#import "MobClick.h"
 
 @interface AppDelegate ()
 
@@ -25,7 +26,16 @@
                                                            [UIColor whiteColor], NSForegroundColorAttributeName,[UIFont systemFontOfSize:19], NSFontAttributeName, nil]];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
 
+    [Settings migrateDataToContainer];
     [Settings initFirstUseData];
+    
+//    [MobClick startWithAppkey:@"54656c19fd98c5cd22003e1d" reportPolicy:BATCH channelId:@"Web"];
+
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
     return YES;
 }
 

@@ -12,4 +12,5 @@
 @interface Settings : NSObject
 +(UIColor*) themeColor;
 +(void) initFirstUseData;
++(void) migrateDataToContainer;
 @end
