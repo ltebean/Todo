@@ -593,7 +593,7 @@
 					"$(PROJECT_DIR)/Todo/UMAnalytics_Sdk_3.1.9",
 				);
 				PRODUCT_NAME = Todotrix;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "365dc71b-f75f-4fef-94b1-095e1c806fe1";
 			};
 			name = Debug;
 		};
@@ -612,7 +612,7 @@
 					"$(PROJECT_DIR)/Todo/UMAnalytics_Sdk_3.1.9",
 				);
 				PRODUCT_NAME = Todotrix;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "365dc71b-f75f-4fef-94b1-095e1c806fe1";
 			};
 			name = Release;
 		};
@@ -631,7 +631,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = Todotrix;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a2122fc3-8857-4f64-bfbb-7e0834d99c99";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -647,7 +647,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = Todotrix;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a2122fc3-8857-4f64-bfbb-7e0834d99c99";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

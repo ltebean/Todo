@@ -11,9 +11,15 @@
 #import "LTPopButton.h"
 #import "TodoListViewTransition.h"
 #import "TodoService.h"
+#import "LTPopButton.h"
+#import "TodoInputView.h"
 
-@interface TodoListViewController ()<UITableViewDataSource,UITableViewDelegate,UINavigationControllerDelegate,UIGestureRecognizerDelegate,TodoCellDelegate>
+@interface TodoListViewController ()<UITableViewDataSource,UITableViewDelegate,UINavigationControllerDelegate,UIGestureRecognizerDelegate,TodoCellDelegate,TodoInputViewDelegate>
+@property (weak, nonatomic) IBOutlet LTPopButton *addButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property(nonatomic,strong) TodoInputView* inputView;
+@property BOOL inputViewIsAnimating;
+
 @property BOOL animated;
 @property (nonatomic,strong) UIPercentDrivenInteractiveTransition* interactivePopTransition;
 @property (nonatomic,strong) NSMutableArray* todoList;
@@ -28,6 +34,10 @@
     self.tableView.dataSource=self;
     self.tableView.delegate=self;
     self.animated=NO;
+    
+    self.inputView = [[TodoInputView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 200)];
+    self.inputView.delegate=self;
+
     
     UIScreenEdgePanGestureRecognizer *popRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePopRecognizer:)];
     popRecognizer.delegate=self;
@@ -44,39 +54,6 @@
     return _todoService;
 }
 
--(void) animateCellIn
-{
-    self.tableView.alpha = 0.0f;
-    [self.tableView reloadData];
-    
-    // Store a delta timing variable so I can tweak the timing delay
-    // between each row’s animation and some additional
-    CGFloat diff = .05;
-    CGFloat tableHeight = self.tableView.bounds.size.height;
-    NSArray *cells = [self.tableView visibleCells];
-    
-    // Iterate across the rows and translate them down off the screen
-    for (NSUInteger i = 0; i < [cells count]; i++) {
-        UITableViewCell *cell = [cells objectAtIndex:i];
-        cell.transform = CGAffineTransformMakeTranslation(0, tableHeight);
-        //cell.transform = CGAffineTransformMakeScale(5, 5);
-
-    }
-    
-    // Now that all rows are off the screen, make the tableview opaque again
-    self.tableView.alpha = 1.0f;
-    
-    // Animate each row back into place
-    for (NSUInteger i = 0; i < [cells count]; i++) {
-        UITableViewCell *cell = [cells objectAtIndex:i];
-        
-        [UIView animateWithDuration:1.0 delay:diff*i usingSpringWithDamping:0.85
-              initialSpringVelocity:0 options:0 animations:^{
-                  cell.transform = CGAffineTransformIdentity;
-              } completion:NULL];
-    }
-}
-
 -(void) viewWillAppear:(BOOL)animated
 {
     self.todoList = [[self.todoService loadAll]mutableCopy];
@@ -91,6 +68,9 @@
     }else if([self.type isEqualToString:@"d"]){
         self.title = @"neither";
     }
+    self.addButton.lineColor=[UIColor whiteColor];
+    [self.addButton animateToType:plusType];
+
 
     [super viewWillAppear:animated];
     if(!self.animated){
@@ -113,6 +93,54 @@
     }
 }
 
+- (IBAction)addTodo:(LTPopButton *)sender {
+    if(self.inputView.shown){
+        [self hideInputView];
+    }else{
+        [self showInputViewWithType:self.type];
+    }
+}
+
+-(void) showInputViewWithType:(NSString*) type
+{
+    if(self.inputViewIsAnimating){
+        return;
+    }
+    if(!self.inputView.shown){
+        self.inputViewIsAnimating=YES;
+        [self.addButton animateToType:closeType];
+        [self.inputView showInView:self.view withType:type];
+    }
+}
+
+-(void) hideInputView
+{
+    if(self.inputViewIsAnimating){
+        return;
+    }
+    if(self.inputView.shown){
+        self.inputViewIsAnimating=YES;
+        [self.addButton animateToType:plusType];
+        [self.inputView hide];
+    }
+}
+
+-(void)todoInputView:(TodoInputView*)inputView didAddTodo:(NSDictionary*) todo withType:(NSString*) type;
+{
+    [self.addButton animateToType:plusType];
+    self.todoList = [[self.todoService loadAll]mutableCopy];
+    [self.tableView reloadData];
+}
+
+-(void)todoInputViewDidShow
+{
+    self.inputViewIsAnimating = NO;
+}
+
+-(void)todoInputViewDidHide
+{
+    self.inputViewIsAnimating = NO;
+}
 
 
 #pragma mark UITableViewDatasource
