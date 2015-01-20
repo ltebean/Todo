@@ -44,15 +44,15 @@
     for (NSString* type in types) {
         TodoService* todoService = [TodoService serviceWithType:type];
         NSDictionary* todo = [todoService loadFirst];
-        if(todo){
+        if (todo) {
             self.data[type] = todo[@"content"];
         }
     }
     [self.tableView reloadData];
     
-    if([self.data allKeys].count ==0){
+    if ([self.data allKeys].count ==0) {
          self.preferredContentSize = CGSizeMake(CGRectGetWidth(self.view.bounds),cellHeight);
-    }else{
+    } else {
          self.preferredContentSize = CGSizeMake(CGRectGetWidth(self.view.bounds), [self.data allKeys].count * (cellHeight+sectionHeight));
     }
    
@@ -94,7 +94,7 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    if([self.data allKeys].count == 0 ){
+    if ([self.data allKeys].count == 0 ) {
         return nil;
     }
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 18)];

@@ -9,18 +9,11 @@
 #import <UIKit/UIKit.h>
 @class TodoAreaView;
 @protocol AreaViewDelegate <NSObject>
-- (void)  didTappedAreaView:(TodoAreaView*) areaView withTodo:(NSDictionary*) todo;
+- (void)didTappedAreaView:(TodoAreaView *)areaView withTodo:(NSDictionary *)todo;
 @end
 
-typedef NS_ENUM(NSInteger, Type) {
-    typeA,
-    typeB,
-    typeC,
-    typeD,
-};
-
 @interface TodoAreaView : UIView
-@property(nonatomic,weak) id<AreaViewDelegate> delegate;
-@property(nonatomic) Type type;
--(void) refreshData;
+@property (nonatomic,weak) id<AreaViewDelegate> delegate;
+@property (nonatomic) NSString *type;
+- (void)refreshData;
 @end;

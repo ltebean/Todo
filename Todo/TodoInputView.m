@@ -38,7 +38,6 @@
 
 - (id)initWithFrame:(CGRect)frame
 {
-    
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
@@ -51,12 +50,11 @@
     return self;
 }
 
--(void) setup
+- (void)setup
 {
     self.containerView.layer.borderWidth=1;
     self.containerView.layer.borderColor=[[UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1] CGColor];
 
-    
     self.counter = 0;
     self.height = CGRectGetHeight(self.bounds);
 
@@ -101,25 +99,26 @@
 
 }
 
--(BOOL) textFieldShouldReturn:(UITextField *)textField{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
     NSString* content = textField.text;
-    if(content && ![content isEqualToString:@""]){
+    if (content && ![content isEqualToString:@""]) {
         [self addTodo:content];
     }
     [self hide];
     return YES;
 }
 
--(void) addTodo:(NSString*) content
+- (void)addTodo:(NSString *)content
 {
     NSString* type;
-    if(self.important && self.urgent){
+    if (self.important && self.urgent) {
         type=@"a";
-    }else if(self.important && !self.urgent){
+    } else if (self.important && !self.urgent) {
         type=@"b";
-    }else if(!self.important && self.urgent){
+    } else if (!self.important && self.urgent) {
         type=@"c";
-    }else{
+    } else {
         type=@"d";
     }
     TodoService* todoService= [TodoService serviceWithType:type];
@@ -129,42 +128,42 @@
 
 }
 
--(void) importantLabelTapped:(UITapGestureRecognizer*) gesture
+- (void)importantLabelTapped:(UITapGestureRecognizer *) gesture
 {
-    if(self.important){
+    if (self.important) {
         self.important=NO;
         [self setLabelUnSeleted:self.importantLabel];
-    }else{
+    } else {
         self.important=YES;
         [self setLabelSeleted:self.importantLabel];
     }
 }
 
--(void) setLabelSeleted:(UILabel*) label
+- (void)setLabelSeleted:(UILabel *)label
 {
     label.textColor=[UIColor whiteColor];
     label.backgroundColor=[Settings themeColor];
 }
 
--(void) setLabelUnSeleted:(UILabel*) label
+- (void)setLabelUnSeleted:(UILabel *)label
 {
     label.textColor= [Settings themeColor];
     label.backgroundColor=[UIColor whiteColor];
 }
 
--(void) urgentLabelTapped:(UITapGestureRecognizer*) gesture
+- (void)urgentLabelTapped:(UITapGestureRecognizer *)gesture
 {
-    if(self.urgent){
+    if (self.urgent) {
         self.urgent = NO;
         [self setLabelUnSeleted:self.urgentLabel];
-    }else{
+    } else {
         self.urgent = YES;
         [self setLabelSeleted:self.urgentLabel];
     }
 }
 
 
--(void) clearInput
+- (void)clearInput
 {
     self.inputField.text=nil;
     
@@ -176,7 +175,7 @@
 
 }
 
--(void) animateOptionsIn
+- (void)animateOptionsIn
 {
     [UIView animateWithDuration:duration delay:0.1 usingSpringWithDamping:0.75 initialSpringVelocity:0 options:0 animations:^{
         self.importantLabel.transform = CGAffineTransformIdentity;
@@ -186,7 +185,7 @@
     }];
 }
 
--(void) animateOptionsOut
+- (void)animateOptionsOut
 {
     [UIView animateWithDuration:duration delay:0 usingSpringWithDamping:0.75 initialSpringVelocity:0 options:0 animations:^{
         self.importantLabel.transform = CGAffineTransformMakeScale(0, 0);
@@ -196,15 +195,15 @@
     }];
 }
 
--(void) hideOptions
+- (void)hideOptions
 {
     self.importantLabel.transform = CGAffineTransformMakeScale(0, 0);
     self.urgentLabel.transform = CGAffineTransformMakeScale(0, 0);
 }
 
--(void) hide
+- (void)hide
 {
-    if(self.counter!=0){
+    if (self.counter != 0) {
         return;
     }
     [self.inputField resignFirstResponder];
@@ -217,9 +216,9 @@
     
 }
 
--(void) showInView:(UIView *)view
+- (void)showInView:(UIView *)view
 {
-    if(self.counter!=0){
+    if (self.counter!=0) {
         return;
     }
     self.shown=YES;
@@ -233,44 +232,39 @@
     [self animateCenterHelperViewToPoint: CGPointMake(self.centerHelperView.center.x, height)];
     [self animateContentViewToHeight:0];
     [self.inputField becomeFirstResponder];
-
-
 }
 
--(void) showInView:(UIView*) view withType:(NSString*) type;
+- (void)showInView:(UIView *)view withType:(NSString *)type;
 {
-    if([type isEqualToString:@"a"]){
+    if ([type isEqualToString:@"a"]) {
         self.important = YES;
         self.urgent = YES;
         [self setLabelSeleted:self.importantLabel];
         [self setLabelSeleted:self.urgentLabel];
-    }else if([type isEqualToString:@"b"]){
+    } else if ([type isEqualToString:@"b"]) {
         self.important = YES;
         [self setLabelSeleted:self.importantLabel];
-    }else if([type isEqualToString:@"c"]){
+    } else if ([type isEqualToString:@"c"]) {
         self.urgent = YES;
         [self setLabelSeleted:self.urgentLabel];
-    }else if([type isEqualToString:@"d"]){
+    } else if ([type isEqualToString:@"d"]) {
         
     }
     [self showInView:view];
 }
 
--(void) animateSideHelperViewToPoint:(CGPoint) point
+- (void)animateSideHelperViewToPoint:(CGPoint)point
 {
-    
     [UIView animateWithDuration:duration delay:0 usingSpringWithDamping:sideViewDamping initialSpringVelocity:sideViewVelocity options:0 animations:^{
         self.sideHelperView.center = point;
     } completion:^(BOOL finished) {
         [self complete];
-        
     }];
 }
 
 
--(void) animateCenterHelperViewToPoint:(CGPoint) point
+- (void)animateCenterHelperViewToPoint:(CGPoint)point
 {
-    
     [UIView animateWithDuration:duration delay:0 usingSpringWithDamping:centerViewDamping initialSpringVelocity:centerViewVelocity options:0 animations:^{
         self.centerHelperView.center = point;
         
@@ -279,7 +273,7 @@
     }];
 }
 
--(void) animateContentViewToHeight:(CGFloat) height
+- (void)animateContentViewToHeight:(CGFloat)height
 {
     [UIView animateWithDuration:duration delay:0 usingSpringWithDamping:centerViewDamping initialSpringVelocity:centerViewVelocity options:0 animations:^{
         self.containerView.transform = CGAffineTransformMakeTranslation(0, height);
@@ -290,41 +284,41 @@
 
 
 
--(void) tick:(CADisplayLink*) displayLink
+- (void)tick:(CADisplayLink *)displayLink
 {
     //NSLog(@"%@", NSStringFromCGPoint(self.centerHelperView.center));
     [self  setNeedsDisplay];
 }
 
--(void) start
+- (void)start
 {
     if (self.displayLink == nil) {
         self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(tick:)];
-        
         [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop]
                                forMode:NSDefaultRunLoopMode];
         self.counter=2;
     }
 }
 
--(void) complete
+- (void)complete
 {
     self.counter--;
-    if(self.counter==0){
+    if (self.counter==0) {
         [self.displayLink invalidate];
         self.displayLink = nil;
-        if(!self.shown){
+        if (!self.shown) {
             [self clearInput];
             [self removeFromSuperview];
             [self.delegate todoInputViewDidHide];
-        }else{
+        } else {
             [self.delegate todoInputViewDidShow];
         }
     }
 }
+
 - (void)drawRect:(CGRect)rect
 {
-    if(self.counter==0){
+    if (self.counter==0) {
         return;
     }
     CGRect screenRect = [[UIScreen mainScreen] bounds];

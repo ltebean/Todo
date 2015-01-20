@@ -46,26 +46,26 @@
     
 }
 
--(TodoService*) todoService
+- (TodoService *)todoService
 {
-    if(!_todoService){
+    if (!_todoService) {
         _todoService = [TodoService serviceWithType:self.type];
     }
     return _todoService;
 }
 
--(void) viewWillAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     self.todoList = [[self.todoService loadAll]mutableCopy];
     [self.tableView reloadData];
     
-    if([self.type isEqualToString:@"a"]){
+    if ([self.type isEqualToString:@"a"]) {
         self.title = @"important & urgent";
-    }else if([self.type isEqualToString:@"b"]){
+    } else if ([self.type isEqualToString:@"b"]) {
         self.title = @"important";
-    }else if([self.type isEqualToString:@"c"]){
+    } else if ([self.type isEqualToString:@"c"]) {
         self.title = @"urgent";
-    }else if([self.type isEqualToString:@"d"]){
+    } else if ([self.type isEqualToString:@"d"]) {
         self.title = @"neither";
     }
     self.addButton.lineColor=[UIColor whiteColor];
@@ -73,71 +73,71 @@
 
 
     [super viewWillAppear:animated];
-    if(!self.animated){
+    if (!self.animated) {
         //[self animateCellIn];
         self.animated=YES;
     }
 }
 
--(void) viewDidAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     self.navigationController.delegate=self;
 }
 
--(void) viewDidDisappear:(BOOL)animated
+- (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    if(self.navigationController.delegate==self){
+    if (self.navigationController.delegate==self) {
         self.navigationController.delegate=nil;
     }
 }
 
 - (IBAction)addTodo:(LTPopButton *)sender {
-    if(self.inputView.shown){
+    if (self.inputView.shown) {
         [self hideInputView];
-    }else{
+    } else {
         [self showInputViewWithType:self.type];
     }
 }
 
--(void) showInputViewWithType:(NSString*) type
+- (void)showInputViewWithType:(NSString*) type
 {
-    if(self.inputViewIsAnimating){
+    if (self.inputViewIsAnimating) {
         return;
     }
-    if(!self.inputView.shown){
+    if (!self.inputView.shown) {
         self.inputViewIsAnimating=YES;
         [self.addButton animateToType:closeType];
         [self.inputView showInView:self.view withType:type];
     }
 }
 
--(void) hideInputView
+- (void)hideInputView
 {
-    if(self.inputViewIsAnimating){
+    if (self.inputViewIsAnimating) {
         return;
     }
-    if(self.inputView.shown){
+    if (self.inputView.shown) {
         self.inputViewIsAnimating=YES;
         [self.addButton animateToType:plusType];
         [self.inputView hide];
     }
 }
 
--(void)todoInputView:(TodoInputView*)inputView didAddTodo:(NSDictionary*) todo withType:(NSString*) type;
+- (void)todoInputView:(TodoInputView *)inputView didAddTodo:(NSDictionary *)todo withType:(NSString *)type;
 {
     [self.addButton animateToType:plusType];
     self.todoList = [[self.todoService loadAll]mutableCopy];
     [self.tableView reloadData];
 }
 
--(void)todoInputViewDidShow
+- (void)todoInputViewDidShow
 {
     self.inputViewIsAnimating = NO;
 }
 
--(void)todoInputViewDidHide
+- (void)todoInputViewDidHide
 {
     self.inputViewIsAnimating = NO;
 }
@@ -171,34 +171,22 @@
     
 }
 
--(void) todoCell:(TodoCell *)cell didRemoveTodo:(NSDictionary *)todo
+- (void)todoCell:(TodoCell *)cell didRemoveTodo:(NSDictionary *)todo
 {
     [self.todoList removeObject:todo];
     [self.todoService saveAll:self.todoList];
     [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
-    
-    
 }
 
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-}
-
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
     return [self requriedHeightForTodo:self.todoList[indexPath.row]];
 }
 
--(CGFloat) requriedHeightForTodo:(NSDictionary*) todo;
+- (CGFloat)requriedHeightForTodo:(NSDictionary*) todo;
 {
     CGSize maximumLabelSize = CGSizeMake(CGRectGetWidth(self.view.bounds)-30,9999);
-    
     CGSize expectedLabelSize = [todo[@"content"] sizeWithFont:[UIFont fontWithName:@"Heiti SC" size:16] constrainedToSize:maximumLabelSize lineBreakMode:NSLineBreakByWordWrapping];
-    
     return expectedLabelSize.height+46;
 }
 
@@ -268,14 +256,14 @@
     }
 }
 
--(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
     return YES;
 }
 
--(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldBeRequiredToFailByGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldBeRequiredToFailByGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
-    if(![otherGestureRecognizer.view isDescendantOfView:self.view]){
+    if (![otherGestureRecognizer.view isDescendantOfView:self.view]) {
         return YES;
     }
     return NO;

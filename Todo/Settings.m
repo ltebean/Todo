@@ -14,12 +14,12 @@
 #define fm  [NSFileManager defaultManager]
 
 @implementation Settings
-+(UIColor*) themeColor
++ (UIColor *) themeColor
 {
     return [UIColor colorWithRed:0/255.0 green:175/255.0 blue:240/255.0 alpha:1];
 }
 
-+(void) migrateDataToContainer
++ (void)migrateDataToContainer
 {
     NSURL *documentsDirectoryURL = [fm URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];;
     NSURL * db = [documentsDirectoryURL URLByAppendingPathComponent:@"db"];
@@ -29,18 +29,18 @@
     NSURL * containerDB = [contanierURL URLByAppendingPathComponent:@"db"];
     //NSLog(@"%@",containerDB.path);
 
-    if([fm fileExistsAtPath:db.path]){
+    if ([fm fileExistsAtPath:db.path]) {
         [fm copyItemAtPath:db.path toPath:containerDB.path error:nil];
         [fm removeItemAtPath:db.path error:nil];
     }
     
 }
 
-+(void) initFirstUseData
++ (void)initFirstUseData
 {
     NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
     BOOL used = [userDefaults boolForKey:USED_KEY];
-    if(used){
+    if (used) {
         return;
     }
     [userDefaults setBool:YES forKey:USED_KEY];

@@ -35,7 +35,7 @@ typedef NS_ENUM(NSInteger, CellState) {
 
 - (id)initWithCoder:(NSCoder*)aDecoder
 {
-    if(self = [super initWithCoder:aDecoder]) {
+    if (self = [super initWithCoder:aDecoder]) {
         [self setup];
     }
     return self;
@@ -43,7 +43,7 @@ typedef NS_ENUM(NSInteger, CellState) {
 
 
 
--(void) setup
+- (void)setup
 {
     UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
     recognizer.delegate = self;
@@ -66,13 +66,13 @@ typedef NS_ENUM(NSInteger, CellState) {
     [self bringSubviewToFront:self.contentView];
 }
 
--(void) setTodo:(NSDictionary *)todo
+- (void)setTodo:(NSDictionary *)todo
 {
     _todo = todo;
     [self updateUI];
 }
 
--(void) updateUI
+- (void)updateUI
 {
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineSpacing = 5;
@@ -87,7 +87,6 @@ typedef NS_ENUM(NSInteger, CellState) {
     
     [self updateRightViewToWidthTo:300];
     [self updateRightLabelPositionTo:300-originLableWidth];
-
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)recognizer
@@ -99,27 +98,24 @@ typedef NS_ENUM(NSInteger, CellState) {
     
     CGFloat offset = self.contentView.center.x - centerX;
     
-    if(offset >= -300 && offset <=0){
+    if (offset >= -300 && offset <=0 ) {
         self.contentView.center = CGPointMake(self.contentView.center.x+translation.x, self.contentView.center.y);
         [recognizer setTranslation:CGPointMake(0, 0) inView:self];
         
-        if(offset < -originLableWidth -5){
+        if (offset < -originLableWidth -5) {
             self.rightLabel.text=@"release to finish";
             [self updateRightLabelPositionTo: originLableWidth + (offset+originLableWidth)+5];
         }else{
             self.rightLabel.text=@"drag to finish";
-
         }
     }
     
-    
-    
-    if(recognizer.state == UIGestureRecognizerStateEnded) {
-        if(-offset > rightThreshold){
+    if (recognizer.state == UIGestureRecognizerStateEnded) {
+        if (-offset > rightThreshold) {
             [self animateCenterXTo:centerX forView:self.contentView];
             self.state = rightRevealedState;
             [self.delegate todoCell:self didRemoveTodo:self.todo];
-        }else{
+        } else {
             [self animateCenterXTo:centerX forView:self.contentView];
             self.state = normalState;
         }
@@ -131,20 +127,20 @@ typedef NS_ENUM(NSInteger, CellState) {
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
 {
-    if(![gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]){
+    if (![gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
         return YES;
     }
     CGPoint translation = [(UIPanGestureRecognizer *)gestureRecognizer translationInView:gestureRecognizer.view.superview];
-    if (fabsf(translation.x) < fabsf(translation.y)){
+    if (fabsf(translation.x) < fabsf(translation.y)) {
         return NO;
     }
-    if(self.state == normalState && translation.x >0){
+    if (self.state == normalState && translation.x >0) {
         return NO;
     }
     return YES;
 }
 
--(void) updateRightViewToWidthTo:(CGFloat) width
+- (void)updateRightViewToWidthTo:(CGFloat)width
 {
     CGRect frame =  self.rightView.frame;
     frame.origin.x = CGRectGetWidth(self.bounds) - width;
@@ -154,7 +150,7 @@ typedef NS_ENUM(NSInteger, CellState) {
     self.rightView.frame = frame;
 }
 
--(void) updateRightLabelPositionTo:(CGFloat) x
+- (void)updateRightLabelPositionTo:(CGFloat)x
 {
     CGRect frame=  self.rightLabel.frame;
     frame.origin.x = x;

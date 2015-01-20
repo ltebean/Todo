@@ -11,7 +11,7 @@
 
 @implementation TodoService
 
-+(TodoService*) serviceWithType:(NSString*) type
++ (TodoService *) serviceWithType:(NSString *)type
 {
     TodoService* service = [[TodoService alloc]init];
     service.type = type;
@@ -19,68 +19,67 @@
 }
 
 
--(NSArray*) loadAll
+- (NSArray *)loadAll
 {
     NSArray* data=[NSArray arrayWithContentsOfFile:[self filePath]];
-    if(!data){
+    if (!data) {
         data = [NSArray array];
     }
     return data;
 }
 
--(NSDictionary*) loadFirst
+- (NSDictionary *)loadFirst
 {
-    NSArray* todoList = [self loadAll];
-    if(todoList.count >0){
+    NSArray *todoList = [self loadAll];
+    if (todoList.count > 0) {
         return todoList[0];
-    }else{
+    } else {
         return nil;
     }
 }
 
--(void) add:(NSDictionary*) todo
+- (void)add:(NSDictionary *)todo
 {
     NSMutableArray* todoList = [[self loadAll]mutableCopy];
     [todoList addObject:todo];
     [self saveAll:todoList];
 }
 
--(void) deleteFirst
+- (void)deleteFirst
 {
     NSMutableArray* todoList = [[self loadAll]mutableCopy];
-    if(todoList && todoList.count>0){
+    if (todoList && todoList.count>0) {
         [todoList removeObjectAtIndex:0];
         [self saveAll:todoList];
     }
 }
 
--(void) deleteById:(NSString*)todoId
+- (void)deleteById:(NSString*)todoId
 {
     NSMutableArray* todoList = [[self loadAll]mutableCopy];
-    if(!todoList||todoList.count ==0){
+    if (!todoList||todoList.count ==0) {
         return;
     }
     NSDictionary* todoToDelete;
     for (NSDictionary* todo in todoList) {
-        if([todo[@"id"] isEqualToString:todoId]){
+        if ([todo[@"id"] isEqualToString:todoId]) {
             todoToDelete = todo;
         }
     }
-    if(todoToDelete){
+    if (todoToDelete) {
         [todoList removeObject:todoToDelete];
         [self saveAll:todoList];
     }
-    
 }
 
 
 
--(void) saveAll:(NSArray*) todoList
+- (void)saveAll:(NSArray *)todoList
 {
     [todoList writeToFile:[self filePath] atomically:YES];
 }
 
--(NSString*) filePath
+- (NSString *)filePath
 {
     NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.todotrix"];
     

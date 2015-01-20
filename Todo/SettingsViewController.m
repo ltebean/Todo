@@ -28,7 +28,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void) viewWillAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
     self.backButton.lineColor = [UIColor whiteColor];
@@ -38,23 +38,23 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.section==1 && indexPath.row==0){
+    if (indexPath.section==1 && indexPath.row==0) {
         [self goRating];
-    }else if(indexPath.section==1 && indexPath.row==1){
+    } else if (indexPath.section==1 && indexPath.row==1) {
         [self sendMail];
     }
 }
 
--(void)sendMail
+- (void)sendMail
 {
-    if([MFMailComposeViewController canSendMail]) {
+    if ([MFMailComposeViewController canSendMail]) {
         MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
         picker.navigationBar.tintColor=[UIColor whiteColor];
         picker.mailComposeDelegate = self;
         [picker setSubject:@"Feedback for Todotrix"];
         [picker setToRecipients:[NSArray arrayWithObjects:@"yucong1118@gmail.com", nil]];
         [self presentViewController:picker animated:YES completion:nil];
-    }else{
+    } else {
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Please set up an account for sending mail on your device" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"confirm", nil];
         [alert show];
     }
@@ -82,14 +82,14 @@
             break;
     }
     [self dismissViewControllerAnimated:YES completion:nil];
-    if(message){
+    if (message) {
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:message message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确认", nil];
         [alert show];
     }
 }
 
 
--(void)goRating
+- (void)goRating
 {
     NSString *REVIEW_URL = @"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=939523047&onlyLatestVersion=true&type=Purple+Software";
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:REVIEW_URL]];

@@ -10,17 +10,17 @@
 @class TodoInputView;
 
 @protocol TodoInputViewDelegate <NSObject>
--(void)todoInputView:(TodoInputView*)inputView didAddTodo:(NSDictionary*) todo withType:(NSString*) type;
--(void)todoInputViewDidShow;
--(void)todoInputViewDidHide;
+- (void)todoInputView:(TodoInputView *)inputView didAddTodo:(NSDictionary *)todo withType:(NSString *) type;
+- (void)todoInputViewDidShow;
+- (void)todoInputViewDidHide;
 @end
 
 @interface TodoInputView : UIView
 @property (weak, nonatomic) IBOutlet UITextField *inputField;
-@property BOOL shown;
-@property(nonatomic,weak) id<TodoInputViewDelegate> delegate;
--(void) showInView:(UIView*) view;
--(void) showInView:(UIView*) view withType:(NSString*) type;
+@property (nonatomic) BOOL shown;
+@property (nonatomic,weak) id<TodoInputViewDelegate> delegate;
+- (void)showInView:(UIView *)view;
+- (void)showInView:(UIView *)view withType:(NSString *)type;
 
--(void) hide;
+- (void)hide;
 @end

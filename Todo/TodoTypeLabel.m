@@ -29,7 +29,7 @@
     return self;
 }
 
--(void) setup
+- (void)setup
 {
     self.backgroundColor = [Settings themeColor];
     self.textAlignment = NSTextAlignmentCenter;
@@ -37,7 +37,7 @@
     self.font = [UIFont fontWithName:@"Heiti SC" size:12.0];
 }
 
--(void) setText:(NSString *)text
+- (void)setText:(NSString *)text
 {
     [super setText:text];
     NSDictionary *userAttributes = @{NSFontAttributeName: self.font,

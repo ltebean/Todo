@@ -26,9 +26,9 @@
     
     
     desticationView.alpha=0;
-    if(self.push){
+    if (self.push) {
         desticationView.transform = CGAffineTransformMakeScale(zoomMax, zoomMax);
-    }else{
+    } else {
         desticationView.transform = CGAffineTransformMakeScale(zoomMin, zoomMin);
     }
     
@@ -36,7 +36,7 @@
     [UIView animateWithDuration:duration delay:0 usingSpringWithDamping:0.75 initialSpringVelocity:0 options:0 animations:^{
         sourceView.alpha =0;
         desticationView.alpha=1;
-        if(self.push){
+        if (self.push) {
             sourceView.transform = CGAffineTransformMakeScale(zoomMin, zoomMin);
         }else{
             sourceView.transform = CGAffineTransformMakeScale(zoomMax, zoomMax);
