@@ -10,7 +10,8 @@
 #import "TodoTypeLabel.h"
 #import "TodoService.h"
 
-#define lableZoom 1.15
+#define LABEL_ZOOM 1.15
+#define BORDER_COLOR [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1]
 
 @interface TodoAreaView()<UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *containerView;
@@ -63,10 +64,10 @@
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
     [self.containerView addGestureRecognizer:recognizer];
     
-    self.layer.borderWidth=0.5;
-    self.layer.borderColor=[[UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1] CGColor];
+    self.layer.borderWidth = 0.5;
+    self.layer.borderColor = BORDER_COLOR.CGColor;
     
-    self.label.userInteractionEnabled=YES;
+    self.label.userInteractionEnabled = YES;
 
     
     UILongPressGestureRecognizer* longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
@@ -107,7 +108,7 @@
     if (recognizer.state == UIGestureRecognizerStateBegan){
         self.longPressed=YES;
         [UIView animateWithDuration:0.1 animations:^{
-            self.label.transform = CGAffineTransformMakeScale(lableZoom, lableZoom);
+            self.label.transform = CGAffineTransformMakeScale(LABEL_ZOOM, LABEL_ZOOM);
         }];
        
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
@@ -141,8 +142,8 @@
     
     CGFloat percent = offset/(CGRectGetWidth(self.bounds));
     
-    self.label.alpha = 1-1*percent;
-    CGFloat scale = lableZoom - lableZoom*percent/2;
+    self.label.alpha = 1 - 1 * percent;
+    CGFloat scale = LABEL_ZOOM - LABEL_ZOOM * percent / 2;
     self.label.transform = CGAffineTransformMakeScale(scale,scale);
 
     if (recognizer.state == UIGestureRecognizerStateEnded) {
@@ -160,13 +161,13 @@
     [UIView animateWithDuration:0.2 delay:0 options:0 animations:^{
         self.label.transform = CGAffineTransformMakeScale(0, 0);
     } completion:^(BOOL finished) {
-        self.label.alpha=1;
+        self.label.alpha = 1;
         self.label.center = self.centerPoint;
         [self refreshData];
         [UIView animateWithDuration:0.6 delay:0 usingSpringWithDamping:0.75 initialSpringVelocity:0 options:0 animations:^{
             self.label.transform = CGAffineTransformIdentity;
         } completion:^(BOOL finished) {
-            self.panning=NO;
+            self.panning = NO;
         }];
     }];
     
@@ -175,12 +176,12 @@
 - (void)animateLabelBack
 {
     [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.75 initialSpringVelocity:0 options:0 animations:^{
-        self.label.alpha=1;
+        self.label.alpha = 1;
         self.label.center = [self centerPoint];
         self.label.transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
-        self.panning=NO;
-        self.longPressed=NO;
+        self.panning = NO;
+        self.longPressed = NO;
     }];
 }
 
@@ -214,18 +215,18 @@
 - (void)initTypeLabelAndService
 {
     if ([self.type isEqualToString:TODO_TYPE_A]) {
-        TodoTypeLabel* importantLabel=[self generateImportantLabel];
-        TodoTypeLabel* urgentLabel=[self generateUrgentLabel];
+        TodoTypeLabel* importantLabel = [self generateImportantLabel];
+        TodoTypeLabel* urgentLabel = [self generateUrgentLabel];
         [self setOrigin:CGPointMake(10, 10) ForView:importantLabel];
         [self addSubview:importantLabel];
         [self setOrigin:CGPointMake(92, 10) ForView:urgentLabel];
         [self addSubview:urgentLabel];
     } else if ([self.type isEqualToString:TODO_TYPE_B]) {
-        TodoTypeLabel* importantLabel=[self generateImportantLabel];
+        TodoTypeLabel* importantLabel = [self generateImportantLabel];
         [self setOrigin:CGPointMake(10, 10) ForView:importantLabel];
         [self addSubview:importantLabel];
     } else if ([self.type isEqualToString:TODO_TYPE_C]) {
-        TodoTypeLabel* urgentLabel=[self generateUrgentLabel];
+        TodoTypeLabel* urgentLabel = [self generateUrgentLabel];
         [self setOrigin:CGPointMake(10, 10) ForView:urgentLabel];
         [self addSubview:urgentLabel];
     } else if ([self.type isEqualToString:TODO_TYPE_D]) {
@@ -239,8 +240,8 @@
 - (void)setOrigin:(CGPoint)origin ForView:(UIView *)view
 {
     CGRect frame = view.frame;
-    frame.origin=origin;
-    view.frame=frame;
+    frame.origin = origin;
+    view.frame = frame;
 }
 
 
@@ -248,7 +249,7 @@
 {
     TodoTypeLabel *label=[[TodoTypeLabel alloc]initWithFrame:CGRectMake(0, 0, 0, 26)];
     label.text = @"important";
-    label.layer.cornerRadius=13.0f;
+    label.layer.cornerRadius = 13.0f;
     label.clipsToBounds=YES;
     return label;
 }
@@ -258,7 +259,7 @@
     TodoTypeLabel* label=[[TodoTypeLabel alloc]initWithFrame:CGRectMake(0, 0, 0, 26)];
     label.text = @"urgent";
     label.layer.cornerRadius=13.0f;
-    label.clipsToBounds=YES;
+    label.clipsToBounds = YES;
     return label;
 }
 

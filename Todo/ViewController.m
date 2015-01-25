@@ -19,10 +19,6 @@
 @property (weak, nonatomic) IBOutlet LTPopButton *settingsButton;
 @property (weak, nonatomic) IBOutlet LTPopButton *menuButton;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
-@property(nonatomic,strong) TodoAreaView* areaA;
-@property(nonatomic,strong) TodoAreaView* areaB;
-@property(nonatomic,strong) TodoAreaView* areaC;
-@property(nonatomic,strong) TodoAreaView* areaD;
 @property(nonatomic,strong) TodoInputView* inputView;
 @property(nonatomic,strong) NSDictionary* areas;
 @property BOOL inputViewIsAnimating;
@@ -59,7 +55,7 @@
     [self hideInputView];
 }
 
-- (TodoAreaView *)generateAreaViewWithType:(NSString *) type
+- (TodoAreaView *)generateAreaViewWithType:(NSString *)type
 {
     CGFloat width = CGRectGetWidth(self.containerView.bounds);
     CGFloat height = CGRectGetHeight(self.containerView.bounds);
@@ -87,7 +83,6 @@
 {
     [super viewWillAppear:YES];
     
-    
     if (self.loaded) {
         if (self.currentEditingType) {
             TodoAreaView* area = self.areas[self.currentEditingType];
@@ -96,33 +91,29 @@
         return;
     }
     
-    self.areaA = [self generateAreaViewWithType:TODO_TYPE_A];
-    self.areaB = [self generateAreaViewWithType:TODO_TYPE_B];
-    self.areaC = [self generateAreaViewWithType:TODO_TYPE_C];
-    self.areaD = [self generateAreaViewWithType:TODO_TYPE_D];
-    
-    self.areas=@{@"a":self.areaA,@"b":self.areaB,@"c":self.areaC,@"d":self.areaD};
-
-    [self.containerView addSubview:self.areaA];
-    [self.containerView addSubview:self.areaB];
-    [self.containerView addSubview:self.areaC];
-    [self.containerView addSubview:self.areaD];
-    
-    self.menuButton.lineColor=[UIColor whiteColor];
+    self.menuButton.lineColor = [UIColor whiteColor];
     [self.menuButton animateToType:plusType];
+    self.settingsButton.lineColor = [UIColor whiteColor];
     
-    self.settingsButton.lineColor=[UIColor whiteColor];
+    TodoAreaView *areaA = [self generateAreaViewWithType:TODO_TYPE_A];
+    TodoAreaView *areaB = [self generateAreaViewWithType:TODO_TYPE_B];
+    TodoAreaView *areaC = [self generateAreaViewWithType:TODO_TYPE_C];
+    TodoAreaView *areaD = [self generateAreaViewWithType:TODO_TYPE_D];
+    
+    self.areas = @{@"a":areaA,@"b":areaB,@"c":areaC,@"d":areaD};
 
-    [self animateAreaViewIn:self.areaA delay:0];
-    [self animateAreaViewIn:self.areaB delay:0.12];
-    [self animateAreaViewIn:self.areaC delay:0.24];
-    [self animateAreaViewIn:self.areaD delay:0.36];
+    [self.containerView addSubview:areaA];
+    [self.containerView addSubview:areaB];
+    [self.containerView addSubview:areaC];
+    [self.containerView addSubview:areaD];
+
+    [self animateAreaViewIn:areaA delay:0];
+    [self animateAreaViewIn:areaB delay:0.12];
+    [self animateAreaViewIn:areaC delay:0.24];
+    [self animateAreaViewIn:areaD delay:0.36];
     
     self.loaded = YES;
 }
-
-
-
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -138,13 +129,13 @@
     }
 }
 
-- (void)animateAreaViewIn:(UIView *) view delay:(NSTimeInterval) delay
+- (void)animateAreaViewIn:(UIView *)view delay:(NSTimeInterval)delay
 {
-    view.alpha=0;
+    view.alpha = 0;
     view.transform = CGAffineTransformMakeScale(5, 5);
     [UIView animateWithDuration:1.0 delay:delay usingSpringWithDamping:0.8 initialSpringVelocity:0 options:0 animations:^{
-        view.transform=CGAffineTransformIdentity;
-        view.alpha=1;
+        view.transform = CGAffineTransformIdentity;
+        view.alpha = 1;
     } completion:^(BOOL finished) {
         
     }];
@@ -153,7 +144,7 @@
 - (void)todoInputView:(TodoInputView *)inputView didAddTodo:(NSDictionary*) todo withType:(NSString *) type;
 {
     [self.menuButton animateToType:plusType];
-    TodoAreaView* area = self.areas[type];
+    TodoAreaView *area = self.areas[type];
     [area refreshData];
 }
 
@@ -166,7 +157,6 @@
 {
     self.inputViewIsAnimating = NO;
 }
-
 
 - (void)didTappedAreaView:(TodoAreaView *)areaView withTodo:(NSDictionary *)todo
 {
@@ -214,13 +204,12 @@
     }
 }
 
-
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
                                   animationControllerForOperation:(UINavigationControllerOperation)operation
                                                fromViewController:(UIViewController *)fromVC
                                                  toViewController:(UIViewController *)toVC {
     TodoListViewTransition* transiton = [[TodoListViewTransition alloc] init];
-    transiton.push=YES;
+    transiton.push = YES;
     return transiton;
     
 }
@@ -229,9 +218,8 @@
 {
     if ([segue.identifier isEqualToString:@"detail"]) {
         TodoListViewController* vc = segue.destinationViewController;
-        vc.type=sender;
+        vc.type = sender;
     }
 }
-
 
 @end

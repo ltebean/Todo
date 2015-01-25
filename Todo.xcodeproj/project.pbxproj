@@ -17,12 +17,7 @@
 		FA492C251A0CB1890030FE27 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA492C241A0CB1890030FE27 /* main.m */; };
 		FA492C301A0CB1890030FE27 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA492C2F1A0CB1890030FE27 /* Images.xcassets */; };
 		FA492C671A0CB1A50030FE27 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA492C491A0CB1A50030FE27 /* AppDelegate.m */; };
-		FA492C681A0CB1A50030FE27 /* BootstrapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA492C4B1A0CB1A50030FE27 /* BootstrapViewController.m */; };
 		FA492C691A0CB1A50030FE27 /* LTPopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FA492C4D1A0CB1A50030FE27 /* LTPopButton.m */; };
-		FA492C6A1A0CB1A50030FE27 /* LTSlidingView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA492C4F1A0CB1A50030FE27 /* LTSlidingView.m */; };
-		FA492C6B1A0CB1A50030FE27 /* LTSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA492C511A0CB1A50030FE27 /* LTSlidingViewController.m */; };
-		FA492C6C1A0CB1A50030FE27 /* LTSlidingViewCoverflowTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = FA492C531A0CB1A50030FE27 /* LTSlidingViewCoverflowTransition.m */; };
-		FA492C6D1A0CB1A50030FE27 /* LTSlidingViewZoomTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = FA492C551A0CB1A50030FE27 /* LTSlidingViewZoomTransition.m */; };
 		FA492C6E1A0CB1A50030FE27 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = FA492C571A0CB1A50030FE27 /* Settings.m */; };
 		FA492C6F1A0CB1A50030FE27 /* TodoAreaView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA492C591A0CB1A50030FE27 /* TodoAreaView.m */; };
 		FA492C701A0CB1A50030FE27 /* TodoAreaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA492C5A1A0CB1A50030FE27 /* TodoAreaView.xib */; };
@@ -91,18 +86,8 @@
 		FA492C3E1A0CB1890030FE27 /* TodoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodoTests.m; sourceTree = "<group>"; };
 		FA492C481A0CB1A50030FE27 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FA492C491A0CB1A50030FE27 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FA492C4A1A0CB1A50030FE27 /* BootstrapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BootstrapViewController.h; sourceTree = "<group>"; };
-		FA492C4B1A0CB1A50030FE27 /* BootstrapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BootstrapViewController.m; sourceTree = "<group>"; };
 		FA492C4C1A0CB1A50030FE27 /* LTPopButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTPopButton.h; sourceTree = "<group>"; };
 		FA492C4D1A0CB1A50030FE27 /* LTPopButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTPopButton.m; sourceTree = "<group>"; };
-		FA492C4E1A0CB1A50030FE27 /* LTSlidingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTSlidingView.h; sourceTree = "<group>"; };
-		FA492C4F1A0CB1A50030FE27 /* LTSlidingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTSlidingView.m; sourceTree = "<group>"; };
-		FA492C501A0CB1A50030FE27 /* LTSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTSlidingViewController.h; sourceTree = "<group>"; };
-		FA492C511A0CB1A50030FE27 /* LTSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTSlidingViewController.m; sourceTree = "<group>"; };
-		FA492C521A0CB1A50030FE27 /* LTSlidingViewCoverflowTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTSlidingViewCoverflowTransition.h; sourceTree = "<group>"; };
-		FA492C531A0CB1A50030FE27 /* LTSlidingViewCoverflowTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTSlidingViewCoverflowTransition.m; sourceTree = "<group>"; };
-		FA492C541A0CB1A50030FE27 /* LTSlidingViewZoomTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTSlidingViewZoomTransition.h; sourceTree = "<group>"; };
-		FA492C551A0CB1A50030FE27 /* LTSlidingViewZoomTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTSlidingViewZoomTransition.m; sourceTree = "<group>"; };
 		FA492C561A0CB1A50030FE27 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		FA492C571A0CB1A50030FE27 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		FA492C581A0CB1A50030FE27 /* TodoAreaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoAreaView.h; sourceTree = "<group>"; };
@@ -202,8 +187,6 @@
 				FA492C791A0CB1EB0030FE27 /* service */,
 				FA492C481A0CB1A50030FE27 /* AppDelegate.h */,
 				FA492C491A0CB1A50030FE27 /* AppDelegate.m */,
-				FA492C4A1A0CB1A50030FE27 /* BootstrapViewController.h */,
-				FA492C4B1A0CB1A50030FE27 /* BootstrapViewController.m */,
 				FA492C5D1A0CB1A50030FE27 /* TodoListViewController.h */,
 				FA492C5E1A0CB1A50030FE27 /* TodoListViewController.m */,
 				FA492C5F1A0CB1A50030FE27 /* TodoListViewTransition.h */,
@@ -254,14 +237,6 @@
 				4926D1811A0E09EB008F68A9 /* BVReorderTableView.m */,
 				FA492C4C1A0CB1A50030FE27 /* LTPopButton.h */,
 				FA492C4D1A0CB1A50030FE27 /* LTPopButton.m */,
-				FA492C4E1A0CB1A50030FE27 /* LTSlidingView.h */,
-				FA492C4F1A0CB1A50030FE27 /* LTSlidingView.m */,
-				FA492C501A0CB1A50030FE27 /* LTSlidingViewController.h */,
-				FA492C511A0CB1A50030FE27 /* LTSlidingViewController.m */,
-				FA492C521A0CB1A50030FE27 /* LTSlidingViewCoverflowTransition.h */,
-				FA492C531A0CB1A50030FE27 /* LTSlidingViewCoverflowTransition.m */,
-				FA492C541A0CB1A50030FE27 /* LTSlidingViewZoomTransition.h */,
-				FA492C551A0CB1A50030FE27 /* LTSlidingViewZoomTransition.m */,
 			);
 			name = lib;
 			sourceTree = "<group>";
@@ -448,21 +423,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA492C681A0CB1A50030FE27 /* BootstrapViewController.m in Sources */,
 				FA492C671A0CB1A50030FE27 /* AppDelegate.m in Sources */,
 				FA492C6E1A0CB1A50030FE27 /* Settings.m in Sources */,
 				FA492C251A0CB1890030FE27 /* main.m in Sources */,
-				FA492C6C1A0CB1A50030FE27 /* LTSlidingViewCoverflowTransition.m in Sources */,
 				4926D1821A0E09EB008F68A9 /* BVReorderTableView.m in Sources */,
 				4926D17F1A0DD635008F68A9 /* CommonUtils.m in Sources */,
 				FA492C6F1A0CB1A50030FE27 /* TodoAreaView.m in Sources */,
-				FA492C6B1A0CB1A50030FE27 /* LTSlidingViewController.m in Sources */,
-				FA492C6D1A0CB1A50030FE27 /* LTSlidingViewZoomTransition.m in Sources */,
 				49CA93AF1A0CE9020069BABB /* TodoInputView.m in Sources */,
 				FA492C721A0CB1A50030FE27 /* TodoListViewController.m in Sources */,
 				FA492C731A0CB1A50030FE27 /* TodoListViewTransition.m in Sources */,
 				FA492C761A0CB1A50030FE27 /* ViewController.m in Sources */,
-				FA492C6A1A0CB1A50030FE27 /* LTSlidingView.m in Sources */,
 				FA492C741A0CB1A50030FE27 /* TodoService.m in Sources */,
 				FA492C751A0CB1A50030FE27 /* TodoTypeLabel.m in Sources */,
 				FA171B741A109919000DF159 /* SettingsViewController.m in Sources */,
