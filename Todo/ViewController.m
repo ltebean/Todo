@@ -45,49 +45,15 @@
     [self.view addGestureRecognizer:swipeUpGesture];
 }
 
-- (void)handleSwipeDown:(UISwipeGestureRecognizer *)recognizer
-{
-    [self showInputViewWithType:nil];
-}
-
-- (void)handleSwipeUp:(UISwipeGestureRecognizer *)recognizer
-{
-    [self hideInputView];
-}
-
-- (TodoAreaView *)generateAreaViewWithType:(NSString *)type
-{
-    CGFloat width = CGRectGetWidth(self.containerView.bounds);
-    CGFloat height = CGRectGetHeight(self.containerView.bounds);
-    
-    CGFloat areaWidth = width/2;
-    CGFloat areaHeight = height/2;
-
-    TodoAreaView* areaView = [[TodoAreaView alloc]initWithFrame:CGRectMake(0, 0, areaWidth, areaHeight)];
-    
-    if ([type isEqualToString:TODO_TYPE_A]) {
-        areaView.center = CGPointMake(width/4, height/4);
-    } else if ([type isEqualToString:TODO_TYPE_B]) {
-        areaView.center = CGPointMake(width/4*3, height/4);
-    } else if ([type isEqualToString:TODO_TYPE_C]) {
-        areaView.center = CGPointMake(width/4, height/4*3);
-    } else if ([type isEqualToString:TODO_TYPE_D]) {
-        areaView.center = CGPointMake(width/4*3, height/4*3);
-    }
-    areaView.delegate=self;
-    areaView.type=type;
-    return areaView;
-}
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
     
     if (self.loaded) {
-        if (self.currentEditingType) {
-            TodoAreaView* area = self.areas[self.currentEditingType];
-            [area refreshData];
-        }
+        [self.areas enumerateKeysAndObjectsUsingBlock:^(id key, TodoAreaView *areaView, BOOL *stop) {
+            [areaView refreshData];
+        }];
         return;
     }
     
@@ -139,6 +105,40 @@
     } completion:^(BOOL finished) {
         
     }];
+}
+
+- (void)handleSwipeDown:(UISwipeGestureRecognizer *)recognizer
+{
+    [self showInputViewWithType:nil];
+}
+
+- (void)handleSwipeUp:(UISwipeGestureRecognizer *)recognizer
+{
+    [self hideInputView];
+}
+
+- (TodoAreaView *)generateAreaViewWithType:(NSString *)type
+{
+    CGFloat width = CGRectGetWidth(self.containerView.bounds);
+    CGFloat height = CGRectGetHeight(self.containerView.bounds);
+    
+    CGFloat areaWidth = width/2;
+    CGFloat areaHeight = height/2;
+    
+    TodoAreaView* areaView = [[TodoAreaView alloc]initWithFrame:CGRectMake(0, 0, areaWidth, areaHeight)];
+    
+    if ([type isEqualToString:TODO_TYPE_A]) {
+        areaView.center = CGPointMake(width/4, height/4);
+    } else if ([type isEqualToString:TODO_TYPE_B]) {
+        areaView.center = CGPointMake(width/4*3, height/4);
+    } else if ([type isEqualToString:TODO_TYPE_C]) {
+        areaView.center = CGPointMake(width/4, height/4*3);
+    } else if ([type isEqualToString:TODO_TYPE_D]) {
+        areaView.center = CGPointMake(width/4*3, height/4*3);
+    }
+    areaView.delegate=self;
+    areaView.type=type;
+    return areaView;
 }
 
 - (void)todoInputView:(TodoInputView *)inputView didAddTodo:(NSDictionary*) todo withType:(NSString *) type;

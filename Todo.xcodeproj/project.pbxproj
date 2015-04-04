@@ -14,6 +14,7 @@
 		FA171B741A109919000DF159 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA171B731A109919000DF159 /* SettingsViewController.m */; };
 		FA3D24CF1A15A3E5003A590E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3D24CE1A15A3E5003A590E /* libz.dylib */; };
 		FA3D24D41A15A431003A590E /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3D24D11A15A431003A590E /* libMobClickLibrary.a */; };
+		FA444F7B1ACEE4D400DFCDD0 /* FontChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA444F7A1ACEE4D400DFCDD0 /* FontChooserViewController.m */; };
 		FA492C251A0CB1890030FE27 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA492C241A0CB1890030FE27 /* main.m */; };
 		FA492C301A0CB1890030FE27 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA492C2F1A0CB1890030FE27 /* Images.xcassets */; };
 		FA492C671A0CB1A50030FE27 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA492C491A0CB1A50030FE27 /* AppDelegate.m */; };
@@ -78,6 +79,8 @@
 		FA3D24D11A15A431003A590E /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		FA3D24D21A15A431003A590E /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		FA3D24D31A15A431003A590E /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
+		FA444F791ACEE4D400DFCDD0 /* FontChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontChooserViewController.h; sourceTree = "<group>"; };
+		FA444F7A1ACEE4D400DFCDD0 /* FontChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontChooserViewController.m; sourceTree = "<group>"; };
 		FA492C1F1A0CB1890030FE27 /* Todotrix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todotrix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA492C231A0CB1890030FE27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA492C241A0CB1890030FE27 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -195,6 +198,8 @@
 				FA492C661A0CB1A50030FE27 /* ViewController.m */,
 				FA171B721A109919000DF159 /* SettingsViewController.h */,
 				FA171B731A109919000DF159 /* SettingsViewController.m */,
+				FA444F791ACEE4D400DFCDD0 /* FontChooserViewController.h */,
+				FA444F7A1ACEE4D400DFCDD0 /* FontChooserViewController.m */,
 				FA492C7B1A0CB5570030FE27 /* LaunchScreen.xib */,
 				FA492C7C1A0CB5570030FE27 /* Main.storyboard */,
 				FA492C2F1A0CB1890030FE27 /* Images.xcassets */,
@@ -438,6 +443,7 @@
 				FA171B741A109919000DF159 /* SettingsViewController.m in Sources */,
 				FA492C691A0CB1A50030FE27 /* LTPopButton.m in Sources */,
 				FA492C711A0CB1A50030FE27 /* TodoCell.m in Sources */,
+				FA444F7B1ACEE4D400DFCDD0 /* FontChooserViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

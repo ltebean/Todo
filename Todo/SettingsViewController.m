@@ -14,6 +14,7 @@
 
 @interface SettingsViewController ()<MFMailComposeViewControllerDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *fontLabel;
 @property (weak, nonatomic) IBOutlet LTPopButton *backButton;
 @end
 
@@ -33,6 +34,9 @@
     [super viewWillAppear:YES];
     self.backButton.lineColor = [UIColor whiteColor];
     [self.backButton animateToType:closeType];
+    NSString *fontFamily = [Settings fontFamily];
+    self.fontLabel.text = fontFamily;
+    self.fontLabel.font = [UIFont fontWithName:fontFamily size:15];
 }
 
 

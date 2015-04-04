@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface TodoListViewController : UIViewController
-@property(nonatomic,copy)NSString* type;
+@property (nonatomic,copy) NSString *type;
 @end

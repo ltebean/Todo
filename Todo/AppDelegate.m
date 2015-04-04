@@ -29,7 +29,7 @@
     [Settings migrateDataToContainer];
     [Settings initFirstUseData];
     
-//    [MobClick startWithAppkey:@"54656c19fd98c5cd22003e1d" reportPolicy:BATCH channelId:@"Web"];
+    [MobClick startWithAppkey:@"54656c19fd98c5cd22003e1d" reportPolicy:BATCH channelId:@"Web"];
 
     return YES;
 }

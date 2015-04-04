@@ -53,8 +53,8 @@ typedef NS_ENUM(NSInteger, CellState) {
     self.rightView.backgroundColor = [Settings themeColor];
     
     self.rightLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.rightLabel.textColor=[UIColor whiteColor];
-    self.rightLabel.text=@"drag to remove";
+    self.rightLabel.textColor = [UIColor whiteColor];
+    self.rightLabel.text = @"drag to remove";
     self.rightLabel.textAlignment = NSTextAlignmentCenter;
     self.rightLabel.font = [UIFont fontWithName:@"Heiti SC" size:16];
     self.rightLabel.lineBreakMode = NSLineBreakByWordWrapping;
@@ -74,19 +74,10 @@ typedef NS_ENUM(NSInteger, CellState) {
 
 - (void)updateUI
 {
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.lineSpacing = 5;
-    paragraphStyle.alignment = self.textLabel.textAlignment;
-    NSDictionary *attributes = @{NSParagraphStyleAttributeName: paragraphStyle};
-    NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:self.todo[@"content"] attributes:attributes];
-    self.textLabel.attributedText = attributedText;
+    self.textLabel.attributedText = [[NSAttributedString alloc] initWithString:self.todo[@"content"] attributes:[TodoCell textAttributes]];
     
-    CGRect frame = self.textLabel.frame;
-    frame.size.height = [self requriedHeightForTodo:self.todo];
-    self.textLabel.frame=frame;
-    
-    [self updateRightViewToWidthTo:300];
-    [self updateRightLabelPositionTo:300-originLableWidth];
+    [self updateRightViewWidthTo:300];
+    [self updateRightLabelPositionTo:(300 - originLableWidth)];
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)recognizer
@@ -140,7 +131,7 @@ typedef NS_ENUM(NSInteger, CellState) {
     return YES;
 }
 
-- (void)updateRightViewToWidthTo:(CGFloat)width
+- (void)updateRightViewWidthTo:(CGFloat)width
 {
     CGRect frame =  self.rightView.frame;
     frame.origin.x = CGRectGetWidth(self.bounds) - width;
@@ -162,7 +153,7 @@ typedef NS_ENUM(NSInteger, CellState) {
 }
 
 
--(void) animateCenterXTo:(CGFloat) centerX forView:(UIView *)view
+- (void)animateCenterXTo:(CGFloat)centerX forView:(UIView *)view
 {
     [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.8
           initialSpringVelocity:0 options:0 animations:^{
@@ -171,16 +162,24 @@ typedef NS_ENUM(NSInteger, CellState) {
     
 }
 
--(CGFloat) requriedHeightForTodo:(NSDictionary*) todo;
++ (CGFloat)requriedHeightForTodo:(NSDictionary*) todo;
 {
-    CGSize maximumLabelSize = CGSizeMake(self.textLabel.bounds.size.width,9999);
-    
-    CGSize expectedLabelSize = [todo[@"content"] sizeWithFont:[self.textLabel font] constrainedToSize:maximumLabelSize lineBreakMode:NSLineBreakByWordWrapping];
-    
-    return expectedLabelSize.height+20;
-
+    CGSize maximumLabelSize = CGSizeMake([UIScreen mainScreen].bounds.size.width - 30, 9999);
+    CGFloat height = [todo[@"content"] boundingRectWithSize:maximumLabelSize options:NSStringDrawingUsesLineFragmentOrigin attributes:[TodoCell textAttributes] context:nil].size.height + 30;
+    return MAX(60, ceil(height));
 }
 
++ (NSDictionary *)textAttributes
+{
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = 5;
+    paragraphStyle.alignment = NSTextAlignmentLeft;
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
 
+    return @{
+             NSFontAttributeName: [UIFont fontWithName:[Settings fontFamily] size:16],
+             NSParagraphStyleAttributeName: paragraphStyle
+             };
+}
 
 @end

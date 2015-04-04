@@ -9,6 +9,7 @@
 #import "TodoAreaView.h"
 #import "TodoTypeLabel.h"
 #import "TodoService.h"
+#import "Settings.h"
 
 #define LABEL_ZOOM 1.15
 #define BORDER_COLOR [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1]
@@ -57,9 +58,13 @@
     return self;
 }
 
+- (UIFont *)textFont
+{
+    return [UIFont fontWithName:[Settings fontFamily] size:16];
+}
+
 - (void)setup
 {
-
     self.centerPoint = self.label.center;
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
     [self.containerView addGestureRecognizer:recognizer];
@@ -89,8 +94,34 @@
     self.pullBackArea= CGRectMake(self.frame.size.width/4, self.frame.size.height/4, self.frame.size.width/2, self.frame.size.height/2);
     
     [self hideEmptyLabel];
-    
 }
+
+- (void)setType:(NSString *)type
+{
+    _type = type;
+    [self initTypeLabelAndService];
+    [self refreshData];
+}
+
+- (void)refreshData
+{
+    self.label.font = [self textFont];
+    self.emptyLabel.font = [self textFont];
+    self.todo = [self.todoService loadFirst];
+    if (!self.todo) {
+        [self showEmptyLabel];
+    }else {
+        [self hideEmptyLabel];
+        
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        paragraphStyle.lineSpacing = 5;
+        paragraphStyle.alignment = self.label.textAlignment;
+        NSDictionary *attributes = @{NSParagraphStyleAttributeName: paragraphStyle};
+        NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:self.todo[@"content"] attributes:attributes];
+        self.label.attributedText = attributedText;
+    }
+}
+
 
 - (void)showEmptyLabel
 {
@@ -118,9 +149,6 @@
         }
     }
 }
-
-
-
 
 - (void)handlePan:(UIPanGestureRecognizer *)recognizer
 {
@@ -185,33 +213,6 @@
     }];
 }
 
-
-
-- (void)setType:(NSString *)type
-{
-    _type = type;
-    [self initTypeLabelAndService];
-    [self refreshData];
-}
-
--(void)refreshData
-{
-    self.todo = [self.todoService loadFirst];
-    if (!self.todo) {
-        [self showEmptyLabel];
-    }else {
-        [self hideEmptyLabel];
-        
-        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-        paragraphStyle.lineSpacing = 5;
-        paragraphStyle.alignment = self.label.textAlignment;
-        NSDictionary *attributes = @{NSParagraphStyleAttributeName: paragraphStyle};
-        NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:self.todo[@"content"] attributes:attributes];
-        self.label.attributedText = attributedText;
-    }
-}
-
-
 - (void)initTypeLabelAndService
 {
     if ([self.type isEqualToString:TODO_TYPE_A]) {
@@ -233,8 +234,6 @@
 
     }
     self.todoService = [TodoService serviceWithType:self.type];
-
-   
 }
 
 - (void)setOrigin:(CGPoint)origin ForView:(UIView *)view

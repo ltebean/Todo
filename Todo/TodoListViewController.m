@@ -13,17 +13,18 @@
 #import "TodoService.h"
 #import "LTPopButton.h"
 #import "TodoInputView.h"
+#import "Settings.h"
 
 @interface TodoListViewController ()<UITableViewDataSource,UITableViewDelegate,UINavigationControllerDelegate,UIGestureRecognizerDelegate,TodoCellDelegate,TodoInputViewDelegate>
 @property (weak, nonatomic) IBOutlet LTPopButton *addButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property(nonatomic,strong) TodoInputView* inputView;
+@property(nonatomic,strong) TodoInputView *inputView;
 @property BOOL inputViewIsAnimating;
 
 @property BOOL animated;
-@property (nonatomic,strong) UIPercentDrivenInteractiveTransition* interactivePopTransition;
-@property (nonatomic,strong) NSMutableArray* todoList;
-@property (nonatomic,strong) TodoService* todoService;
+@property (nonatomic,strong) UIPercentDrivenInteractiveTransition *interactivePopTransition;
+@property (nonatomic,strong) NSMutableArray *todoList;
+@property (nonatomic,strong) TodoService *todoService;
 @end
 
 @implementation TodoListViewController
@@ -31,16 +32,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.tableView.dataSource=self;
-    self.tableView.delegate=self;
-    self.animated=NO;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.animated = NO;
     
     self.inputView = [[TodoInputView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 200)];
-    self.inputView.delegate=self;
+    self.inputView.delegate = self;
 
-    
     UIScreenEdgePanGestureRecognizer *popRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePopRecognizer:)];
-    popRecognizer.delegate=self;
+    popRecognizer.delegate = self;
     popRecognizer.edges = UIRectEdgeLeft;
     [self.view addGestureRecognizer:popRecognizer];
     
@@ -56,7 +56,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.todoList = [[self.todoService loadAll]mutableCopy];
+    self.todoList = [[self.todoService loadAll] mutableCopy];
     [self.tableView reloadData];
     
     if ([self.type isEqualToString:@"a"]) {
@@ -82,14 +82,14 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.navigationController.delegate=self;
+    self.navigationController.delegate = self;
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    if (self.navigationController.delegate==self) {
-        self.navigationController.delegate=nil;
+    if (self.navigationController.delegate == self) {
+        self.navigationController.delegate = nil;
     }
 }
 
@@ -107,7 +107,7 @@
         return;
     }
     if (!self.inputView.shown) {
-        self.inputViewIsAnimating=YES;
+        self.inputViewIsAnimating = YES;
         [self.addButton animateToType:closeType];
         [self.inputView showInView:self.view withType:type];
     }
@@ -119,7 +119,7 @@
         return;
     }
     if (self.inputView.shown) {
-        self.inputViewIsAnimating=YES;
+        self.inputViewIsAnimating = YES;
         [self.addButton animateToType:plusType];
         [self.inputView hide];
     }
@@ -180,18 +180,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [self requriedHeightForTodo:self.todoList[indexPath.row]];
-}
-
-- (CGFloat)requriedHeightForTodo:(NSDictionary*) todo;
-{
-    CGSize maximumLabelSize = CGSizeMake(CGRectGetWidth(self.view.bounds)-30,9999);
-    CGSize expectedLabelSize = [todo[@"content"] sizeWithFont:[UIFont fontWithName:@"Heiti SC" size:16] constrainedToSize:maximumLabelSize lineBreakMode:NSLineBreakByWordWrapping];
-    return expectedLabelSize.height+46;
+    return [TodoCell requriedHeightForTodo:self.todoList[indexPath.row]];
 }
 
 - (id)saveObjectAndInsertBlankRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSDictionary* todo = self.todoList[indexPath.row];
+    NSDictionary *todo = self.todoList[indexPath.row];
 
     [self.todoList replaceObjectAtIndex:indexPath.row withObject:@{@"content":@""}];
     return todo;
@@ -268,5 +261,6 @@
     }
     return NO;
 }
+
 
 @end

@@ -12,8 +12,8 @@
 #import "Settings.h"
 
 
-#define cellHeight 30
-#define sectionHeight 25
+#define CELL_HEIGHT 30
+#define SECTION_HEIGHT 25
 
 @interface TodayViewController () <NCWidgetProviding,UITableViewDataSource,UITableViewDelegate>
 
@@ -39,11 +39,11 @@
 {
     self.data = [NSMutableDictionary dictionary];
 
-    NSArray *types =@[@"a",@"b",@"c"];
+    NSArray *types = @[@"a",@"b",@"c"];
     
-    for (NSString* type in types) {
-        TodoService* todoService = [TodoService serviceWithType:type];
-        NSDictionary* todo = [todoService loadFirst];
+    for (NSString *type in types) {
+        TodoService *todoService = [TodoService serviceWithType:type];
+        NSDictionary *todo = [todoService loadFirst];
         if (todo) {
             self.data[type] = todo[@"content"];
         }
@@ -51,14 +51,11 @@
     [self.tableView reloadData];
     
     if ([self.data allKeys].count ==0) {
-         self.preferredContentSize = CGSizeMake(CGRectGetWidth(self.view.bounds),cellHeight);
+         self.preferredContentSize = CGSizeMake(CGRectGetWidth(self.view.bounds), CELL_HEIGHT);
     } else {
-         self.preferredContentSize = CGSizeMake(CGRectGetWidth(self.view.bounds), [self.data allKeys].count * (cellHeight+sectionHeight));
+         self.preferredContentSize = CGSizeMake(CGRectGetWidth(self.view.bounds), [self.data allKeys].count * (CELL_HEIGHT + SECTION_HEIGHT));
     }
-   
-
 }
-
 
 - (UIEdgeInsets)widgetMarginInsetsForProposedMarginInsets:(UIEdgeInsets)defaultMarginInsets
 {
@@ -75,7 +72,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [[self.data allKeys]count] == 0 ? 1 : [[self.data allKeys]count];
+    return [self.data allKeys].count == 0 ? 1 : [self.data allKeys].count;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
@@ -85,10 +82,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if ([self.data allKeys].count ==0){
+    if ([self.data allKeys].count == 0) {
         return 0;
     }else{
-        return sectionHeight;
+        return SECTION_HEIGHT;
     }
 }
 
@@ -102,7 +99,7 @@
     label.textColor = [Settings themeColor];
     label.font = [UIFont systemFontOfSize:14];
     /* Section header is in 0th index... */
-    NSString* type = [self.data allKeys][section];
+    NSString *type = [self.data allKeys][section];
     label.text = [self titleOfType:type];
     [view addSubview:label];
     return view;
@@ -124,15 +121,15 @@
 }
 
 
--(NSString*) titleOfType:(NSString*)type
+-(NSString *)titleOfType:(NSString *)type
 {
-    if([type isEqualToString:@"a"]){
+    if ([type isEqualToString:@"a"]) {
         return @"important & urgent";
-    }else if([type isEqualToString:@"b"]){
+    } else if([type isEqualToString:@"b"]) {
         return @"important";
-    }else if([type isEqualToString:@"c"]){
+    } else if([type isEqualToString:@"c"]) {
         return @"urgent";
-    }else if([type isEqualToString:@"d"]){
+    } else if([type isEqualToString:@"d"]) {
         return @"neither";
     }
     return nil;
@@ -140,7 +137,7 @@
 
 
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.extensionContext openURL:[NSURL URLWithString:@"todotrix://"] completionHandler:^(BOOL success) {
     
@@ -148,14 +145,15 @@
 }
 
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    return cellHeight;
+    return CELL_HEIGHT;
 }
 
 
-- (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler {
+- (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler
+{
     // Perform any setup necessary in order to update the view.
     
     // If an error is encountered, use NCUpdateResultFailed

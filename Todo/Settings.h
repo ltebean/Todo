@@ -10,7 +10,9 @@
 #import <UIKit/UIKit.h>
 
 @interface Settings : NSObject
-+ (UIColor *) themeColor;
-+ (void) initFirstUseData;
-+ (void) migrateDataToContainer;
++ (UIColor *)themeColor;
++ (NSString *)fontFamily;
++ (void)useFontFamily:(NSString *)fontFamily;
++ (void)initFirstUseData;
++ (void)migrateDataToContainer;
 @end
