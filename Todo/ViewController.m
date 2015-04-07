@@ -18,12 +18,15 @@
 @interface ViewController ()<UIGestureRecognizerDelegate,AreaViewDelegate,UINavigationControllerDelegate,TodoInputViewDelegate>
 @property (weak, nonatomic) IBOutlet LTPopButton *settingsButton;
 @property (weak, nonatomic) IBOutlet LTPopButton *menuButton;
-@property (weak, nonatomic) IBOutlet UIView *containerView;
-@property(nonatomic,strong) TodoInputView* inputView;
-@property(nonatomic,strong) NSDictionary* areas;
-@property BOOL inputViewIsAnimating;
-@property BOOL loaded;
-@property(nonatomic,copy) NSString* currentEditingType;
+@property (weak, nonatomic) IBOutlet TodoAreaView *areaA;
+@property (weak, nonatomic) IBOutlet TodoAreaView *areaB;
+@property (weak, nonatomic) IBOutlet TodoAreaView *areaC;
+@property (weak, nonatomic) IBOutlet TodoAreaView *areaD;
+@property (nonatomic, strong) TodoInputView *inputView;
+@property (nonatomic, strong) NSDictionary *areas;
+@property (nonatomic) BOOL inputViewIsAnimating;
+@property (nonatomic) BOOL loaded;
+@property (nonatomic, copy) NSString *currentEditingType;
 @end
 
 @implementation ViewController
@@ -43,6 +46,11 @@
     UISwipeGestureRecognizer* swipeUpGesture = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeUp:)];
     swipeUpGesture.direction = UISwipeGestureRecognizerDirectionUp;
     [self.view addGestureRecognizer:swipeUpGesture];
+    
+    self.areas = @{@"a":self.areaA, @"b":self.areaB, @"c":self.areaC, @"d":self.areaD};
+    [self.areas enumerateKeysAndObjectsUsingBlock:^(id key, TodoAreaView *areaView, BOOL *stop) {
+        areaView.delegate = self;
+    }];
 }
 
 
@@ -61,22 +69,11 @@
     [self.menuButton animateToType:plusType];
     self.settingsButton.lineColor = [UIColor whiteColor];
     
-    TodoAreaView *areaA = [self generateAreaViewWithType:TODO_TYPE_A];
-    TodoAreaView *areaB = [self generateAreaViewWithType:TODO_TYPE_B];
-    TodoAreaView *areaC = [self generateAreaViewWithType:TODO_TYPE_C];
-    TodoAreaView *areaD = [self generateAreaViewWithType:TODO_TYPE_D];
-    
-    self.areas = @{@"a":areaA,@"b":areaB,@"c":areaC,@"d":areaD};
 
-    [self.containerView addSubview:areaA];
-    [self.containerView addSubview:areaB];
-    [self.containerView addSubview:areaC];
-    [self.containerView addSubview:areaD];
-
-    [self animateAreaViewIn:areaA delay:0];
-    [self animateAreaViewIn:areaB delay:0.12];
-    [self animateAreaViewIn:areaC delay:0.24];
-    [self animateAreaViewIn:areaD delay:0.36];
+    [self animateAreaViewIn:self.areaA delay:0];
+    [self animateAreaViewIn:self.areaB delay:0.12];
+    [self animateAreaViewIn:self.areaC delay:0.24];
+    [self animateAreaViewIn:self.areaD delay:0.36];
     
     self.loaded = YES;
 }
@@ -117,29 +114,6 @@
     [self hideInputView];
 }
 
-- (TodoAreaView *)generateAreaViewWithType:(NSString *)type
-{
-    CGFloat width = CGRectGetWidth(self.containerView.bounds);
-    CGFloat height = CGRectGetHeight(self.containerView.bounds);
-    
-    CGFloat areaWidth = width/2;
-    CGFloat areaHeight = height/2;
-    
-    TodoAreaView* areaView = [[TodoAreaView alloc]initWithFrame:CGRectMake(0, 0, areaWidth, areaHeight)];
-    
-    if ([type isEqualToString:TODO_TYPE_A]) {
-        areaView.center = CGPointMake(width/4, height/4);
-    } else if ([type isEqualToString:TODO_TYPE_B]) {
-        areaView.center = CGPointMake(width/4*3, height/4);
-    } else if ([type isEqualToString:TODO_TYPE_C]) {
-        areaView.center = CGPointMake(width/4, height/4*3);
-    } else if ([type isEqualToString:TODO_TYPE_D]) {
-        areaView.center = CGPointMake(width/4*3, height/4*3);
-    }
-    areaView.delegate=self;
-    areaView.type=type;
-    return areaView;
-}
 
 - (void)todoInputView:(TodoInputView *)inputView didAddTodo:(NSDictionary*) todo withType:(NSString *) type;
 {

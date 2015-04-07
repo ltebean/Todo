@@ -12,8 +12,9 @@
 - (void)didTappedAreaView:(TodoAreaView *)areaView withTodo:(NSDictionary *)todo;
 @end
 
+IB_DESIGNABLE
 @interface TodoAreaView : UIView
 @property (nonatomic,weak) id<AreaViewDelegate> delegate;
-@property (nonatomic) NSString *type;
+@property (nonatomic) IBInspectable NSString *type;
 - (void)refreshData;
 @end;

@@ -17,9 +17,9 @@ typedef NS_ENUM(NSInteger, CellState) {
 };
 
 @interface TodoCell()
-@property CellState state;
-@property(nonatomic,strong) UIView* rightView;
-@property(nonatomic,strong) UILabel* rightLabel;
+@property (nonatomic) CellState state;
+@property (nonatomic,strong) UIView *rightView;
+@property (nonatomic,strong) UILabel *rightLabel;
 @end
 
 @implementation TodoCell

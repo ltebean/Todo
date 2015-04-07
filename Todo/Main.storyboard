@@ -1,24 +1,70 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A388b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Nfd-IO-wmO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A388b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Nfd-IO-wmO">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Todotrix-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="paa-XV-lM3"/>
+                        <viewControllerLayoutGuide type="bottom" id="6o8-CO-mbf"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view clipsSubviews="YES" contentMode="scaleAspectFit" id="6ZH-ig-Cog">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zx1-eV-T8j" customClass="TodoAreaView">
+                                <rect key="frame" x="0.0" y="64" width="160" height="252"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="type" value="a"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d1N-QK-7MT" customClass="TodoAreaView">
+                                <rect key="frame" x="160" y="64" width="160" height="252"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="type" value="b"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PIm-8E-X05" customClass="TodoAreaView">
+                                <rect key="frame" x="0.0" y="316" width="160" height="252"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="type" value="c"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b4T-MN-NTG" customClass="TodoAreaView">
+                                <rect key="frame" x="160" y="316" width="160" height="252"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="type" value="d"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="PIm-8E-X05" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="2AE-5q-sU6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="d1N-QK-7MT" secondAttribute="trailing" constant="-16" id="2eT-Eu-f0B"/>
+                            <constraint firstItem="PIm-8E-X05" firstAttribute="top" secondItem="Zx1-eV-T8j" secondAttribute="bottom" id="C4U-kW-kVM"/>
+                            <constraint firstItem="Zx1-eV-T8j" firstAttribute="top" secondItem="paa-XV-lM3" secondAttribute="bottom" id="DmT-c7-RCs"/>
+                            <constraint firstItem="PIm-8E-X05" firstAttribute="width" secondItem="b4T-MN-NTG" secondAttribute="width" id="FnU-ke-pBw"/>
+                            <constraint firstItem="Zx1-eV-T8j" firstAttribute="height" secondItem="PIm-8E-X05" secondAttribute="height" id="HOt-AH-iwX"/>
+                            <constraint firstItem="6o8-CO-mbf" firstAttribute="top" secondItem="PIm-8E-X05" secondAttribute="bottom" id="JWm-AH-BeF"/>
+                            <constraint firstItem="Zx1-eV-T8j" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="QdW-r5-y9J"/>
+                            <constraint firstItem="d1N-QK-7MT" firstAttribute="leading" secondItem="Zx1-eV-T8j" secondAttribute="trailing" id="SoD-xj-ITC"/>
+                            <constraint firstItem="6o8-CO-mbf" firstAttribute="top" secondItem="b4T-MN-NTG" secondAttribute="bottom" id="Uso-IH-7aq"/>
+                            <constraint firstItem="Zx1-eV-T8j" firstAttribute="width" secondItem="d1N-QK-7MT" secondAttribute="width" id="f90-X2-4zG"/>
+                            <constraint firstItem="d1N-QK-7MT" firstAttribute="top" secondItem="paa-XV-lM3" secondAttribute="bottom" id="fRT-S7-cFf"/>
+                            <constraint firstItem="b4T-MN-NTG" firstAttribute="leading" secondItem="PIm-8E-X05" secondAttribute="trailing" id="fVr-vq-bEq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="b4T-MN-NTG" secondAttribute="trailing" constant="-16" id="fe7-jd-FNV"/>
+                            <constraint firstItem="d1N-QK-7MT" firstAttribute="height" secondItem="b4T-MN-NTG" secondAttribute="height" id="pyp-ci-cfG"/>
+                            <constraint firstItem="b4T-MN-NTG" firstAttribute="top" secondItem="d1N-QK-7MT" secondAttribute="bottom" id="sMW-fc-3Iz"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Todotrix" id="Ke0-c0-3nc">
@@ -51,7 +97,10 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
-                        <outlet property="containerView" destination="6ZH-ig-Cog" id="DXn-30-IRi"/>
+                        <outlet property="areaA" destination="Zx1-eV-T8j" id="D8a-kf-q1z"/>
+                        <outlet property="areaB" destination="d1N-QK-7MT" id="ViN-M1-e1W"/>
+                        <outlet property="areaC" destination="PIm-8E-X05" id="9my-AE-7kN"/>
+                        <outlet property="areaD" destination="b4T-MN-NTG" id="pQp-47-5yj"/>
                         <outlet property="menuButton" destination="tO5-ib-Y2v" id="Qm0-QI-eEP"/>
                         <outlet property="settingsButton" destination="Vys-vC-9GV" id="ZOX-W7-ZWJ"/>
                         <segue destination="5JV-8t-dVz" kind="push" identifier="detail" id="jgw-rV-isd"/>
@@ -65,13 +114,16 @@
         <scene sceneID="Nwt-rX-w7E">
             <objects>
                 <viewController id="5JV-8t-dVz" customClass="TodoListViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Az1-nf-Lyc"/>
+                        <viewControllerLayoutGuide type="bottom" id="BqS-pz-nRI"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0FL-XU-uoW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="76" sectionHeaderHeight="22" sectionFooterHeight="22" id="OMv-q0-Mpk" customClass="BVReorderTableView">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="76" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="OMv-q0-Mpk" customClass="BVReorderTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="TodoCell" textLabel="3DB-P6-kH2" rowHeight="70" style="IBUITableViewCellStyleDefault" id="WvD-mp-hIB" customClass="TodoCell">
@@ -95,6 +147,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OMv-q0-Mpk" firstAttribute="leading" secondItem="0FL-XU-uoW" secondAttribute="leadingMargin" constant="-16" id="2aK-Ai-5uC"/>
+                            <constraint firstItem="BqS-pz-nRI" firstAttribute="top" secondItem="OMv-q0-Mpk" secondAttribute="bottom" id="2eN-tU-BWe"/>
+                            <constraint firstItem="OMv-q0-Mpk" firstAttribute="top" secondItem="0FL-XU-uoW" secondAttribute="top" id="rMh-K9-Y0j"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OMv-q0-Mpk" secondAttribute="trailing" constant="-16" id="tfS-2K-565"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Todo List" id="lhG-Xu-8Pd">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="7T2-i3-qrb">
@@ -262,13 +320,16 @@
         <scene sceneID="C7s-ZP-V4Z">
             <objects>
                 <viewController id="XDz-GK-fGg" customClass="FontChooserViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="h2c-zi-43K"/>
+                        <viewControllerLayoutGuide type="bottom" id="1c7-IU-h1Y"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="BOe-DE-Jmz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" sectionHeaderHeight="22" sectionFooterHeight="22" id="z6i-rt-H7s">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="z6i-rt-H7s">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FontCell" textLabel="FvA-X2-qCT" rowHeight="56" style="IBUITableViewCellStyleDefault" id="jrO-39-2j7">

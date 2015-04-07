@@ -21,8 +21,6 @@
 @property (nonatomic,strong) TodoService *todoService;
 @property (atomic) BOOL longPressed;
 @property (atomic) BOOL panning;
-@property CGPoint centerPoint;
-@property (nonatomic) CGRect pullBackArea;
 @property (nonatomic,strong) NSDictionary *todo;
 @end
 
@@ -34,11 +32,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        [[NSBundle mainBundle] loadNibNamed:@"TodoAreaView" owner:self options:nil];
-        self.autoresizingMask=UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-        self.containerView.frame = CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame));
-        [self addSubview: self.containerView];
-        [self setup];
+        [self load];
     }
     return self;
 }
@@ -48,14 +42,24 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         // Initialization code
-        [[NSBundle mainBundle] loadNibNamed:@"TodoAreaView" owner:self options:nil];
-        self.autoresizingMask=UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-        self.containerView.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame));
-        [self addSubview: self.containerView];
-        [self setup];
+        [self load];
 
     }
     return self;
+}
+
+- (void)load
+{
+    [[NSBundle bundleForClass:[self class]] loadNibNamed:@"TodoAreaView" owner:self options:nil];
+    self.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    self.containerView.frame = self.bounds;
+    [self addSubview: self.containerView];
+    [self setup];
+}
+
+- (CGPoint)centerPoint
+{
+    return CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
 }
 
 - (UIFont *)textFont
@@ -65,7 +69,6 @@
 
 - (void)setup
 {
-    self.centerPoint = self.label.center;
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
     [self.containerView addGestureRecognizer:recognizer];
     
@@ -90,8 +93,6 @@
     self.longPressed = NO;
     self.panning = NO;
     self.clipsToBounds=YES;
-    
-    self.pullBackArea= CGRectMake(self.frame.size.width/4, self.frame.size.height/4, self.frame.size.width/2, self.frame.size.height/2);
     
     [self hideEmptyLabel];
 }
@@ -175,7 +176,8 @@
     self.label.transform = CGAffineTransformMakeScale(scale,scale);
 
     if (recognizer.state == UIGestureRecognizerStateEnded) {
-        if (CGRectContainsPoint(self.pullBackArea, recognizer.view.center)) {
+        CGRect pullBackArea = CGRectMake(self.frame.size.width / 4, self.frame.size.height / 4, self.frame.size.width / 2, self.frame.size.height / 2);
+        if (CGRectContainsPoint(pullBackArea, recognizer.view.center)) {
             [self animateLabelBack];
         }else{
             [self showNext];
