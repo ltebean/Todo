@@ -10,14 +10,13 @@
 #import <Foundation/Foundation.h>
 #import "TodoService.h"
 #import "CommonUtils.h"
+#import "LabelRow.h"
 
 @interface InterfaceController : WKInterfaceController
-@property (weak, nonatomic) IBOutlet WKInterfaceLabel *label;
-@property (nonatomic, strong) NSDictionary *todo;
+@property (weak, nonatomic) IBOutlet WKInterfaceTable *table;
+@property (nonatomic, strong) NSArray *todoList;
 @property (nonatomic, strong) TodoService *service;
 @property (nonatomic, copy) NSString* todoType;
-
-@property (weak, nonatomic) IBOutlet WKInterfaceButton *doneButton;
-
-- (IBAction)doneButtonPressed;
+- (IBAction)addButtonPressed;
+- (IBAction)menuAddPressed;
 @end

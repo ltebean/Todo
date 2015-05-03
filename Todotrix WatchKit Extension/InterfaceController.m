@@ -8,9 +8,8 @@
 
 #import "InterfaceController.h"
 
-
 @interface InterfaceController()
-
+@property (nonatomic, weak) NSDictionary *todoSelected;
 @end
 
 
@@ -28,43 +27,57 @@
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
     self.service = [TodoService serviceWithType:self.todoType];
-    [self loadFirst];
-
     // Configure interface objects here.
-}
-
-- (void)loadFirst
-{
-    self.todo = [self.service loadFirst];
-    if (self.todo) {
-        [self.label setText:self.todo[@"content"]];
-        [self.doneButton setEnabled:YES];
-    } else {
-        [self.label setTextColor:[UIColor lightGrayColor]];
-        [self.label setText:@"empty"];
-        [self.doneButton setTitle:@"Add"];
-        
-    }
-}
-
-- (IBAction)doneButtonPressed {
-    if (self.todo) {
-        [self.service deleteById:self.todo[@"id"]];
-        [self loadFirst];
-    } else {
-        [self presentTextInputControllerWithSuggestions:@[] allowedInputMode:WKTextInputModeAllowAnimatedEmoji completion:^(NSArray *results) {
-            if (results && results[0]) {
-                NSDictionary* todo =@{@"id":[CommonUtils uuid], @"content":results[0]};
-                [self.service add:todo];
-                [self loadFirst];
-            }
-        }];
-    }
 }
 
 - (void)willActivate {
     // This method is called when watch view controller is about to be visible to user
     [super willActivate];
+    [self reloadAll];
+    [self updateUI];
+    
+}
+
+- (void)reloadAll
+{
+    self.todoList = [self.service loadAll];
+}
+
+- (void)updateUI
+{
+    [self.table setNumberOfRows:self.todoList.count withRowType:@"mainRowType"];
+    for (NSInteger i = 0; i < self.table.numberOfRows; i++) {
+        LabelRow* theRow = [self.table rowControllerAtIndex:i];
+        [theRow.label setText:self.todoList[i][@"content"]];
+    }
+}
+
+- (void)table:(WKInterfaceTable *)table didSelectRowAtIndex:(NSInteger)rowIndex
+{
+//    self.todoSelected = self.todoList[rowIndex];
+
+}
+
+- (IBAction)menuAddPressed {
+    [self promptAdd];
+}
+
+- (IBAction)addButtonPressed {
+    [self promptAdd];
+}
+
+- (void)promptAdd
+{
+    [self presentTextInputControllerWithSuggestions:@[] allowedInputMode:WKTextInputModeAllowAnimatedEmoji completion:^(NSArray *results) {
+        if (results && results[0]) {
+            if (![results[0] isKindOfClass:[NSString class]]) {
+                return;
+            }
+            NSDictionary* todo = @{@"id":[CommonUtils uuid], @"content":results[0]};
+            [self.service add:todo];
+            [self reloadAll];
+        }
+    }];
 }
 
 - (void)didDeactivate {
