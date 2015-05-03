@@ -8,18 +8,12 @@
 	<string>Todotrix</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
-	<key>CFBundleIcons</key>
-	<dict/>
-	<key>CFBundleIcons~ipad</key>
-	<dict/>
 	<key>CFBundleIdentifier</key>
-	<string>io.ltebean.todo.Todotrix</string>
+	<string>io.ltebean.todo.watchkitextension</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>Todotrix</string>
-	<key>CFBundlePackageType</key>
-	<string>XPC!</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.4.0</string>
 	<key>CFBundleSignature</key>
@@ -28,10 +22,15 @@
 	<string>1</string>
 	<key>NSExtension</key>
 	<dict>
-		<key>NSExtensionMainStoryboard</key>
-		<string>MainInterface</string>
+		<key>NSExtensionAttributes</key>
+		<dict>
+			<key>WKAppBundleIdentifier</key>
+			<string>io.ltebean.todo.watchkitapp</string>
+		</dict>
 		<key>NSExtensionPointIdentifier</key>
-		<string>com.apple.widget-extension</string>
+		<string>com.apple.watchkit</string>
 	</dict>
+	<key>RemoteInterfacePrincipalClass</key>
+	<string>InterfaceController</string>
 </dict>
 </plist>

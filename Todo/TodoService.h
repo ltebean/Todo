@@ -15,15 +15,13 @@
 
 @interface TodoService : NSObject
 
-@property(nonatomic,strong) NSString *type;
+@property (nonatomic,strong) NSString *type;
 
-+ (TodoService *) serviceWithType:(NSString *) type;
-- (NSArray *) loadAll;
-- (NSDictionary *) loadFirst;
-- (void) add:(NSDictionary *) todo;
-- (void) deleteById:(NSString *)todoId;
-- (void) deleteFirst;
-
-- (void) saveAll:(NSArray *) todoList;
-
++ (TodoService *)serviceWithType:(NSString *)type;
+- (NSArray *)loadAll;
+- (NSDictionary *)loadFirst;
+- (void)add:(NSDictionary *) todo;
+- (void)deleteById:(NSString *)todoId;
+- (void)deleteFirst;
+- (void)saveAll:(NSArray *)todoList;
 @end

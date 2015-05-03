@@ -12,6 +12,17 @@
 		49CA93AF1A0CE9020069BABB /* TodoInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CA93AE1A0CE9020069BABB /* TodoInputView.m */; };
 		49CA93B11A0CE91D0069BABB /* TodoInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49CA93B01A0CE91D0069BABB /* TodoInputView.xib */; };
 		FA171B741A109919000DF159 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA171B731A109919000DF159 /* SettingsViewController.m */; };
+		FA3435E81AF5030B00D225BC /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3435E71AF5030B00D225BC /* InterfaceController.m */; };
+		FA3435EB1AF5030B00D225BC /* GlanceController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3435EA1AF5030B00D225BC /* GlanceController.m */; };
+		FA3435ED1AF5030B00D225BC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA3435EC1AF5030B00D225BC /* Images.xcassets */; };
+		FA3435F11AF5030B00D225BC /* Todotrix WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = FA3435F01AF5030B00D225BC /* Todotrix WatchKit App.app */; };
+		FA3435F91AF5030C00D225BC /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA3435F71AF5030C00D225BC /* Interface.storyboard */; };
+		FA3435FB1AF5030C00D225BC /* WatchImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA3435FA1AF5030C00D225BC /* WatchImages.xcassets */; };
+		FA3435FE1AF5030C00D225BC /* Todotrix WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FA3435E21AF5030B00D225BC /* Todotrix WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FA3436051AF5079700D225BC /* TodoService.m in Sources */ = {isa = PBXBuildFile; fileRef = FA492C621A0CB1A50030FE27 /* TodoService.m */; };
+		FA3436081AF50A3B00D225BC /* SecondInterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3436071AF50A3B00D225BC /* SecondInterfaceController.m */; };
+		FA34360B1AF50A4D00D225BC /* ThirdInterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA34360A1AF50A4D00D225BC /* ThirdInterfaceController.m */; };
+		FA34360C1AF50E4700D225BC /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4926D17E1A0DD635008F68A9 /* CommonUtils.m */; };
 		FA3D24CF1A15A3E5003A590E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3D24CE1A15A3E5003A590E /* libz.dylib */; };
 		FA3D24D41A15A431003A590E /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3D24D11A15A431003A590E /* libMobClickLibrary.a */; };
 		FA444F7B1ACEE4D400DFCDD0 /* FontChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA444F7A1ACEE4D400DFCDD0 /* FontChooserViewController.m */; };
@@ -42,6 +53,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		FA3435F21AF5030B00D225BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA492C171A0CB1890030FE27 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA3435EF1AF5030B00D225BC;
+			remoteInfo = "Todotrix WatchKit App";
+		};
+		FA3435FC1AF5030C00D225BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA492C171A0CB1890030FE27 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA3435E11AF5030B00D225BC;
+			remoteInfo = "Todotrix WatchKit Extension";
+		};
 		FA88CA411A1450780044EBE1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FA492C171A0CB1890030FE27 /* Project object */;
@@ -58,6 +83,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				FA3435FE1AF5030C00D225BC /* Todotrix WatchKit Extension.appex in Embed App Extensions */,
 				FA88CA431A1450780044EBE1 /* Todotrix.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -75,6 +101,21 @@
 		49CA93B01A0CE91D0069BABB /* TodoInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodoInputView.xib; sourceTree = "<group>"; };
 		FA171B721A109919000DF159 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		FA171B731A109919000DF159 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		FA3435E21AF5030B00D225BC /* Todotrix WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Todotrix WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA3435E51AF5030B00D225BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA3435E61AF5030B00D225BC /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
+		FA3435E71AF5030B00D225BC /* InterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
+		FA3435E91AF5030B00D225BC /* GlanceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlanceController.h; sourceTree = "<group>"; };
+		FA3435EA1AF5030B00D225BC /* GlanceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlanceController.m; sourceTree = "<group>"; };
+		FA3435EC1AF5030B00D225BC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		FA3435F01AF5030B00D225BC /* Todotrix WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Todotrix WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA3435F61AF5030C00D225BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA3435F81AF5030C00D225BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		FA3435FA1AF5030C00D225BC /* WatchImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = WatchImages.xcassets; sourceTree = "<group>"; };
+		FA3436061AF50A3B00D225BC /* SecondInterfaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondInterfaceController.h; sourceTree = "<group>"; };
+		FA3436071AF50A3B00D225BC /* SecondInterfaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondInterfaceController.m; sourceTree = "<group>"; };
+		FA3436091AF50A4D00D225BC /* ThirdInterfaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdInterfaceController.h; sourceTree = "<group>"; };
+		FA34360A1AF50A4D00D225BC /* ThirdInterfaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdInterfaceController.m; sourceTree = "<group>"; };
 		FA3D24CE1A15A3E5003A590E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		FA3D24D11A15A431003A590E /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		FA3D24D21A15A431003A590E /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
@@ -120,6 +161,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		FA3435DF1AF5030B00D225BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA492C1C1A0CB1890030FE27 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -149,6 +197,49 @@
 			name = utils;
 			sourceTree = "<group>";
 		};
+		FA3435E31AF5030B00D225BC /* Todotrix WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				FA3435E61AF5030B00D225BC /* InterfaceController.h */,
+				FA3435E71AF5030B00D225BC /* InterfaceController.m */,
+				FA3436061AF50A3B00D225BC /* SecondInterfaceController.h */,
+				FA3436071AF50A3B00D225BC /* SecondInterfaceController.m */,
+				FA3436091AF50A4D00D225BC /* ThirdInterfaceController.h */,
+				FA34360A1AF50A4D00D225BC /* ThirdInterfaceController.m */,
+				FA3435E91AF5030B00D225BC /* GlanceController.h */,
+				FA3435EA1AF5030B00D225BC /* GlanceController.m */,
+				FA3435EC1AF5030B00D225BC /* Images.xcassets */,
+				FA3435E41AF5030B00D225BC /* Supporting Files */,
+			);
+			path = "Todotrix WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		FA3435E41AF5030B00D225BC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FA3435E51AF5030B00D225BC /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FA3435F41AF5030B00D225BC /* Todotrix WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				FA3435F71AF5030C00D225BC /* Interface.storyboard */,
+				FA3435FA1AF5030C00D225BC /* WatchImages.xcassets */,
+				FA3435F51AF5030C00D225BC /* Supporting Files */,
+			);
+			path = "Todotrix WatchKit App";
+			sourceTree = "<group>";
+		};
+		FA3435F51AF5030C00D225BC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FA3435F61AF5030C00D225BC /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		FA3D24D01A15A431003A590E /* UMAnalytics_Sdk_3.1.9 */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +256,8 @@
 				FA492C211A0CB1890030FE27 /* Todo */,
 				FA492C3B1A0CB1890030FE27 /* TodoTests */,
 				FA88CA391A1450780044EBE1 /* TodoExtenstion */,
+				FA3435E31AF5030B00D225BC /* Todotrix WatchKit Extension */,
+				FA3435F41AF5030B00D225BC /* Todotrix WatchKit App */,
 				FA88CA361A1450780044EBE1 /* Frameworks */,
 				FA492C201A0CB1890030FE27 /* Products */,
 			);
@@ -175,6 +268,8 @@
 			children = (
 				FA492C1F1A0CB1890030FE27 /* Todotrix.app */,
 				FA88CA351A1450780044EBE1 /* Todotrix.appex */,
+				FA3435E21AF5030B00D225BC /* Todotrix WatchKit Extension.appex */,
+				FA3435F01AF5030B00D225BC /* Todotrix WatchKit App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -312,6 +407,39 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		FA3435E11AF5030B00D225BC /* Todotrix WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA3436041AF5030C00D225BC /* Build configuration list for PBXNativeTarget "Todotrix WatchKit Extension" */;
+			buildPhases = (
+				FA3435DE1AF5030B00D225BC /* Sources */,
+				FA3435DF1AF5030B00D225BC /* Frameworks */,
+				FA3435E01AF5030B00D225BC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA3435F31AF5030B00D225BC /* PBXTargetDependency */,
+			);
+			name = "Todotrix WatchKit Extension";
+			productName = "Todotrix WatchKit Extension";
+			productReference = FA3435E21AF5030B00D225BC /* Todotrix WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit-extension";
+		};
+		FA3435EF1AF5030B00D225BC /* Todotrix WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA3436031AF5030C00D225BC /* Build configuration list for PBXNativeTarget "Todotrix WatchKit App" */;
+			buildPhases = (
+				FA3435EE1AF5030B00D225BC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Todotrix WatchKit App";
+			productName = "Todotrix WatchKit App";
+			productReference = FA3435F01AF5030B00D225BC /* Todotrix WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp";
+		};
 		FA492C1E1A0CB1890030FE27 /* Todo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA492C421A0CB1890030FE27 /* Build configuration list for PBXNativeTarget "Todo" */;
@@ -325,6 +453,7 @@
 			);
 			dependencies = (
 				FA88CA421A1450780044EBE1 /* PBXTargetDependency */,
+				FA3435FD1AF5030C00D225BC /* PBXTargetDependency */,
 			);
 			name = Todo;
 			productName = Todo;
@@ -357,6 +486,14 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = ltebean;
 				TargetAttributes = {
+					FA3435E11AF5030B00D225BC = {
+						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = LUAG5Z5ST3;
+					};
+					FA3435EF1AF5030B00D225BC = {
+						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = LUAG5Z5ST3;
+					};
 					FA492C1E1A0CB1890030FE27 = {
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = LUAG5Z5ST3;
@@ -395,11 +532,31 @@
 			targets = (
 				FA492C1E1A0CB1890030FE27 /* Todo */,
 				FA88CA341A1450780044EBE1 /* TodoExtenstion */,
+				FA3435E11AF5030B00D225BC /* Todotrix WatchKit Extension */,
+				FA3435EF1AF5030B00D225BC /* Todotrix WatchKit App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		FA3435E01AF5030B00D225BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA3435ED1AF5030B00D225BC /* Images.xcassets in Resources */,
+				FA3435F11AF5030B00D225BC /* Todotrix WatchKit App.app in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA3435EE1AF5030B00D225BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA3435F91AF5030C00D225BC /* Interface.storyboard in Resources */,
+				FA3435FB1AF5030C00D225BC /* WatchImages.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA492C1D1A0CB1890030FE27 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -424,6 +581,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		FA3435DE1AF5030B00D225BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA34360C1AF50E4700D225BC /* CommonUtils.m in Sources */,
+				FA34360B1AF50A4D00D225BC /* ThirdInterfaceController.m in Sources */,
+				FA3436051AF5079700D225BC /* TodoService.m in Sources */,
+				FA3435E81AF5030B00D225BC /* InterfaceController.m in Sources */,
+				FA3435EB1AF5030B00D225BC /* GlanceController.m in Sources */,
+				FA3436081AF50A3B00D225BC /* SecondInterfaceController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA492C1B1A0CB1890030FE27 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -462,6 +632,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		FA3435F31AF5030B00D225BC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA3435EF1AF5030B00D225BC /* Todotrix WatchKit App */;
+			targetProxy = FA3435F21AF5030B00D225BC /* PBXContainerItemProxy */;
+		};
+		FA3435FD1AF5030C00D225BC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA3435E11AF5030B00D225BC /* Todotrix WatchKit Extension */;
+			targetProxy = FA3435FC1AF5030C00D225BC /* PBXContainerItemProxy */;
+		};
 		FA88CA421A1450780044EBE1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FA88CA341A1450780044EBE1 /* TodoExtenstion */;
@@ -469,7 +649,90 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		FA3435F71AF5030C00D225BC /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA3435F81AF5030C00D225BC /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		FA3435FF1AF5030C00D225BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Cong Yu (LUAG5Z5ST3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cong Yu (LUAG5Z5ST3)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Todotrix WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "f0ee04c4-c4a2-4ea1-977c-d8f2ee147fa8";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		FA3436001AF5030C00D225BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Cong Yu (LUAG5Z5ST3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cong Yu (LUAG5Z5ST3)";
+				COPY_PHASE_STRIP = NO;
+				INFOPLIST_FILE = "Todotrix WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "f0ee04c4-c4a2-4ea1-977c-d8f2ee147fa8";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		FA3436011AF5030C00D225BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = WatchAppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IBSC_MODULE = Todotrix_WatchKit_Extension;
+				INFOPLIST_FILE = "Todotrix WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Debug;
+		};
+		FA3436021AF5030C00D225BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = WatchAppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				IBSC_MODULE = Todotrix_WatchKit_Extension;
+				INFOPLIST_FILE = "Todotrix WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Release;
+		};
 		FA492C401A0CB1890030FE27 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -558,9 +821,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Todo/Todotrix.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Cong Yu (6T4Q98EJT3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Cong Yu (6T4Q98EJT3)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Cong Yu (LUAG5Z5ST3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cong Yu (LUAG5Z5ST3)";
 				INFOPLIST_FILE = Todo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -577,9 +841,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Todo/Todotrix.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Cong Yu (6T4Q98EJT3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Cong Yu (6T4Q98EJT3)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Cong Yu (LUAG5Z5ST3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cong Yu (LUAG5Z5ST3)";
 				INFOPLIST_FILE = Todo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -597,8 +862,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Todo/Todotrix.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Cong Yu (6T4Q98EJT3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Cong Yu (6T4Q98EJT3)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Cong Yu (LUAG5Z5ST3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cong Yu (LUAG5Z5ST3)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -617,8 +882,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Todo/Todotrix.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Cong Yu (6T4Q98EJT3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Cong Yu (6T4Q98EJT3)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Cong Yu (LUAG5Z5ST3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cong Yu (LUAG5Z5ST3)";
 				INFOPLIST_FILE = TodoExtenstion/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -631,6 +896,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		FA3436031AF5030C00D225BC /* Build configuration list for PBXNativeTarget "Todotrix WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA3436011AF5030C00D225BC /* Debug */,
+				FA3436021AF5030C00D225BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA3436041AF5030C00D225BC /* Build configuration list for PBXNativeTarget "Todotrix WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA3435FF1AF5030C00D225BC /* Debug */,
+				FA3436001AF5030C00D225BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FA492C1A1A0CB1890030FE27 /* Build configuration list for PBXProject "Todo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
