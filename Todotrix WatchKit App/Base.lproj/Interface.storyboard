@@ -11,16 +11,17 @@
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController">
                     <items>
                         <label alignment="left" text="important &amp; urgent" numberOfLines="0" id="4w9-pn-ehr">
-                            <color key="textColor" red="0.2334420093" green="0.76156693959999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.0" green="0.68627450980000004" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                         </label>
                         <table alignment="left" id="9Sm-Ol-MMO">
                             <items>
                                 <tableRow identifier="mainRowType" id="lN4-mD-kY9" customClass="LabelRow">
-                                    <group key="rootItem" width="1" alignment="left" id="GGR-D3-x2f">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" contentMode="scaleAspectFill" id="GGR-D3-x2f">
                                         <items>
-                                            <label alignment="left" text="Label" numberOfLines="0" id="Ycf-Zg-pTl"/>
+                                            <label alignment="left" verticalAlignment="center" text="Label" textAlignment="left" numberOfLines="0" id="Ycf-Zg-pTl"/>
                                         </items>
+                                        <edgeInsets key="margins" left="8" right="8" top="8" bottom="8"/>
                                     </group>
                                     <connections>
                                         <outlet property="label" destination="Ycf-Zg-pTl" id="1zH-w5-4rb"/>
@@ -29,6 +30,7 @@
                             </items>
                         </table>
                         <button width="1" alignment="left" verticalAlignment="bottom" title="Add" id="WhL-ea-xtn">
+                            <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="addButtonPressed" destination="AgC-eL-Hgc" id="6GD-Nm-dGX"/>
                             </connections>
@@ -46,104 +48,108 @@
                     </menu>
                     <connections>
                         <outlet property="table" destination="9Sm-Ol-MMO" id="ulO-en-UQz"/>
-                        <segue destination="tYS-vn-u0j" kind="relationship" relationship="nextPage" id="8xT-sU-Qmh"/>
+                        <segue destination="ola-d6-CaX" kind="relationship" relationship="nextPage" id="Oaj-yH-Od3"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="-53" y="137"/>
+            <point key="canvasLocation" x="-68" y="137"/>
         </scene>
         <!--Second Interface Controller-->
-        <scene sceneID="dUh-Sr-3IP">
+        <scene sceneID="enL-cF-vgc">
             <objects>
-                <controller id="tYS-vn-u0j" customClass="SecondInterfaceController">
+                <controller id="ola-d6-CaX" customClass="SecondInterfaceController">
                     <items>
-                        <label alignment="left" text="urgent" numberOfLines="0" id="hWh-bg-rzg">
-                            <color key="textColor" red="0.2334420093" green="0.76156693959999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <label alignment="left" text="urgent" numberOfLines="0" id="iQj-d0-NWn">
+                            <color key="textColor" red="0.0" green="0.68627450980000004" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                         </label>
-                        <table alignment="left" id="hQX-Vo-FLZ">
+                        <table alignment="left" id="RgI-Nf-KSa">
                             <items>
-                                <tableRow identifier="mainRowType" id="eJr-Ms-pdq" customClass="LabelRow">
-                                    <group key="rootItem" width="1" alignment="left" id="vPt-Et-bhf">
+                                <tableRow identifier="mainRowType" id="d5P-US-r6H" customClass="LabelRow">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" contentMode="scaleAspectFill" id="Jqh-ol-ILE">
                                         <items>
-                                            <label alignment="left" text="Label" numberOfLines="0" id="USQ-AE-af2"/>
+                                            <label alignment="left" verticalAlignment="center" text="Label" textAlignment="left" numberOfLines="0" id="RVr-B1-ALS"/>
                                         </items>
+                                        <edgeInsets key="margins" left="8" right="8" top="8" bottom="8"/>
                                     </group>
                                     <connections>
-                                        <outlet property="label" destination="USQ-AE-af2" id="caM-LJ-EO4"/>
+                                        <outlet property="label" destination="RVr-B1-ALS" id="MfS-7k-SOA"/>
                                     </connections>
                                 </tableRow>
                             </items>
                         </table>
-                        <button width="1" alignment="left" verticalAlignment="bottom" title="Add" id="Lit-ck-WaI">
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="Add" id="9GE-Fq-W8C">
+                            <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="addButtonPressed" destination="tYS-vn-u0j" id="oZA-ED-4DG"/>
+                                <action selector="addButtonPressed" destination="ola-d6-CaX" id="EhW-f0-bgz"/>
                             </connections>
                         </button>
                     </items>
-                    <menu key="menu" id="vQw-UW-4a7">
+                    <menu key="menu" id="TK7-6l-zdQ">
                         <items>
-                            <menuItem title="Add" icon="add" id="dRW-TF-cKT">
+                            <menuItem title="Add" icon="add" id="lkT-vp-QXt">
                                 <connections>
-                                    <action selector="menuAddPressed" destination="tYS-vn-u0j" id="hxO-nP-ql9"/>
+                                    <action selector="menuAddPressed" destination="ola-d6-CaX" id="lTW-Vl-Dqj"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Cancel" icon="decline" id="IQZ-cn-y6a"/>
+                            <menuItem title="Cancel" icon="decline" id="bNa-F7-iXe"/>
                         </items>
                     </menu>
                     <connections>
-                        <outlet property="table" destination="hQX-Vo-FLZ" id="fD5-aN-R3n"/>
-                        <segue destination="bi1-GC-k5l" kind="relationship" relationship="nextPage" id="pqJ-kY-VME"/>
+                        <outlet property="table" destination="RgI-Nf-KSa" id="SZ3-BM-TlD"/>
+                        <segue destination="doc-99-Ctg" kind="relationship" relationship="nextPage" id="obd-UK-mqq"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="188" y="137"/>
+            <point key="canvasLocation" x="144" y="137"/>
         </scene>
         <!--Third Interface Controller-->
-        <scene sceneID="sne-HB-bRp">
+        <scene sceneID="SLh-Qc-dAG">
             <objects>
-                <controller id="bi1-GC-k5l" customClass="ThirdInterfaceController">
+                <controller id="doc-99-Ctg" customClass="ThirdInterfaceController">
                     <items>
-                        <label alignment="left" text="important" numberOfLines="0" id="g7u-YQ-dYf">
-                            <color key="textColor" red="0.2334420093" green="0.76156693959999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <label alignment="left" text="important" numberOfLines="0" id="sjB-nc-46c">
+                            <color key="textColor" red="0.0" green="0.68627450980000004" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                         </label>
-                        <table alignment="left" id="2H9-er-AIT">
+                        <table alignment="left" id="ooh-3U-cUG">
                             <items>
-                                <tableRow identifier="mainRowType" id="ZBi-kK-NhM" customClass="LabelRow">
-                                    <group key="rootItem" width="1" alignment="left" id="SGv-f8-8Qy">
+                                <tableRow identifier="mainRowType" id="oUJ-wl-NzJ" customClass="LabelRow">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" contentMode="scaleAspectFill" id="wlr-ie-D8l">
                                         <items>
-                                            <label alignment="left" text="Label" numberOfLines="0" id="d84-LY-t1w"/>
+                                            <label alignment="left" verticalAlignment="center" text="Label" textAlignment="left" numberOfLines="0" id="ewk-ne-j3Q"/>
                                         </items>
+                                        <edgeInsets key="margins" left="8" right="8" top="8" bottom="8"/>
                                     </group>
                                     <connections>
-                                        <outlet property="label" destination="d84-LY-t1w" id="TJO-wI-zM3"/>
+                                        <outlet property="label" destination="ewk-ne-j3Q" id="au1-Ob-zvb"/>
                                     </connections>
                                 </tableRow>
                             </items>
                         </table>
-                        <button width="1" alignment="left" verticalAlignment="bottom" title="Add" id="AlQ-Hu-Ecv">
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="Add" id="wI5-P8-asc">
+                            <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="addButtonPressed" destination="bi1-GC-k5l" id="Igc-Pu-pmc"/>
+                                <action selector="addButtonPressed" destination="doc-99-Ctg" id="VlW-VT-ymi"/>
                             </connections>
                         </button>
                     </items>
-                    <menu key="menu" id="98X-K6-EsI">
+                    <menu key="menu" id="jVS-Pp-RUP">
                         <items>
-                            <menuItem title="Add" icon="add" id="AiK-jq-1QJ">
+                            <menuItem title="Add" icon="add" id="KeF-hR-hh0">
                                 <connections>
-                                    <action selector="menuAddPressed" destination="bi1-GC-k5l" id="ft8-pl-jZS"/>
+                                    <action selector="menuAddPressed" destination="doc-99-Ctg" id="sbD-Eu-dYa"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Cancel" icon="decline" id="d4H-bQ-MZR"/>
+                            <menuItem title="Cancel" icon="decline" id="ocd-b5-kq4"/>
                         </items>
                     </menu>
                     <connections>
-                        <outlet property="table" destination="2H9-er-AIT" id="Rsl-bH-q8c"/>
+                        <outlet property="table" destination="ooh-3U-cUG" id="7Oz-aA-lYy"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="412" y="137"/>
+            <point key="canvasLocation" x="352" y="137"/>
         </scene>
     </scenes>
 </document>

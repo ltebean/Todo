@@ -27,7 +27,7 @@
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
     self.service = [TodoService serviceWithType:self.todoType];
-    // Configure interface objects here.
+
 }
 
 - (void)willActivate {
@@ -35,7 +35,6 @@
     [super willActivate];
     [self reloadAll];
     [self updateUI];
-    
 }
 
 - (void)reloadAll
