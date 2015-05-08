@@ -19,9 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet UILabel *emptyLabel;
 @property (nonatomic,strong) TodoService *todoService;
-@property (atomic) BOOL longPressed;
-@property (atomic) BOOL panning;
 @property (nonatomic,strong) NSDictionary *todo;
+@property (nonatomic) CGPoint dragBeginPoint;
 @end
 
 @implementation TodoAreaView
@@ -77,23 +76,14 @@
     
     self.label.userInteractionEnabled = YES;
 
-    
     UILongPressGestureRecognizer* longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
     longPressGesture.minimumPressDuration = 0.3;
     longPressGesture.numberOfTouchesRequired=1;
     longPressGesture.allowableMovement=10;
     longPressGesture.delegate=self;
     [self.label addGestureRecognizer:longPressGesture];
-    
-    
-    UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(handlePan:)];
-    panGesture.delegate=self;
-    [self.label addGestureRecognizer:panGesture];
-    
-    self.longPressed = NO;
-    self.panning = NO;
+
     self.clipsToBounds=YES;
-    
     [self hideEmptyLabel];
 }
 
@@ -136,54 +126,43 @@
     self.label.hidden=NO;
 }
 
-- (void)handleLongPress:(UILongPressGestureRecognizer *)recognizer{
+- (void)handleLongPress:(UILongPressGestureRecognizer *)recognizer
+{
     if (recognizer.state == UIGestureRecognizerStateBegan){
-        self.longPressed=YES;
+        self.dragBeginPoint = [recognizer locationInView:self];
         [UIView animateWithDuration:0.1 animations:^{
             self.label.transform = CGAffineTransformMakeScale(LABEL_ZOOM, LABEL_ZOOM);
         }];
        
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
-        self.longPressed=NO;
-        if (!self.panning) {
-            [self animateLabelBack];
-        }
-    }
-}
-
-- (void)handlePan:(UIPanGestureRecognizer *)recognizer
-{
-    if (!self.longPressed && !self.panning) {
-        return;
-    }
-    self.panning=YES;
-    CGPoint translation = [recognizer translationInView:self];
-
-    UIView *view = recognizer.view;
-    view.center = CGPointMake(view.center.x + translation.x,
-                              view.center.y + translation.y);
-    
-    [recognizer setTranslation:CGPointMake(0, 0) inView:self];
-    
-    CGPoint center = self.centerPoint;
-    
-    CGFloat offset = MAX(fabs(center.x-view.center.x), fabs(center.y-view.center.y));
-    
-    CGFloat percent = offset/(CGRectGetWidth(self.bounds));
-    
-    self.label.alpha = 1 - 1 * percent;
-    CGFloat scale = LABEL_ZOOM - LABEL_ZOOM * percent / 2;
-    self.label.transform = CGAffineTransformMakeScale(scale,scale);
-
-    if (recognizer.state == UIGestureRecognizerStateEnded) {
         CGRect pullBackArea = CGRectMake(self.frame.size.width / 4, self.frame.size.height / 4, self.frame.size.width / 2, self.frame.size.height / 2);
         if (CGRectContainsPoint(pullBackArea, recognizer.view.center)) {
             [self animateLabelBack];
         }else{
             [self showNext];
         }
+    } else {
+        CGPoint location = [recognizer locationInView:self];
+        
+        UIView *view = recognizer.view;
+        CGPoint center = self.centerPoint;
+
+        CGFloat translationX = location.x - self.dragBeginPoint.x;
+        CGFloat translationY = location.y - self.dragBeginPoint.y;
+        view.center = CGPointMake(center.x + translationX,
+                                  center.y + translationY);
+        
+        CGFloat offset = MAX(fabs(center.x - view.center.x), fabs(center.y - view.center.y));
+        
+        CGFloat percent = offset / (CGRectGetWidth(self.bounds));
+        
+        self.label.alpha = 1 - 1 * percent;
+        CGFloat scale = LABEL_ZOOM - LABEL_ZOOM * percent / 2;
+        self.label.transform = CGAffineTransformMakeScale(scale, scale);
+
     }
 }
+
 
 - (void)showNext
 {
@@ -197,7 +176,7 @@
         [UIView animateWithDuration:0.6 delay:0 usingSpringWithDamping:0.75 initialSpringVelocity:0 options:0 animations:^{
             self.label.transform = CGAffineTransformIdentity;
         } completion:^(BOOL finished) {
-            self.panning = NO;
+
         }];
     }];
     
@@ -210,8 +189,7 @@
         self.label.center = [self centerPoint];
         self.label.transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
-        self.panning = NO;
-        self.longPressed = NO;
+
     }];
 }
 
@@ -266,28 +244,7 @@
 
 - (void)tapped:(UITapGestureRecognizer*)recognizer
 {
-    if (self.longPressed) {
-        return;
-    }
     [self.delegate didTappedAreaView:self withTodo:self.todo];
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
-{
-    if (!self.panning && [otherGestureRecognizer isKindOfClass:[UISwipeGestureRecognizer class]]) {
-        return YES;
-    }
-    if (![otherGestureRecognizer.view isDescendantOfView:self]) {
-        return NO;
-    }
-    return YES;
-}
-
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldBeRequiredToFailByGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
-{
-    if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]) {
-        return YES;
-    }
-    return NO;
-}
 @end
