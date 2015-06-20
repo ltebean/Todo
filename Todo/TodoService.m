@@ -21,7 +21,7 @@
 
 - (NSArray *)loadAll
 {
-    NSArray* data=[NSArray arrayWithContentsOfFile:[self filePath]];
+    NSArray* data = [NSArray arrayWithContentsOfFile:[self filePath]];
     if (!data) {
         data = [NSArray array];
     }

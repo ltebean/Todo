@@ -17,6 +17,7 @@
 @interface TodoAreaView()<UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet UILabel *moreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *emptyLabel;
 @property (nonatomic,strong) TodoService *todoService;
 @property (nonatomic,strong) NSDictionary *todo;
@@ -98,32 +99,40 @@
 {
     self.label.font = [self textFont];
     self.emptyLabel.font = [self textFont];
-    self.todo = [self.todoService loadFirst];
-    if (!self.todo) {
+    NSArray *todoList = [self.todoService loadAll];
+    if (!todoList || todoList.count == 0) {
         [self showEmptyLabel];
     }else {
         [self hideEmptyLabel];
-        
+        self.todo = todoList[0];
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
         paragraphStyle.lineSpacing = 5;
         paragraphStyle.alignment = self.label.textAlignment;
         NSDictionary *attributes = @{NSParagraphStyleAttributeName: paragraphStyle};
         NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:self.todo[@"content"] attributes:attributes];
         self.label.attributedText = attributedText;
+        
+        if (todoList.count > 1) {
+            self.moreLabel.text = [NSString stringWithFormat:@"%lu more", todoList.count - 1];
+        } else {
+            self.moreLabel.text = @"";
+        }
     }
 }
 
 
 - (void)showEmptyLabel
 {
-    self.emptyLabel.hidden=NO;
-    self.label.hidden=YES;
+    self.emptyLabel.hidden = NO;
+    self.label.hidden = YES;
+    self.moreLabel.hidden = YES;
 }
 
 - (void)hideEmptyLabel
 {
     self.emptyLabel.hidden=YES;
-    self.label.hidden=NO;
+    self.label.hidden = NO;
+    self.moreLabel.hidden = NO;
 }
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)recognizer
@@ -226,7 +235,7 @@
 
 - (TodoTypeLabel *)generateImportantLabel
 {
-    TodoTypeLabel *label=[[TodoTypeLabel alloc]initWithFrame:CGRectMake(0, 0, 0, 26)];
+    TodoTypeLabel *label= [[TodoTypeLabel alloc]initWithFrame:CGRectMake(0, 0, 0, 26)];
     label.text = @"important";
     label.layer.cornerRadius = 13.0f;
     label.clipsToBounds=YES;
@@ -235,7 +244,7 @@
 
 - (TodoTypeLabel *)generateUrgentLabel
 {
-    TodoTypeLabel* label=[[TodoTypeLabel alloc]initWithFrame:CGRectMake(0, 0, 0, 26)];
+    TodoTypeLabel* label= [[TodoTypeLabel alloc]initWithFrame:CGRectMake(0, 0, 0, 26)];
     label.text = @"urgent";
     label.layer.cornerRadius=13.0f;
     label.clipsToBounds = YES;
