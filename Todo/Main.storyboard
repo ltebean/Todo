@@ -328,7 +328,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="z6i-rt-H7s">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="z6i-rt-H7s">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -351,6 +351,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="z6i-rt-H7s" firstAttribute="leading" secondItem="BOe-DE-Jmz" secondAttribute="leading" id="5mP-ff-zoC"/>
+                            <constraint firstAttribute="bottom" secondItem="z6i-rt-H7s" secondAttribute="bottom" id="Avg-o9-0if"/>
+                            <constraint firstItem="z6i-rt-H7s" firstAttribute="top" secondItem="BOe-DE-Jmz" secondAttribute="top" id="HDe-jM-34M"/>
+                            <constraint firstAttribute="trailing" secondItem="z6i-rt-H7s" secondAttribute="trailing" id="TF4-Kh-2gS"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Fonts" id="v9H-d2-Nla"/>
                     <connections>
