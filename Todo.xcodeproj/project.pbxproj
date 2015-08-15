@@ -41,6 +41,8 @@
 		FA492C761A0CB1A50030FE27 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA492C661A0CB1A50030FE27 /* ViewController.m */; };
 		FA492C7D1A0CB5570030FE27 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA492C7B1A0CB5570030FE27 /* LaunchScreen.xib */; };
 		FA492C7E1A0CB5570030FE27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA492C7C1A0CB5570030FE27 /* Main.storyboard */; };
+		FA720F571B724F0000089138 /* SwipeToDeleteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA720F561B724F0000089138 /* SwipeToDeleteCell.m */; };
+		FA720F5A1B724FBF00089138 /* UIView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = FA720F591B724FBF00089138 /* UIView+Helpers.m */; };
 		FA88CA381A1450780044EBE1 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA88CA371A1450780044EBE1 /* NotificationCenter.framework */; };
 		FA88CA3E1A1450780044EBE1 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA88CA3D1A1450780044EBE1 /* TodayViewController.m */; };
 		FA88CA401A1450780044EBE1 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA88CA3F1A1450780044EBE1 /* MainInterface.storyboard */; };
@@ -152,6 +154,10 @@
 		FA492C661A0CB1A50030FE27 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		FA492C7B1A0CB5570030FE27 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		FA492C7C1A0CB5570030FE27 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		FA720F551B724F0000089138 /* SwipeToDeleteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeToDeleteCell.h; sourceTree = "<group>"; };
+		FA720F561B724F0000089138 /* SwipeToDeleteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeToDeleteCell.m; sourceTree = "<group>"; };
+		FA720F581B724FBF00089138 /* UIView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Helpers.h"; sourceTree = "<group>"; };
+		FA720F591B724FBF00089138 /* UIView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helpers.m"; sourceTree = "<group>"; };
 		FA766C881A14AA6400D35B7C /* Todotrix.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Todotrix.entitlements; sourceTree = "<group>"; };
 		FA88CA351A1450780044EBE1 /* Todotrix.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Todotrix.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA88CA371A1450780044EBE1 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -342,6 +348,10 @@
 				4926D1811A0E09EB008F68A9 /* BVReorderTableView.m */,
 				FA492C4C1A0CB1A50030FE27 /* LTPopButton.h */,
 				FA492C4D1A0CB1A50030FE27 /* LTPopButton.m */,
+				FA720F551B724F0000089138 /* SwipeToDeleteCell.h */,
+				FA720F561B724F0000089138 /* SwipeToDeleteCell.m */,
+				FA720F581B724FBF00089138 /* UIView+Helpers.h */,
+				FA720F591B724FBF00089138 /* UIView+Helpers.m */,
 			);
 			name = lib;
 			sourceTree = "<group>";
@@ -604,11 +614,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA720F571B724F0000089138 /* SwipeToDeleteCell.m in Sources */,
 				FA492C671A0CB1A50030FE27 /* AppDelegate.m in Sources */,
 				FA492C6E1A0CB1A50030FE27 /* Settings.m in Sources */,
 				FA492C251A0CB1890030FE27 /* main.m in Sources */,
 				4926D1821A0E09EB008F68A9 /* BVReorderTableView.m in Sources */,
 				4926D17F1A0DD635008F68A9 /* CommonUtils.m in Sources */,
+				FA720F5A1B724FBF00089138 /* UIView+Helpers.m in Sources */,
 				FA492C6F1A0CB1A50030FE27 /* TodoAreaView.m in Sources */,
 				49CA93AF1A0CE9020069BABB /* TodoInputView.m in Sources */,
 				FA492C721A0CB1A50030FE27 /* TodoListViewController.m in Sources */,

@@ -79,8 +79,8 @@
 
     UILongPressGestureRecognizer* longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
     longPressGesture.minimumPressDuration = 0.3;
-    longPressGesture.numberOfTouchesRequired=1;
-    longPressGesture.allowableMovement=10;
+    longPressGesture.numberOfTouchesRequired = 1;
+    longPressGesture.allowableMovement = 10;
     longPressGesture.delegate=self;
     [self.label addGestureRecognizer:longPressGesture];
 
@@ -235,7 +235,7 @@
 
 - (TodoTypeLabel *)generateImportantLabel
 {
-    TodoTypeLabel *label= [[TodoTypeLabel alloc]initWithFrame:CGRectMake(0, 0, 0, 26)];
+    TodoTypeLabel *label= [[TodoTypeLabel alloc] initWithFrame:CGRectMake(0, 0, 0, 26)];
     label.text = @"important";
     label.layer.cornerRadius = 13.0f;
     label.clipsToBounds=YES;
@@ -244,9 +244,9 @@
 
 - (TodoTypeLabel *)generateUrgentLabel
 {
-    TodoTypeLabel* label= [[TodoTypeLabel alloc]initWithFrame:CGRectMake(0, 0, 0, 26)];
+    TodoTypeLabel* label= [[TodoTypeLabel alloc] initWithFrame:CGRectMake(0, 0, 0, 26)];
     label.text = @"urgent";
-    label.layer.cornerRadius=13.0f;
+    label.layer.cornerRadius = 13.0f;
     label.clipsToBounds = YES;
     return label;
 }

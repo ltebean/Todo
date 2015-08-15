@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SwipeToDeleteCell.h"
 @class TodoCell;
 
 @protocol TodoCellDelegate <NSObject>
@@ -14,7 +15,7 @@
 @end
 
 
-@interface TodoCell : UITableViewCell
+@interface TodoCell : SwipeToDeleteCell
 @property (nonatomic, strong) NSDictionary *todo;
 @property (nonatomic, weak) id<TodoCellDelegate> delegate;
 + (CGFloat)requriedHeightForTodo:(NSDictionary *)todo;

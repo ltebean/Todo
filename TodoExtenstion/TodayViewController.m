@@ -147,7 +147,6 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     return CELL_HEIGHT;
 }
 
@@ -161,7 +160,6 @@
     // If there's an update, use NCUpdateResultNewData
 
     completionHandler(NCUpdateResultNewData);
-
 }
 
 @end
