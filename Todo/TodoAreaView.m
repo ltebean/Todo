@@ -106,7 +106,7 @@
         [self hideEmptyLabel];
         self.todo = todoList[0];
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-        paragraphStyle.lineSpacing = 5;
+        paragraphStyle.lineSpacing = 3;
         paragraphStyle.alignment = self.label.textAlignment;
         NSDictionary *attributes = @{NSParagraphStyleAttributeName: paragraphStyle};
         NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:self.todo[@"content"] attributes:attributes];
@@ -209,7 +209,7 @@
         TodoTypeLabel* urgentLabel = [self generateUrgentLabel];
         [self setOrigin:CGPointMake(10, 10) ForView:importantLabel];
         [self addSubview:importantLabel];
-        [self setOrigin:CGPointMake(92, 10) ForView:urgentLabel];
+        [self setOrigin:CGPointMake(85, 10) ForView:urgentLabel];
         [self addSubview:urgentLabel];
     } else if ([self.type isEqualToString:TODO_TYPE_B]) {
         TodoTypeLabel* importantLabel = [self generateImportantLabel];

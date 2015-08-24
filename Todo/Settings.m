@@ -61,7 +61,7 @@
 {
     NSString *fontFamily = [USER_DEFAULTS stringForKey:FONT_KEY];
     if (!fontFamily) {
-        return @"Heiti SC";
+        return @"HelveticaNeue-Light";
     } else {
         return fontFamily;
     }

@@ -34,7 +34,7 @@
     self.backgroundColor = [Settings themeColor];
     self.textAlignment = NSTextAlignmentCenter;
     self.textColor = [UIColor whiteColor];
-    self.font = [UIFont fontWithName:@"Heiti SC" size:12.0];
+    self.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
 }
 
 - (void)setText:(NSString *)text

@@ -66,7 +66,7 @@
 + (NSDictionary *)textAttributes
 {
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.lineSpacing = 5;
+    paragraphStyle.lineSpacing = 3;
     paragraphStyle.alignment = NSTextAlignmentLeft;
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
 

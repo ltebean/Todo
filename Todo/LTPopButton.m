@@ -8,7 +8,7 @@
 
 #import "LTPopButton.h"
 
-#define lineHeight 2.0
+#define lineHeight 1.0
 #define springDamping 0.7f
 #define springVelocity 0.4f
 
