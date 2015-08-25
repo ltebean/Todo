@@ -74,6 +74,7 @@
     self.importantLabel.layer.borderWidth=1;
     self.importantLabel.layer.borderColor=[[Settings themeColor]CGColor];
 
+
     UITapGestureRecognizer* gesture1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(importantLabelTapped:)];
     [self.importantLabel addGestureRecognizer:gesture1];
 
@@ -112,16 +113,16 @@
 {
     NSString* type;
     if (self.important && self.urgent) {
-        type = @"a";
+        type=@"a";
     } else if (self.important && !self.urgent) {
-        type = @"b";
+        type=@"b";
     } else if (!self.important && self.urgent) {
-        type = @"c";
+        type=@"c";
     } else {
-        type = @"d";
+        type=@"d";
     }
-    TodoService* todoService = [TodoService serviceWithType:type];
-    NSDictionary* todo = @{@"id":[CommonUtils uuid], @"content":content};
+    TodoService* todoService= [TodoService serviceWithType:type];
+    NSDictionary* todo =@{@"id":[CommonUtils uuid],@"content":content};
     [todoService add:todo];
     [self.delegate todoInputView:self didAddTodo:todo withType:type];
 
@@ -140,14 +141,14 @@
 
 - (void)setLabelSeleted:(UILabel *)label
 {
-    label.textColor = [UIColor whiteColor];
-    label.backgroundColor = [Settings themeColor];
+    label.textColor=[UIColor whiteColor];
+    label.backgroundColor=[Settings themeColor];
 }
 
 - (void)setLabelUnSeleted:(UILabel *)label
 {
-    label.textColor = [Settings themeColor];
-    label.backgroundColor = [UIColor whiteColor];
+    label.textColor= [Settings themeColor];
+    label.backgroundColor=[UIColor whiteColor];
 }
 
 - (void)urgentLabelTapped:(UITapGestureRecognizer *)gesture

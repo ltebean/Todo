@@ -11,7 +11,7 @@
 
 @interface FontChooserViewController()<UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray *fonts;
+@property (nonatomic, strong) NSArray *fonts;
 @end
 
 @implementation FontChooserViewController
@@ -22,8 +22,7 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-    self.fonts = [@[@"HelveticaNeue-Light"] mutableCopy];
-    [self.fonts addObjectsFromArray:[UIFont familyNames]];
+    self.fonts = [UIFont familyNames];
 }
 
 #pragma mark UITableViewDatasource
