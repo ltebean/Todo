@@ -8,7 +8,8 @@
 
 #import "AppDelegate.h"
 #import "Settings.h"
-#import "MobClick.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @interface AppDelegate ()
 
@@ -29,7 +30,7 @@
     [Settings migrateDataToContainer];
     [Settings initFirstUseData];
     
-    [MobClick startWithAppkey:@"54656c19fd98c5cd22003e1d" reportPolicy:BATCH channelId:@"Web"];
+    [Fabric with:@[[Crashlytics class]]];
 
     return YES;
 }

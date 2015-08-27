@@ -24,7 +24,6 @@
 		FA34360B1AF50A4D00D225BC /* ThirdInterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA34360A1AF50A4D00D225BC /* ThirdInterfaceController.m */; };
 		FA34360C1AF50E4700D225BC /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4926D17E1A0DD635008F68A9 /* CommonUtils.m */; };
 		FA3D24CF1A15A3E5003A590E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3D24CE1A15A3E5003A590E /* libz.dylib */; };
-		FA3D24D41A15A431003A590E /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3D24D11A15A431003A590E /* libMobClickLibrary.a */; };
 		FA444F7B1ACEE4D400DFCDD0 /* FontChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA444F7A1ACEE4D400DFCDD0 /* FontChooserViewController.m */; };
 		FA492C251A0CB1890030FE27 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA492C241A0CB1890030FE27 /* main.m */; };
 		FA492C301A0CB1890030FE27 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA492C2F1A0CB1890030FE27 /* Images.xcassets */; };
@@ -53,6 +52,8 @@
 		FADCE5FE1A14A1D400003D05 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA492C2F1A0CB1890030FE27 /* Images.xcassets */; };
 		FAE26F281A145AD500D19D48 /* TodoService.m in Sources */ = {isa = PBXBuildFile; fileRef = FA492C621A0CB1A50030FE27 /* TodoService.m */; };
 		FAE26F291A145B1100D19D48 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = FA492C571A0CB1A50030FE27 /* Settings.m */; };
+		FAE445721B8F551E007AA0A0 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE445701B8F551E007AA0A0 /* Fabric.framework */; };
+		FAE445731B8F551E007AA0A0 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE445711B8F551E007AA0A0 /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,9 +121,6 @@
 		FA3436091AF50A4D00D225BC /* ThirdInterfaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdInterfaceController.h; sourceTree = "<group>"; };
 		FA34360A1AF50A4D00D225BC /* ThirdInterfaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdInterfaceController.m; sourceTree = "<group>"; };
 		FA3D24CE1A15A3E5003A590E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		FA3D24D11A15A431003A590E /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
-		FA3D24D21A15A431003A590E /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
-		FA3D24D31A15A431003A590E /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
 		FA444F791ACEE4D400DFCDD0 /* FontChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontChooserViewController.h; sourceTree = "<group>"; };
 		FA444F7A1ACEE4D400DFCDD0 /* FontChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontChooserViewController.m; sourceTree = "<group>"; };
 		FA492C1F1A0CB1890030FE27 /* Todotrix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todotrix.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +165,8 @@
 		FA88CA3F1A1450780044EBE1 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		FA8B14D51AF602D800D5AA48 /* LabelRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelRow.h; sourceTree = "<group>"; };
 		FA8B14D61AF602D800D5AA48 /* LabelRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelRow.m; sourceTree = "<group>"; };
+		FAE445701B8F551E007AA0A0 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		FAE445711B8F551E007AA0A0 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,7 +182,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA3D24CF1A15A3E5003A590E /* libz.dylib in Frameworks */,
-				FA3D24D41A15A431003A590E /* libMobClickLibrary.a in Frameworks */,
+				FAE445731B8F551E007AA0A0 /* Crashlytics.framework in Frameworks */,
+				FAE445721B8F551E007AA0A0 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,16 +250,6 @@
 				FA3435F61AF5030C00D225BC /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		FA3D24D01A15A431003A590E /* UMAnalytics_Sdk_3.1.9 */ = {
-			isa = PBXGroup;
-			children = (
-				FA3D24D11A15A431003A590E /* libMobClickLibrary.a */,
-				FA3D24D21A15A431003A590E /* MobClick.h */,
-				FA3D24D31A15A431003A590E /* MobClickSocialAnalytics.h */,
-			);
-			path = UMAnalytics_Sdk_3.1.9;
 			sourceTree = "<group>";
 		};
 		FA492C161A0CB1890030FE27 = {
@@ -343,7 +334,6 @@
 		FA492C771A0CB1C00030FE27 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				FA3D24D01A15A431003A590E /* UMAnalytics_Sdk_3.1.9 */,
 				4926D1801A0E09EB008F68A9 /* BVReorderTableView.h */,
 				4926D1811A0E09EB008F68A9 /* BVReorderTableView.m */,
 				FA492C4C1A0CB1A50030FE27 /* LTPopButton.h */,
@@ -387,6 +377,8 @@
 		FA88CA361A1450780044EBE1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FAE445701B8F551E007AA0A0 /* Fabric.framework */,
+				FAE445711B8F551E007AA0A0 /* Crashlytics.framework */,
 				FA3D24CE1A15A3E5003A590E /* libz.dylib */,
 				FA88CA371A1450780044EBE1 /* NotificationCenter.framework */,
 			);
@@ -463,6 +455,7 @@
 				FA492C1C1A0CB1890030FE27 /* Frameworks */,
 				FA492C1D1A0CB1890030FE27 /* Resources */,
 				FA88CA471A1450780044EBE1 /* Embed App Extensions */,
+				FAE4456F1B8F54F5007AA0A0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -594,6 +587,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FAE4456F1B8F54F5007AA0A0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run f76e439b5fd9873bfe46a5461fc749ec526ee446 5721cf137a323472424a2a4705339158372d733d0538a90a766e395a14814f1d";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FA3435DE1AF5030B00D225BC /* Sources */ = {
@@ -843,6 +852,10 @@
 				CODE_SIGN_ENTITLEMENTS = Todo/Todotrix.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Cong Yu (LUAG5Z5ST3)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cong Yu (LUAG5Z5ST3)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Todo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -863,6 +876,10 @@
 				CODE_SIGN_ENTITLEMENTS = Todo/Todotrix.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Cong Yu (LUAG5Z5ST3)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cong Yu (LUAG5Z5ST3)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Todo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
