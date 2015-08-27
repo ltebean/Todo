@@ -11,6 +11,7 @@
 #import "Settings.h"
 #import <MessageUI/MFMailComposeViewController.h>
 #import <MessageUI/MessageUI.h>
+#import <Crashlytics/Crashlytics.h>
 
 @interface SettingsViewController ()<MFMailComposeViewControllerDelegate>
 
@@ -37,6 +38,12 @@
     NSString *fontFamily = [Settings fontFamily];
     self.fontLabel.text = fontFamily;
     self.fontLabel.font = [UIFont fontWithName:fontFamily size:15];
+    
+    [Answers logContentViewWithName:@"settings"
+                        contentType:nil
+                          contentId:nil
+                   customAttributes:nil];
+
 }
 
 

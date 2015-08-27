@@ -14,6 +14,7 @@
 #import "LTPopButton.h"
 #import "TodoInputView.h"
 #import "Settings.h"
+#import <Crashlytics/Crashlytics.h>
 
 @interface TodoListViewController ()<UITableViewDataSource,UITableViewDelegate,UINavigationControllerDelegate,UIGestureRecognizerDelegate,TodoCellDelegate,TodoInputViewDelegate>
 @property (weak, nonatomic) IBOutlet LTPopButton *addButton;
@@ -56,6 +57,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+
     self.todoList = [[self.todoService loadAll] mutableCopy];
     [self.tableView reloadData];
     
@@ -72,11 +75,14 @@
     [self.addButton animateToType:plusType];
 
 
-    [super viewWillAppear:animated];
     if (!self.animated) {
         //[self animateCellIn];
         self.animated=YES;
     }
+    [Answers logContentViewWithName:@"todo_list"
+                        contentType:self.type
+                          contentId:nil
+                   customAttributes:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -110,6 +116,10 @@
         self.inputViewIsAnimating = YES;
         [self.addButton animateToType:closeType];
         [self.inputView showInView:self.view withType:type];
+        [Answers logContentViewWithName:@"todo_list_input"
+                            contentType:type
+                              contentId:nil
+                       customAttributes:nil];
     }
 }
 
@@ -128,8 +138,9 @@
 - (void)todoInputView:(TodoInputView *)inputView didAddTodo:(NSDictionary *)todo withType:(NSString *)type;
 {
     [self.addButton animateToType:plusType];
-    self.todoList = [[self.todoService loadAll]mutableCopy];
+    self.todoList = [[self.todoService loadAll] mutableCopy];
     [self.tableView reloadData];
+    [Answers logCustomEventWithName:@"todo_list_add_todo" customAttributes:@{@"type": type}];
 }
 
 - (void)todoInputViewDidShow
@@ -176,6 +187,7 @@
     [self.todoList removeObject:todo];
     [self.todoService saveAll:self.todoList];
     [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
+    [Answers logCustomEventWithName:@"todo_list_finish_todo" customAttributes:@{@"type": self.type}];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -199,6 +211,7 @@
 - (void)finishReorderingWithObject:(id)object atIndexPath:(NSIndexPath *)indexPath; {
     [self.todoList replaceObjectAtIndex:indexPath.row withObject:object];
     [self.todoService saveAll:self.todoList];
+    [Answers logCustomEventWithName:@"todo_list_reorder" customAttributes:@{@"type": self.type}];
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController

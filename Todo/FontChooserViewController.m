@@ -8,6 +8,7 @@
 
 #import "FontChooserViewController.h"
 #import "Settings.h"
+#import <Crashlytics/Crashlytics.h>
 
 @interface FontChooserViewController()<UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -23,6 +24,11 @@
     self.tableView.delegate = self;
     
     self.fonts = [UIFont familyNames];
+    
+    [Answers logContentViewWithName:@"settings"
+                        contentType:nil
+                          contentId:nil
+                   customAttributes:nil];
 }
 
 #pragma mark UITableViewDatasource
@@ -63,6 +69,8 @@
     NSString *fontFamily = self.fonts[indexPath.row];
     [Settings useFontFamily:fontFamily];
     [self.navigationController popViewControllerAnimated:YES];
+    [Answers logCustomEventWithName:@"choose_font" customAttributes:@{@"name": fontFamily}];
+
 }
 
 

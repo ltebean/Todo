@@ -18,6 +18,7 @@
 #import "Settings.h"
 #import "TodoService.h"
 #import "CommonUtils.h"
+#import <Crashlytics/Crashlytics.h>
 
 @interface TodoInputView()<UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UIView *containerView;
@@ -125,7 +126,6 @@
     NSDictionary* todo =@{@"id":[CommonUtils uuid],@"content":content};
     [todoService add:todo];
     [self.delegate todoInputView:self didAddTodo:todo withType:type];
-
 }
 
 - (void)importantLabelTapped:(UITapGestureRecognizer *) gesture

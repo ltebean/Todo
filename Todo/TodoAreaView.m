@@ -10,6 +10,7 @@
 #import "TodoTypeLabel.h"
 #import "TodoService.h"
 #import "Settings.h"
+#import <Crashlytics/Crashlytics.h>
 
 #define LABEL_ZOOM 1.15
 #define BORDER_COLOR [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1]
@@ -149,6 +150,7 @@
             [self animateLabelBack];
         }else{
             [self showNext];
+            [Answers logCustomEventWithName:@"home_finish_todo" customAttributes:@{@"type": self.type}];
         }
     } else {
         CGPoint location = [recognizer locationInView:self];

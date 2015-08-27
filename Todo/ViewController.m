@@ -14,6 +14,7 @@
 #import "TodoListViewController.h"
 #import "Settings.h"
 #import "TodoService.h"
+#import <Crashlytics/Crashlytics.h>
 
 @interface ViewController ()<UIGestureRecognizerDelegate,AreaViewDelegate,UINavigationControllerDelegate,TodoInputViewDelegate>
 @property (weak, nonatomic) IBOutlet LTPopButton *settingsButton;
@@ -76,6 +77,12 @@
     [self animateAreaViewIn:self.areaD delay:0.36];
     
     self.loaded = YES;
+    
+    [Answers logContentViewWithName:@"home"
+                        contentType:nil
+                          contentId:nil
+                   customAttributes:nil];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -120,6 +127,7 @@
     [self.menuButton animateToType:plusType];
     TodoAreaView *area = self.areas[type];
     [area refreshData];
+    [Answers logCustomEventWithName:@"home_add_todo" customAttributes:@{@"type": type}];
 }
 
 - (void)todoInputViewDidShow
@@ -154,7 +162,7 @@
     }
 }
 
--(void) showInputViewWithType:(NSString*) type
+- (void)showInputViewWithType:(NSString*) type
 {
     if (self.inputViewIsAnimating) {
         return;
@@ -163,6 +171,11 @@
         self.inputViewIsAnimating = YES;
         [self.menuButton animateToType:closeType];
         [self.inputView showInView:self.view withType:type];
+        [Answers logContentViewWithName:@"home_input"
+                            contentType:nil
+                              contentId:nil
+                       customAttributes:nil];
+
     }
 }
 
